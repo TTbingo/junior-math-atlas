@@ -115,11 +115,11 @@
     "intuition": "把数轴想成一把尺子：有理数只是尺子上那些「能对准某一格刻度」的点，而无理数把其余的缝隙填满。开平方就是反过来问「哪个数的平方等于它」，算不出来时不要硬算，先在两个整数之间夹住它。",
     "related": [
       {
-        "id": "m1-01-04-quadratic-radicals",
+        "id": "m1-01-05-quadratic-radicals",
         "note": "递进：把开方运算整理成二次根式的化简规则"
       },
       {
-        "id": "m1-01-03-algebraic-fractions",
+        "id": "m1-01-04-algebraic-fractions",
         "note": "对照：分式要求分母不为零，与「零没有倒数」是同一条限制"
       },
       {

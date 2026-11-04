@@ -121,11 +121,11 @@
         "note": "递进：证明边相等、角相等的主要工具是全等"
       },
       {
-        "id": "m2-02-03-isosceles-triangle",
+        "id": "m2-02-04-isosceles-triangle",
         "note": "延伸：等腰三角形把「边相等」与「角相等」直接锁在一起"
       },
       {
-        "id": "m2-02-04-pythagoras",
+        "id": "m2-02-05-pythagoras",
         "note": "延伸：直角三角形把三边关系升级成等量关系"
       }
     ]

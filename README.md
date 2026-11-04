@@ -2,7 +2,7 @@
 
 按初中数学的三大知识模块——**代数、几何、统计与概率**——组织站点。每个知识点回答两件事：**这个结论为什么成立**，**遇到题该按什么顺序想**。
 
-- 内容规模：3 大领域 / 12 主题 / 45 知识点（当前已成稿 4 篇，清单内其余为待写）
+- 内容规模：3 大领域 / 12 主题 / 61 知识点（当前已成稿 4 篇，清单内其余为待写）
 - 知识脉络：依据资料库《初中数学思维导图》的十一章脉络，重组为领域 → 主题 → 知识点
 - 内容与题型参照：《中考冲刺专题突破·数学》(2024)
 - 纯静态、零依赖：断网双击 `dist/index.html` 可完整浏览（KaTeX 已本地化）
@@ -21,7 +21,7 @@
 
 ```
 content/
-  modules.json       3 领域 / 12 主题 / 45 知识点清单 + 知识点中文名（唯一定义）
+  modules.json       3 领域 / 12 主题 / 61 知识点清单 + 知识点中文名（唯一定义）
   points/*.json      知识点正文（按清单逐篇补写）
   media/*.svg        配图与领域脉络图
   taxonomy.json      板块定义、领域、核心素养、场景枚举、禁用词
@@ -29,6 +29,7 @@ content/
 assets/              CSS / JS / 本地化 KaTeX
 templates/           HTML 模板
 tools/restructure.py    重建领域体系（改清单时运行，会覆盖 modules.json）
+tools/gen_maps.py        由 modules.json 生成三张领域脉络图（改清单后必跑）
 tools/check_content.py  内容体检：前置顺序、前置≠关联、场景重复、跳步话术、公式配对
 build.py             单文件构建脚本（仅 Python 标准库）
 dist/                构建产物（不入库）
@@ -38,6 +39,7 @@ dist/                构建产物（不入库）
 
 ```bash
 python tools/restructure.py            # 重建 modules/taxonomy/site 的领域体系
+python tools/gen_maps.py               # 重画三张知识脉络图（与清单同步）
 python build.py                        # 构建 dist/
 python build.py --check                # 只校验：死链、裸公式、禁用词、十板块
 python tools/check_content.py          # 内容体检（前置与关联的语义规则）

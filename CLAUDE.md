@@ -17,7 +17,7 @@ MATH_NO_CLEAN=1 python build.py # 原地覆盖（沙箱禁止整树删 dist 时�
 ## 硬规则
 
 1. **只改 `content/`，不手改 `dist/`**；`dist/` 是产物，重跑 build 即覆盖。
-2. **id 规则**：`m{领域}-{主题}-{序号}-{slug}`，前两段必须在 `modules.json` 中已定义，且该 id 出现在所属主题的 `points` 清单里，否则校验失败。`point_titles` 存全部 45 个知识点中文名，待写条目靠它显示标题。
+2. **id 规则**：`m{领域}-{主题}-{序号}-{slug}`，前两段必须在 `modules.json` 中已定义，且该 id 出现在所属主题的 `points` 清单里，否则校验失败。`point_titles` 存全部 61 个知识点中文名，待写条目靠它显示标题。
 3. **十板块齐全**：`explanation / scenarios / cautions / why / method / examples / inferences / pitfalls / intuition / related`。`why` 必须含 `steps`（≥2）与 `experiment`；`method` 写「解题思路」，不是知识点复述。
 4. **前置 ≠ 关联**：`prerequisites` 必须是排在本文之前的真先修，且不得出现在 `related` 中。小学站的 87 条前置错误就是把 `related[0]` 直接抄成前置，`check_content.py` 会拦。
 5. **`related` 单向书写**：构建时 `idx.incoming` 自动补「指向本知识点」分组；两向都写会重复（`render_related` 有去重兜底，但数据应单向）。
@@ -36,10 +36,11 @@ MATH_NO_CLEAN=1 python build.py # 原地覆盖（沙箱禁止整树删 dist 时�
 
 | 路径 | 作用 |
 |---|---|
-| `content/modules.json` | 3 领域 / 12 主题 / 45 知识点清单 + 中文名映射 |
+| `content/modules.json` | 3 领域 / 12 主题 / 61 知识点清单 + 中文名映射 |
 | `content/points/*.json` | 正文，一篇一文件 |
 | `content/media/*.svg` | 配图；`map-*.svg` 是三个领域的知识脉络图（模块页顶部渲染） |
 | `tools/restructure.py` | 由脚本内的 `MODULES`/`TOPICS` 定义生成清单，改体系只改脚本 |
+| `tools/gen_maps.py` | 读 modules.json 生成 `map-*.svg`；脉络图不再手改，改清单后重跑 |
 | `tools/check_content.py` | 内容语义体检 |
 | `build.py` | 构建 + `verify_output()` 产物自检 |
 
