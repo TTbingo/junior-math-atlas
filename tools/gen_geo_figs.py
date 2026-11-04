@@ -769,21 +769,6 @@ def fig_trapezoid():
     f.save("trapezoid-midpoints.svg")
 
 
-if __name__ == "__main__":
-    fig_lines()
-    fig_angle()
-    fig_parallel()
-    fig_counterexample()
-    fig_construction()
-    fig_models()
-    fig_isosceles()
-    fig_pythagoras()
-    fig_midline()
-    fig_polygon()
-    fig_parallelogram()
-    fig_special()
-    fig_trapezoid()
-
 
 # ============ 几何第三批（m2-04 圆 6 篇） ============
 
@@ -1106,10 +1091,317 @@ def fig_regular_poly():
     f.save("regular-polygon.svg")
 
 
+
+
+# ============ 几何第四批（m2-05 相似与投影 5 篇） ============
+
+def fig_prop_segments():
+    f = Fig(760, 340)
+    # ① 左：三条平行线截两条直线
+    f.text(190, 30, "① 平行截割：对应线段成比例", 14, DARK, anchor="middle", weight="bold")
+    y1, y2, y3 = 70, 170, 270
+    for y in (y1, y2, y3):
+        f.line(40, y, 340, y, GRN, 2.2)
+        f.chevron(190, y, GRN, 8)
+    A, D = (70, y1), (150, y1)
+    B, E = (135, y2), (285, y2)
+    C, F = (200, y3), (420, y3)
+    f.line(A[0], A[1], C[0], C[1], DARK, 2.0)
+    f.line(D[0], D[1], F[0], F[1], BLUE, 2.0)
+    for p, name, off, col in [(A, "A", (-13, -6), DARK), (B, "B", (-13, -8), DARK), (C, "C", (-13, 6), DARK),
+                              (D, "D", (13, -6), BLUE), (E, "E", (13, -8), BLUE), (F, "F", (13, 6), BLUE)]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 13, col, anchor="middle")
+    f.tick(A[0], A[1], B[0], B[1], 1, DARK)
+    f.tick(D[0], D[1], E[0], E[1], 1, BLUE)
+    f.tick(B[0], B[1], C[0], C[1], 2, DARK)
+    f.tick(E[0], E[1], F[0], F[1], 2, BLUE)
+    f.text(190, 306, "AB/BC = DE/EF", 13, RED, anchor="middle", weight="bold")
+    f.text(190, 330, "平行线等距时退化为等分", 11, GREY, anchor="middle")
+    # ② 右：三角形比例转移
+    f.text(580, 30, "② 比例转移：DE∥BC", 14, DARK, anchor="middle", weight="bold")
+    A2 = (500, 70)
+    B2, C2 = (430, 280), (700, 280)
+    D2 = (A2[0] + 0.5 * (B2[0] - A2[0]), A2[1] + 0.5 * (B2[1] - A2[1]))
+    E2 = (A2[0] + 0.5 * (C2[0] - A2[0]), A2[1] + 0.5 * (C2[1] - A2[1]))
+    f.poly([A2, B2, C2], "none", DARK, 2.2)
+    f.line(D2[0], D2[1], E2[0], E2[1], GRN, 2.2)
+    f.chevron((D2[0] + E2[0]) / 2, (D2[1] + E2[1]) / 2, GRN, 7)
+    f.chevron((B2[0] + C2[0]) / 2, B2[1], GRN, 7)
+    for p, name, off in [(A2, "A", (0, -12)), (B2, "B", (-12, 18)), (C2, "C", (12, 18)),
+                         (D2, "D", (-16, -6)), (E2, "E", (14, -6))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 13, DARK, anchor="middle")
+    f.text(580, 306, "AD/DB = AE/EC = DE/BC", 13, RED, anchor="middle", weight="bold")
+    f.text(580, 330, "合比：AD/AB = AE/AC", 11, GREY, anchor="middle")
+    f.save("proportional-segments.svg")
+
+
+def fig_similar_tri():
+    f = Fig(760, 360)
+    f.text(190, 30, "① 定义：三角等、三边成比例", 14, DARK, anchor="middle", weight="bold")
+    # 小三角形 ABC（左）
+    A, B, C = (55, 110), (180, 280), (35, 280)
+    f.poly([A, B, C], GRNF, DARK, 1.8)
+    # 大三角形 DEF（右）
+    D, E, Fp = (245, 80), (378, 250), (228, 250)
+    f.poly([D, E, Fp], "none", DARK, 1.8)
+    f.arc(A[0], A[1], 20, math.degrees(math.atan2(C[1] - A[1], C[0] - A[0])),
+          math.degrees(math.atan2(B[1] - A[1], B[0] - A[0])), RED, 1.8)
+    f.arc(D[0], D[1], 22, math.degrees(math.atan2(Fp[1] - D[1], Fp[0] - D[0])),
+          math.degrees(math.atan2(E[1] - D[1], E[0] - D[0])), RED, 1.8)
+    f.arc(B[0], B[1], 20, math.degrees(math.atan2(A[1] - B[1], A[0] - B[0])),
+          math.degrees(math.atan2(C[1] - B[1], C[0] - B[0])), BLUE, 1.8)
+    f.arc(E[0], E[1], 22, math.degrees(math.atan2(D[1] - E[1], D[0] - E[0])),
+          math.degrees(math.atan2(Fp[1] - E[1], Fp[0] - E[0])), BLUE, 1.8)
+    f.arc(C[0], C[1], 20, math.degrees(math.atan2(B[1] - C[1], B[0] - C[0])),
+          math.degrees(math.atan2(A[1] - C[1], A[0] - C[0])), PURP, 1.8)
+    f.arc(Fp[0], Fp[1], 22, math.degrees(math.atan2(E[1] - Fp[1], E[0] - Fp[0])),
+          math.degrees(math.atan2(D[1] - Fp[1], D[0] - Fp[0])), PURP, 1.8)
+    for p, name, off in [(A, "A", (-12, -10)), (B, "B", (14, 14)), (C, "C", (-12, 14)),
+                         (D, "D", (-4, -12)), (E, "E", (14, 14)), (Fp, "F", (-12, 14))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 13, DARK, anchor="middle")
+    f.arrow_line(196, 200, 218, 200, GREY, 1.6)
+    f.text(207, 180, "k", 14, RED, anchor="middle", weight="bold")
+    f.text(190, 306, "∠A=∠D、∠B=∠E、∠C=∠F", 12, DARK, anchor="middle")
+    f.text(190, 330, "DE/AB=EF/BC=FD/CA=k", 13, RED, anchor="middle", weight="bold")
+    # ② 性质
+    f.text(585, 30, "② 性质：线性 k、面积 k²", 14, DARK, anchor="middle", weight="bold")
+    A3, B3, C3 = (490, 100), (620, 270), (455, 270)
+    A4 = (A3[0] + 0.55 * (B3[0] - A3[0]), A3[1] + 0.55 * (B3[1] - A3[1]))
+    A5 = (A3[0] + 0.55 * (C3[0] - A3[0]), A3[1] + 0.55 * (C3[1] - A3[1]))
+    f.poly([A3, B3, C3], GRNF, DARK, 1.6)
+    f.poly([A3, A4, A5], YELF, DARK, 1.6)
+    f.line(A3[0], A3[1], A3[0], 270, GREY, 1.3, dash="5 4")
+    f.right_angle(A3[0], 270, 90, 180, 7)
+    f.line(490, 180, 445, 180, GREY, 1.0)
+    f.text(438, 184, "h", 11, GREY, anchor="end")
+    f.line(510, 140, 540, 118, GREY, 1.0)
+    f.text(545, 114, "h′=k·h", 11, DARK)
+    f.text(524, 245, "内部相似", 10, GREY, anchor="middle")
+    for p, name, off in [(A3, "A", (0, -12)), (B3, "B", (12, 16)), (C3, "C", (-12, 16))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 13, DARK, anchor="middle")
+    f.text(585, 306, "高/中线/周长比 = k", 13, RED, anchor="middle", weight="bold")
+    f.text(585, 330, "面积比 = k²", 13, RED, anchor="middle", weight="bold")
+    f.save("similar-triangles.svg")
+
+
+def fig_similar_models():
+    f = Fig(760, 380)
+    for t, x in zip(["A 字型", "8 字型", "母子型（射影）", "一线三垂直"], [95, 285, 475, 665]):
+        f.text(x, 30, t, 13, DARK, anchor="middle", weight="bold")
+    # ① A 字型
+    A, B, C = (95, 55), (170, 330), (22, 330)
+    D = (A[0] + 0.5 * (B[0] - A[0]), A[1] + 0.5 * (B[1] - A[1]))
+    E = (A[0] + 0.5 * (C[0] - A[0]), A[1] + 0.5 * (C[1] - A[1]))
+    f.poly([A, B, C], "none", DARK, 2.0)
+    f.poly([A, D, E], YELF, GRN, 2.0)
+    f.chevron((D[0] + E[0]) / 2, (D[1] + E[1]) / 2, GRN, 7)
+    f.chevron(96, 330, GRN, 7)
+    for p, name, off in [(A, "A", (0, -12)), (B, "B", (12, 16)), (C, "C", (-10, 16)),
+                         (D, "D", (14, 0)), (E, "E", (-14, 0))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 12, DARK, anchor="middle")
+    f.text(95, 356, "DE∥BC，共角 ∠A", 11, GREY, anchor="middle")
+    # ② 8 字型
+    yT, yB = 80, 320
+    f.line(215, yT, 355, yT, GRN, 2.0)
+    f.line(215, yB, 355, yB, GRN, 2.0)
+    f.chevron(285, yT, GRN, 7)
+    f.chevron(285, yB, GRN, 7)
+    P = (285, 200)
+    A2, B2 = (225, yT), (345, yT)
+    C2, D2 = (225, yB), (345, yB)
+    f.line(A2[0], A2[1], D2[0], D2[1], DARK, 1.8)
+    f.line(B2[0], B2[1], C2[0], C2[1], DARK, 1.8)
+    f.poly([A2, P, B2], YELF, DARK, 1.8)
+    f.poly([C2, P, D2], BLUEF, BLUE, 1.8)
+    f.arc(P[0], P[1], 18, math.degrees(math.atan2(A2[1] - P[1], A2[0] - P[0])),
+          math.degrees(math.atan2(D2[1] - P[1], D2[0] - P[0])), RED, 1.8)
+    f.arc(P[0], P[1], 18, math.degrees(math.atan2(B2[1] - P[1], B2[0] - P[0])),
+          math.degrees(math.atan2(C2[1] - P[1], C2[0] - P[0])), RED, 1.8)
+    for p, name, off in [(A2, "A", (-12, -8)), (B2, "B", (12, -8)), (C2, "C", (-12, 16)), (D2, "D", (12, 16))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 12, DARK, anchor="middle")
+    f.text(285, 356, "对顶角 + 平行线", 11, GREY, anchor="middle")
+    # ③ 母子型
+    B3, C3 = (390, 330), (560, 330)
+    A3 = (415, 105)
+    D3 = (508, 330)
+    f.poly([A3, D3, B3], GRNF, DARK, 1.2)
+    f.poly([A3, D3, C3], BLUEF, DARK, 1.2)
+    f.poly([A3, B3, C3], "none", DARK, 2.0)
+    f.line(A3[0], A3[1], D3[0], D3[1], RED, 2.0)
+    f.right_angle(A3[0], A3[1], math.degrees(math.atan2(B3[1] - A3[1], B3[0] - A3[0])),
+                  math.degrees(math.atan2(C3[1] - A3[1], C3[0] - A3[0])), 9)
+    f.right_angle(D3[0], D3[1], -90, 180, 8)
+    for p, name, off in [(A3, "A", (0, -12)), (B3, "B", (-10, 16)), (C3, "C", (12, 16)), (D3, "D", (16, 4))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 12, DARK, anchor="middle")
+    f.text(475, 356, "AD²=BD·DC 等", 11, GREY, anchor="middle")
+    # ④ 一线三垂直
+    y = 300
+    f.line(585, y, 745, y, DARK, 1.8)
+    B4, D4, C4 = (588, y), (628, y), (730, y)
+    A4b = (588, 210)
+    E4 = (730, 255.6)
+    f.poly([A4b, B4, D4], YELF, DARK, 1.6)
+    f.poly([D4, C4, E4], BLUEF, DARK, 1.6)
+    f.line(A4b[0], A4b[1], D4[0], D4[1], DARK, 1.8)
+    f.line(D4[0], D4[1], E4[0], E4[1], DARK, 1.8)
+    f.line(C4[0], C4[1], E4[0], E4[1], DARK, 1.8)
+    f.right_angle(B4[0], B4[1], 90, 180, 8)
+    f.right_angle(C4[0], C4[1], -90, 180, 8)
+    aAD = math.degrees(math.atan2(A4b[1] - D4[1], A4b[0] - D4[0]))
+    aDE = math.degrees(math.atan2(E4[1] - D4[1], E4[0] - D4[0]))
+    f.right_angle(D4[0], D4[1], aAD, aDE, 8)
+    for p, name, off in [(A4b, "A", (0, -12)), (B4, "B", (-10, 16)), (D4, "D", (0, 18)),
+                         (C4, "C", (12, 16)), (E4, "E", (12, -8))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 12, DARK, anchor="middle")
+    f.text(665, 356, "∠B=∠C=∠ADE=90°", 11, GREY, anchor="middle")
+    f.save("similar-models.svg")
+
+
+def fig_homothety():
+    f = Fig(760, 380)
+    f.text(190, 30, "① 位似：对应点连线过中心", 14, DARK, anchor="middle", weight="bold")
+    O = (70, 190)
+    A, B, C = (95, 136), (131, 225), (168, 173)
+    k = 2.0
+    A2 = (O[0] + k * (A[0] - O[0]), O[1] + k * (A[1] - O[1]))
+    B2 = (O[0] + k * (B[0] - O[0]), O[1] + k * (B[1] - O[1]))
+    C2 = (O[0] + k * (C[0] - O[0]), O[1] + k * (C[1] - O[1]))
+    for Q in (A2, B2, C2):
+        d = math.hypot(Q[0] - O[0], Q[1] - O[1])
+        f.line(O[0], O[1], Q[0] + 16 * (Q[0] - O[0]) / d, Q[1] + 16 * (Q[1] - O[1]) / d, GREY, 1.2, dash="5 4")
+    f.poly([A, B, C], YELF, DARK, 1.8)
+    f.poly([A2, B2, C2], "none", DARK, 1.8)
+    f.tick(O[0], O[1], A[0], A[1], 1, DARK)
+    f.tick(A[0], A[1], A2[0], A2[1], 1, DARK)
+    for p, name, off in [(O, "O", (-14, 8)), (A, "A", (-13, -6)), (B, "B", (12, 6)), (C, "C", (14, 4)),
+                         (A2, "A′", (0, -12)), (B2, "B′", (12, 4)), (C2, "C′", (14, -4))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 12, DARK, anchor="middle")
+    f.text(190, 356, "OA′=2·OA（k=2），两三角形相似", 12, DARK, anchor="middle")
+    # ② 右：坐标版
+    f.text(600, 30, "② 坐标版：(x,y)→(kx,ky)", 14, DARK, anchor="middle", weight="bold")
+    O0 = (430, 335)
+    f.arrow_line(O0[0], O0[1], 720, O0[1], DARK, 1.6)
+    f.arrow_line(O0[0], O0[1], O0[0], 75, DARK, 1.6)
+    u = 30
+    A3 = (O0[0] + 1 * u, O0[1] - 1 * u)
+    B3 = (O0[0] + 3 * u, O0[1] - 1 * u)
+    C3 = (O0[0] + 2 * u, O0[1] - 3 * u)
+    A3p = (O0[0] + 2 * u, O0[1] - 2 * u)
+    B3p = (O0[0] + 6 * u, O0[1] - 2 * u)
+    C3p = (O0[0] + 4 * u, O0[1] - 6 * u)
+    f.poly([A3, B3, C3], YELF, DARK, 1.8)
+    f.poly([A3p, B3p, C3p], "none", BLUE, 1.8)
+    for Q in (A3p, B3p, C3p):
+        f.line(O0[0], O0[1], Q[0], Q[1], GREY, 1.2, dash="5 4")
+    f.text(O0[0] - 10, O0[1] + 16, "O", 12, DARK, anchor="middle")
+    f.text(712, O0[1] + 16, "x", 11, DARK)
+    f.text(O0[0] - 12, 84, "y", 11, DARK)
+    f.text(A3[0] - 6, A3[1] - 6, "A(1,1)", 10, DARK, anchor="end")
+    f.text(B3[0] + 2, B3[1] + 16, "B(3,1)", 10, DARK, anchor="start")
+    f.text(C3[0] - 6, C3[1] - 6, "C(2,3)", 10, DARK, anchor="end")
+    f.line(A3p[0] + 2, A3p[1] + 6, 566, 302, GREY, 0.9)
+    f.text(570, 306, "A′(2,2)", 10, BLUE)
+    f.text(B3p[0] + 6, B3p[1] + 4, "B′(6,2)", 10, BLUE)
+    f.text(C3p[0] + 8, C3p[1], "C′(4,6)", 10, BLUE)
+    f.text(600, 356, "k=2：坐标乘 2，面积 ×4", 12, RED, anchor="middle", weight="bold")
+    f.save("homothety.svg")
+
+
+def fig_projection_views():
+    f = Fig(760, 400)
+    f.text(230, 26, "① 平行投影：影长测高", 14, DARK, anchor="middle", weight="bold")
+    # 太阳光线箭头
+    for x0 in (50, 110, 170):
+        f.arrow_line(x0, 60, x0 + 38, 98, YEL, 1.8)
+    f.text(120, 46, "太阳光（平行）", 11, YEL, anchor="middle")
+    # 地面
+    f.line(30, 300, 460, 300, DARK, 2.0)
+    # 杆 1
+    f.poly([(100, 300), (100, 250), (175, 300)], YELF, DARK, 1.6)
+    f.line(100, 250, 100, 300, DARK, 2.2)
+    f.line(100, 250, 175, 300, GREY, 1.3, dash="5 4")
+    # 杆 2（高）
+    f.poly([(240, 300), (240, 150), (435, 300)], BLUEF, "none", 0)
+    f.line(240, 150, 240, 300, DARK, 2.2)
+    f.line(240, 150, 435, 300, GREY, 1.3, dash="5 4")
+    f.text(92, 278, "50", 10, DARK, anchor="end")
+    f.text(134, 320, "影 75", 10, RED, anchor="middle")
+    f.arrow_line(248, 152, 248, 296, RED, 1.6)
+    f.text(234, 225, "150", 10, DARK, anchor="middle")
+    f.arrow_line(300, 282, 430, 282, RED, 1.6)
+    f.text(348, 268, "影 x", 10, RED, anchor="middle")
+    f.text(230, 338, "50/75 = 150/x → x = 225", 13, RED, anchor="middle", weight="bold")
+    f.text(230, 362, "光线平行 → 两「高—影」三角形相似", 11, DARK, anchor="middle")
+    # ② 右：三视图
+    f.text(600, 26, "② 三视图（正投影）", 14, DARK, anchor="middle", weight="bold")
+    g = 30
+    # 俯视图（带层数数字）
+    ox, oy = 450, 90
+    f.poly([(ox, oy), (ox + 2 * g, oy), (ox + 2 * g, oy + 2 * g), (ox, oy + 2 * g)], "none", DARK, 1.8)
+    f.line(ox + g, oy, ox + g, oy + 2 * g, GREY, 1.2)
+    f.line(ox, oy + g, ox + 2 * g, oy + g, GREY, 1.2)
+    f.text(ox + g / 2, oy + g / 2 + 4, "2", 13, RED, anchor="middle")
+    f.text(ox + 3 * g / 2, oy + g / 2 + 4, "1", 12, DARK, anchor="middle")
+    f.text(ox + g / 2, oy + 3 * g / 2 + 4, "1", 12, DARK, anchor="middle")
+    f.text(ox + 3 * g / 2, oy + 3 * g / 2 + 4, "1", 12, DARK, anchor="middle")
+    f.text(ox + g, oy - 10, "俯视图（数字=层数）", 11, DARK, anchor="middle")
+    # 主视图（俯视图正下方，长对正）
+    my = 240
+    f.poly([(ox, my + 2 * g), (ox, my + g), (ox + g, my + g), (ox + g, my), (ox + 2 * g, my), (ox + 2 * g, my + 2 * g)],
+           "none", DARK, 1.8)
+    f.text(ox + g, my + 2 * g + 18, "主视图", 11, DARK, anchor="middle")
+    # 左视图（主视图右侧，高平齐）
+    lx = 620
+    f.poly([(lx, my + 2 * g), (lx, my + g), (lx + g, my + g), (lx + g, my), (lx + 2 * g, my), (lx + 2 * g, my + 2 * g)],
+           "none", DARK, 1.8)
+    f.text(lx + g, my + 2 * g + 18, "左视图", 11, DARK, anchor="middle")
+    # 对齐虚线：长对正
+    f.line(ox, oy + 2 * g, ox, my + 2 * g, GREY, 1.1, dash="4 3")
+    f.line(ox + 2 * g, oy + 2 * g, ox + 2 * g, my + 2 * g, GREY, 1.1, dash="4 3")
+    # 高平齐
+    f.line(ox + 2 * g, my, lx, my, GREY, 1.1, dash="4 3")
+    f.line(ox + 2 * g, my + 2 * g, lx, my + 2 * g, GREY, 1.1, dash="4 3")
+    # 宽相等：俯视图右边与左视图左侧各一段短虚线
+    f.line(ox + 2 * g - 14, oy + g, ox + 2 * g + 6, oy + g, GREY, 1.1, dash="2 3")
+    f.line(lx - 6, oy + g, lx + 14, oy + g, GREY, 1.1, dash="2 3")
+    f.text(556, 132, "宽相等", 10, GREY, anchor="middle")
+    f.text(536, my - 8, "高平齐", 10, GREY, anchor="middle")
+    f.text(ox - 8, (oy + 2 * g + my) / 2 + 4, "长对正", 10, GREY, anchor="middle")
+    f.text(600, 362, "三图互检：长对正、高平齐、宽相等", 12, RED, anchor="middle", weight="bold")
+    f.save("projection-views.svg")
+
+
 if __name__ == "__main__":
+    fig_lines()
+    fig_angle()
+    fig_parallel()
+    fig_counterexample()
+    fig_construction()
+    fig_models()
+    fig_isosceles()
+    fig_pythagoras()
+    fig_midline()
+    fig_polygon()
+    fig_parallelogram()
+    fig_special()
+    fig_trapezoid()
     fig_circle_perp()
     fig_central_inscribed()
     fig_circle_position()
     fig_tangent()
     fig_arc_cone()
     fig_regular_poly()
+    fig_prop_segments()
+    fig_similar_tri()
+    fig_similar_models()
+    fig_homothety()
+    fig_projection_views()
