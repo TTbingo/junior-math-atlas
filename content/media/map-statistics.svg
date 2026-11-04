@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="760" height="380" role="img" aria-label="统计与概率领域知识脉络：统计、概率两个主题，统计从收数据到算统计量，概率从认事件到算可能性">
+  <rect width="760" height="380" fill="#ffffff"/>
+  <text x="30" y="34" font-size="13" fill="#4a5568">两个主题一问一答：统计回答「这批数据说明什么」，概率回答「这件事有多大可能」</text>
+
+  <!-- 统计 -->
+  <rect x="40" y="70" width="300" height="230" rx="10" fill="#fffaf0" stroke="#b7791f" stroke-width="1.6"/>
+  <text x="62" y="100" font-size="17" fill="#b7791f">统计</text>
+  <text x="62" y="120" font-size="12" fill="#4a5568">先从总体取出样本，再画图、算量、下结论</text>
+  <line x1="62" y1="132" x2="318" y2="132" stroke="#fbd38d" stroke-width="1"/>
+  <g font-size="14" fill="#2d3748">
+    <text x="62" y="160">数据的收集与整理（普查、抽样）</text>
+    <text x="62" y="192">统计图表（条形、折线、扇形、直方图）</text>
+    <text x="62" y="224">平均数、中位数、众数</text>
+    <text x="62" y="256">方差与数据波动</text>
+  </g>
+  <text x="62" y="286" font-size="12" fill="#718096">用样本估计总体：样本要有代表性</text>
+
+  <!-- 概率 -->
+  <rect x="420" y="70" width="300" height="230" rx="10" fill="#faf5ff" stroke="#6b46c1" stroke-width="1.6"/>
+  <text x="442" y="100" font-size="17" fill="#6b46c1">概率</text>
+  <text x="442" y="120" font-size="12" fill="#4a5568">先分清事件类型，再数结果、算比值</text>
+  <line x1="442" y1="132" x2="698" y2="132" stroke="#e9d8fd" stroke-width="1"/>
+  <g font-size="14" fill="#2d3748">
+    <text x="442" y="160">事件的分类与概率（必然、不可能、随机）</text>
+    <text x="442" y="192">求概率的方法（列举、列表、树状图）</text>
+    <text x="442" y="224">用频率估计概率</text>
+  </g>
+  <text x="442" y="256" font-size="12" fill="#718096">前提：结果有限且等可能，缺一不可</text>
+
+  <!-- 中间箭头 -->
+  <g stroke="#4a5568" stroke-width="1.6" fill="#4a5568">
+    <line x1="344" y1="185" x2="410" y2="185"/>
+    <polygon points="420,185 408,179 408,191"/>
+  </g>
+  <text x="382" y="176" font-size="10" fill="#4a5568" text-anchor="middle">频率</text>
+  <text x="382" y="205" font-size="10" fill="#4a5568" text-anchor="middle">估计</text>
+
+  <text x="30" y="338" font-size="12" fill="#718096">主线：数据 → 图表 → 统计量 → 判断；事件 → 等可能结果 → 概率。两条线在「用频率估计概率」处接上。</text>
+  <text x="30" y="360" font-size="11" fill="#a0aec0">脉络依据《初中数学思维导图》第十一章整理</text>
+</svg>

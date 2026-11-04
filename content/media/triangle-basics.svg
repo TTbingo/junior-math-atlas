@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" width="760" height="300" role="img" aria-label="三个并列的三角形图示：三边关系、内角和拼成平角、外角等于两个不相邻内角之和">
+  <rect width="760" height="300" fill="#ffffff"/>
+
+  <!-- 分隔线 -->
+  <g stroke="#e2e8f0" stroke-width="1">
+    <line x1="253" y1="52" x2="253" y2="208"/>
+    <line x1="506" y1="52" x2="506" y2="208"/>
+  </g>
+
+  <!-- ① 三边关系 -->
+  <text x="126" y="34" font-size="15" font-weight="600" fill="#2d3748" text-anchor="middle">① 三边关系</text>
+  <polygon points="110,70 55,200 200,200" fill="#ebf4ff" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="120" y="216" font-size="13" fill="#2b6cb0" text-anchor="middle">5</text>
+  <text x="68" y="132" font-size="13" fill="#2b6cb0" text-anchor="end">3</text>
+  <text x="166" y="132" font-size="13" fill="#2b6cb0">4</text>
+  <g font-size="12" fill="#4a5568">
+    <text x="126" y="242" text-anchor="middle">底边 5，两腰 3 和 4</text>
+    <text x="126" y="262" text-anchor="middle" fill="#c53030">3 + 4 &gt; 5，围得成</text>
+    <text x="126" y="282" text-anchor="middle" fill="#718096">若两短边之和 ≤ 长边，就摊平成直线</text>
+  </g>
+
+  <!-- ② 内角和 -->
+  <text x="380" y="34" font-size="15" font-weight="600" fill="#2d3748" text-anchor="middle">② 内角和</text>
+  <line x1="290" y1="70" x2="470" y2="70" stroke="#718096" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="284" y="74" font-size="12" fill="#718096" text-anchor="end">D</text>
+  <text x="476" y="74" font-size="12" fill="#718096">E</text>
+  <polygon points="380,70 332,200 428,200" fill="#f0fff4" stroke="#2f855a" stroke-width="2"/>
+  <text x="380" y="60" font-size="13" fill="#2f855a" text-anchor="middle">A</text>
+  <text x="324" y="214" font-size="13" fill="#2f855a" text-anchor="end">B</text>
+  <text x="436" y="214" font-size="13" fill="#2f855a">C</text>
+  <path d="M 369.6 98.1 A 30 30 0 0 0 390.4 98.1" fill="none" stroke="#c53030" stroke-width="1.6"/>
+  <text x="380" y="118" font-size="12" fill="#c53030" text-anchor="middle">∠A</text>
+  <text x="348" y="188" font-size="12" fill="#2f855a">∠B</text>
+  <text x="404" y="188" font-size="12" fill="#2f855a">∠C</text>
+  <g font-size="12" fill="#4a5568">
+    <text x="380" y="242" text-anchor="middle">∠DAB = ∠B，∠EAC = ∠C（内错角）</text>
+    <text x="380" y="262" text-anchor="middle" fill="#2f855a">∠A + ∠B + ∠C = 180°</text>
+    <text x="380" y="282" text-anchor="middle" fill="#718096">与三角形形状无关，任何三角形都成立</text>
+  </g>
+
+  <!-- ③ 外角 -->
+  <text x="632" y="34" font-size="15" font-weight="600" fill="#2d3748" text-anchor="middle">③ 外角</text>
+  <line x1="575" y1="200" x2="736" y2="200" stroke="#4a5568" stroke-width="1.5"/>
+  <polygon points="625,70 575,200 675,200" fill="#fffaf0" stroke="#b7791f" stroke-width="2"/>
+  <text x="625" y="60" font-size="13" fill="#b7791f" text-anchor="middle">A</text>
+  <text x="568" y="214" font-size="13" fill="#b7791f" text-anchor="end">B</text>
+  <text x="675" y="216" font-size="13" fill="#b7791f" text-anchor="middle">C</text>
+  <text x="742" y="204" font-size="13" fill="#4a5568">D</text>
+  <path d="M 702 200 A 27 27 0 0 0 688 176" fill="none" stroke="#c53030" stroke-width="1.6"/>
+  <text x="706" y="164" font-size="12" fill="#c53030" text-anchor="middle">外角</text>
+  <g font-size="12" fill="#4a5568">
+    <text x="632" y="242" text-anchor="middle">延长 BC 到 D，∠ACD 是外角</text>
+    <text x="632" y="262" text-anchor="middle" fill="#c53030">∠ACD = ∠A + ∠B</text>
+    <text x="632" y="282" text-anchor="middle" fill="#718096">外角一定大于任一个不相邻的内角</text>
+  </g>
+</svg>

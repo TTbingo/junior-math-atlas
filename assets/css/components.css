@@ -378,3 +378,17 @@ ul.pending { color: var(--text-faint); }
 .std-fold summary { cursor: pointer; color: var(--accent); font-size: var(--fs-sm); }
 .std-fold[open] summary { margin-bottom: .4rem; }
 .std-fold .std-text, .std-fold { line-height: 1.8; }
+
+/* 领域知识脉络图 */
+.map-block .knowledge-map {
+  display: block; width: 100%; height: auto;
+  margin: .2rem 0 .6rem; border-radius: var(--radius, 10px);
+}
+
+@media (min-width: 62em) { .mod-grid { grid-template-columns: repeat(3, 1fr); } }
+
+@media (min-width: 62em) { .mod-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* 待写知识点：置灰、不可点 */
+.items .is-pending { color: var(--text-sub, #718096); }
+.items .is-pending .tag-soon { margin-left: .5rem; }

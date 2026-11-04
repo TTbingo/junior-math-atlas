@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 355" width="760" height="355" role="img" aria-label="代数领域知识脉络：数与式、方程与不等式、函数三个主题依次递进">
+  <rect width="760" height="355" fill="#ffffff"/>
+  <text x="30" y="34" font-size="13" fill="#4a5568">三个主题排成一条线：前一个主题的工具，正好是后一个主题的前提</text>
+
+  <!-- 框 1：数与式 -->
+  <rect x="30" y="70" width="220" height="235" rx="10" fill="#ebf4ff" stroke="#2b6cb0" stroke-width="1.6"/>
+  <text x="48" y="98" font-size="17" fill="#2b6cb0">数与式</text>
+  <text x="48" y="118" font-size="12" fill="#4a5568">全部代数的语言：数 → 字母 → 式子</text>
+  <line x1="48" y1="130" x2="232" y2="130" stroke="#bee3f8" stroke-width="1"/>
+  <g font-size="14" fill="#2d3748">
+    <text x="48" y="156">实数及其运算</text>
+    <text x="48" y="178">整式与因式分解</text>
+    <text x="48" y="200">分式</text>
+    <text x="48" y="222">二次根式</text>
+  </g>
+
+  <!-- 框 2：方程与不等式 -->
+  <rect x="280" y="70" width="220" height="235" rx="10" fill="#ebf4ff" stroke="#2b6cb0" stroke-width="1.6"/>
+  <text x="298" y="98" font-size="17" fill="#2b6cb0">方程与不等式</text>
+  <text x="298" y="118" font-size="12" fill="#4a5568">等号求未知量，不等号求取值范围</text>
+  <line x1="298" y1="130" x2="482" y2="130" stroke="#bee3f8" stroke-width="1"/>
+  <g font-size="14" fill="#2d3748">
+    <text x="298" y="156">一元一次方程</text>
+    <text x="298" y="178">二元一次方程组</text>
+    <text x="298" y="200">一元二次方程</text>
+    <text x="298" y="222">判别式与根与系数的关系</text>
+    <text x="298" y="244">分式方程</text>
+    <text x="298" y="266">一元一次不等式（组）</text>
+    <text x="298" y="288">列方程解应用题</text>
+  </g>
+
+  <!-- 框 3：函数 -->
+  <rect x="530" y="70" width="220" height="235" rx="10" fill="#ebf4ff" stroke="#2b6cb0" stroke-width="1.6"/>
+  <text x="548" y="98" font-size="17" fill="#2b6cb0">函数</text>
+  <text x="548" y="118" font-size="12" fill="#4a5568">把「求解」升级为「描述变化」</text>
+  <line x1="548" y1="130" x2="732" y2="130" stroke="#bee3f8" stroke-width="1"/>
+  <g font-size="14" fill="#2d3748">
+    <text x="548" y="156">平面直角坐标系与函数</text>
+    <text x="548" y="178">一次函数</text>
+    <text x="548" y="200">反比例函数</text>
+    <text x="548" y="222">二次函数</text>
+  </g>
+
+  <!-- 箭头 -->
+  <g stroke="#2b6cb0" stroke-width="1.8" fill="#2b6cb0">
+    <line x1="252" y1="200" x2="272" y2="200"/>
+    <polygon points="280,180 270,175 270,185"/>
+    <line x1="502" y1="200" x2="522" y2="200"/>
+    <polygon points="530,180 520,175 520,185"/>
+  </g>
+
+  <text x="30" y="318" font-size="13" fill="#718096">主线：数的运算 → 式的运算 → 方程与不等式 → 函数。前一框是后一框的工具箱，顺序不能倒。</text>
+  <text x="30" y="340" font-size="11" fill="#a0aec0">脉络依据《初中数学思维导图》第一至三章整理</text>
+</svg>

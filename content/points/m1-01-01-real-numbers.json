@@ -4,16 +4,27 @@
   "type": "point",
   "module": "m1",
   "topic": "m1-01",
-  "title": "实数",
+  "title": "实数及其运算",
   "slug": "real-numbers",
   "summary": "有理数不够用时，数轴上的空位由无理数填满；实数就是这条数轴上所有的点。",
-  "keywords": ["实数", "无理数", "数轴", "绝对值", "算术平方根", "科学记数法"],
+  "keywords": [
+    "实数",
+    "无理数",
+    "数轴",
+    "绝对值",
+    "算术平方根",
+    "科学记数法"
+  ],
   "domain": "数与代数",
   "strand": "数与式",
   "segment": 4,
   "standard_ids": [],
   "verb_level": "掌握",
-  "literacy": ["抽象能力", "运算能力", "几何直观"],
+  "literacy": [
+    "抽象能力",
+    "运算能力",
+    "几何直观"
+  ],
   "scope": "core",
   "prerequisites": [],
   "media": [
@@ -103,8 +114,18 @@
     ],
     "intuition": "把数轴想成一把尺子：有理数只是尺子上那些「能对准某一格刻度」的点，而无理数把其余的缝隙填满。开平方就是反过来问「哪个数的平方等于它」，算不出来时不要硬算，先在两个整数之间夹住它。",
     "related": [
-      { "id": "m1-01-03-quadratic-radicals", "note": "递进：把开方运算整理成二次根式的化简规则" },
-      { "id": "m1-01-05-algebraic-fractions", "note": "对照：分式要求分母不为零，与「零没有倒数」是同一条限制" }
+      {
+        "id": "m1-01-04-quadratic-radicals",
+        "note": "递进：把开方运算整理成二次根式的化简规则"
+      },
+      {
+        "id": "m1-01-03-algebraic-fractions",
+        "note": "对照：分式要求分母不为零，与「零没有倒数」是同一条限制"
+      },
+      {
+        "id": "m1-01-02-integral-expressions",
+        "note": "递进：实数运算律搬到字母上，就是整式的加减乘"
+      }
     ]
   },
   "meta": {

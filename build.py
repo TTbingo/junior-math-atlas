@@ -336,6 +336,7 @@ class Index:
 
     def __init__(self, tax, std, mod, points):
         self.tax, self.std, self.mod, self.points = tax, std, mod, points
+        self.point_titles = mod.get("point_titles", {})
         self.modules = {m["id"]: m for m in mod["modules"]}
         self.module_order = [m["id"] for m in mod["modules"]]
         self.topics = {t["id"]: t for t in mod["topics"]}
@@ -741,7 +742,7 @@ def emit_topic(idx, tid, depth=2):
     if pending:
         body.append('<section class="block"><h2>这一节还会包含</h2><ul class="items pending">')
         for pid in pending:
-            title = pid.split("-", 3)[-1].replace("-", " ")
+            title = idx.point_titles.get(pid, pid.split("-", 3)[-1])
             body.append(f'<li>{esc(title)}<span class="tag-soon">待写</span></li>')
         body.append('</ul><p class="note">这些知识点已列入规划，正文尚未撰写。</p></section>')
     body.append("</div>")
@@ -762,14 +763,23 @@ def emit_module(idx, mid, depth=1):
     tids = idx.module_topics(mid)
     total = idx.module_count(mid)
     head = ('<div class="panel panel-h1">'
-            f'<p class="mod-kicker">{esc(m["short"])}篇</p>'
+            f'<p class="mod-kicker">第 {m["no"]} 领域 · {esc(m["short"])}</p>'
             f'<h1 id="_top">{esc(m["title"])}</h1>'
             f'<p class="grade-sub">{esc(m["desc"])}</p></div>')
     body = [head, '<div class="panel panel-body">']
+    if m.get("map"):
+        body.append(
+            '<section class="block map-block"><h2>知识脉络</h2>'
+            f'<img class="knowledge-map" src="{idx.root_for(depth)}/assets/svg/{m["map"]}"'
+            f' alt="{esc(m["title"])}领域知识脉络图" loading="eager">'
+            '<p class="note">这张图是这一领域的知识骨架：从左到右是学习顺序，'
+            '每个方框是一个主题，方框下面的小字是主题内的知识点。'
+            '照着它走，不会出现「做这道题要用到还没学的工具」的情况。</p></section>')
     body.append('<section class="block overview"><table class="kv"><tbody>'
                 f'<tr><th>课标主题</th><td>{esc(m.get("strand",""))}</td></tr>'
                 f'<tr><th>主题数</th><td>{len(tids)} 个</td></tr>'
-                f'<tr><th>知识点</th><td>{total} 篇</td></tr>'
+                f'<tr><th>知识点</th><td>{sum(len(idx.topics[t]["points"]) for t in tids)} 个'
+                f'（已写 {total} 篇）</td></tr>'
                 '</tbody></table></section>')
     entries = []
     for tid in tids:
@@ -777,16 +787,18 @@ def emit_module(idx, mid, depth=1):
         written = idx.topic_points(tid)
         body.append(f'<section class="block" id="{tid}">'
                     f'<h2><a href="{idx.rel_topic(tid, depth)}">{esc(t["title"])}</a>'
-                    f'<span class="tg-n">{len(written)}</span></h2>'
+                    f'<span class="tg-n">{len(written)}/{len(t["points"])}</span></h2>'
                     f'<p class="mod-desc">{esc(t["desc"])}</p>')
-        if written:
-            body.append('<ul class="items">')
-            for pid in written:
+        body.append('<ul class="items point-items">')
+        for pid in t["points"]:
+            if pid in idx.points:
                 body.append(f'<li><a href="{idx.rel(pid, depth)}">'
                             f'{esc(idx.points[pid]["title"])}</a></li>')
-            body.append("</ul>")
-        else:
-            body.append('<p class="note">这一节的内容还在规划中。</p>')
+            else:
+                title = idx.point_titles.get(pid, pid)
+                body.append(f'<li class="is-pending">{esc(title)}'
+                            f'<span class="tag-soon">待写</span></li>')
+        body.append("</ul>")
         body.append("</section>")
         entries.append((2, t["title"], tid))
     body.append("</div>")
@@ -802,9 +814,9 @@ def emit_home(idx, depth=0):
     n_written = len(idx.point_order)
     n_topics = len(idx.topic_order)
     stats = (f'<div class="stats">'
-             f'<span><b>{len(idx.module_order)}</b> 大部分</span>'
+             f'<span><b>{len(idx.module_order)}</b> 大领域</span>'
              f'<span><b>{n_topics}</b> 个主题</span>'
-             f'<span><b>{n_written}</b> 篇知识点</span>'
+             f'<span><b>{len(idx.plan)}</b> 个知识点（已写 {n_written} 篇）</span>'
              f'<span class="stat-done">已学 <b class="done-count">0</b> 篇</span></div>')
 
     cards = []
@@ -812,7 +824,7 @@ def emit_home(idx, depth=0):
         m = idx.modules[mid]
         tids = idx.module_topics(mid)
         cards.append(f'<a class="card mod-card" href="{idx.rel_module(mid, depth)}">'
-                     f'<span class="mod-no">{esc(m["short"])}篇</span>'
+                     f'<span class="mod-no">第 {m["no"]} 领域</span>'
                      f'<span class="card-t">{esc(m["title"])}</span>'
                      f'<span class="card-d">{esc(m["desc"])}</span>'
                      f'<span class="card-m">{len(tids)} 个主题&#12288;{idx.module_count(mid)} 篇</span></a>')
@@ -831,7 +843,7 @@ def emit_home(idx, depth=0):
                 f'</a></li>' for pid in pids)
             inner.append(f'<div class="topic-group">'
                          f'<h3><a href="{idx.rel_topic(tid, depth)}">{esc(t["title"])}</a>'
-                         f'<span class="tg-n">{len(pids)}</span></h3>'
+                         f'<span class="tg-n">{len(pids)}/{len(t["points"])}</span></h3>'
                          f'<ul class="items point-items">{items}</ul></div>')
         blocks.append(f'<section class="block mod-block" id="{mid}">'
                       f'<h2><a href="{idx.rel_module(mid, depth)}">{esc(m["title"])}</a></h2>'
@@ -840,7 +852,7 @@ def emit_home(idx, depth=0):
     main = (f'<div class="panel panel-h1"><h1 id="_top">{esc(tax["site_title"])}</h1>'
             f'<p class="home-sub">{esc(idx.site_title_sub)}</p>{stats}</div>'
             '<div class="panel panel-body">'
-            f'<section class="block"><h2>三大部分</h2>'
+            f'<section class="block"><h2>三大领域</h2>'
             f'<div class="card-grid mod-grid">{"".join(cards)}</div></section>'
             + "".join(blocks) + "</div>")
     return tmpl("base.html", page_vars(idx, {
@@ -965,7 +977,7 @@ def build():
         for w in warnings[:20]:
             print("  !", w)
     print(f"构建完成：{len(idx.point_order)} 篇知识点 / {len(idx.topic_order)} 个主题"
-          f" / {len(idx.module_order)} 个部分 → dist/")
+          f" / {len(idx.module_order)} 个领域 → dist/")
     return verify_output()
 
 def verify_output():
@@ -1016,7 +1028,7 @@ def check():
             print(f"  … 另有 {len(errors)-80} 条")
         return 1
     print(f"✓ 校验通过：{len(points)} 篇知识点 / {len(mod['topics'])} 个主题"
-          f" / {len(mod['modules'])} 个部分 / {len(std)} 条课标条目")
+          f" / {len(mod['modules'])} 个领域 / {len(std)} 条课标条目")
     if warnings:
         for w in warnings[:20]:
             print("  !", w)
