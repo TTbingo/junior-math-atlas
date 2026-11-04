@@ -528,6 +528,247 @@ def fig_midline():
     f.save("triangle-midline.svg")
 
 
+
+
+# ============ 几何第二批（m2-03 四边形 4 篇） ============
+
+def fig_polygon():
+    f = Fig(760, 340)
+    # ① 左：五边形拆三角形
+    f.text(200, 40, "① 内角和：拆三角形", 14, DARK, anchor="middle", weight="bold")
+    cx, cy, R = 200, 185, 110
+    ang = [-90, -18, 54, 126, 198]
+    V = [(cx + R * math.cos(math.radians(a)), cy + R * math.sin(math.radians(a)))
+         for a in ang]
+    A, B, C, D, E = V
+    f.poly([A, B, C], GRNF, GRN, 1.8)
+    f.poly([A, C, D], BLUEF, BLUE, 1.8)
+    f.poly([A, D, E], YELF, YEL, 1.8)
+    f.poly(V, "none", DARK, 2.2)
+    f.line(A[0], A[1], C[0], C[1], RED, 2.2)
+    f.line(A[0], A[1], D[0], D[1], RED, 2.2)
+    for p, name, off in [(A, "A", (0, -12)), (B, "B", (14, 4)),
+                         (C, "C", (12, 18)), (D, "D", (-10, 18)),
+                         (E, "E", (-14, 4))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 13, DARK, anchor="middle")
+    f.text(200, 316, "从 A 出发的 2 条对角线，分成 3 个三角形", 12, DARK, anchor="middle")
+    f.text(200, 336, "内角和 = 3×180° = 540°", 13, RED, anchor="middle", weight="bold")
+    # ② 右：正五边形外角和
+    f.text(580, 40, "② 外角和：走一圈", 14, DARK, anchor="middle", weight="bold")
+    cx2, cy2, R2 = 580, 178, 80
+    W = [(cx2 + R2 * math.cos(math.radians(a)), cy2 + R2 * math.sin(math.radians(a)))
+         for a in ang]
+    f.poly(W, "none", DARK, 2.2)
+    for i in range(5):
+        Vi, Vn, Vp = W[i], W[(i + 1) % 5], W[(i - 1) % 5]
+        t_in = math.degrees(math.atan2(Vi[1] - Vp[1], Vi[0] - Vp[0]))
+        t_out = math.degrees(math.atan2(Vn[1] - Vi[1], Vn[0] - Vi[0]))
+        f.arc(Vi[0], Vi[1], 18, t_in, t_out, RED, 1.8)
+        if i in (1, 3):
+            ex = Vi[0] + 34 * math.cos(math.radians(t_in))
+            ey = Vi[1] + 34 * math.sin(math.radians(t_in))
+            f.line(Vi[0], Vi[1], ex, ey, GREY, 1.4, dash="5 4")
+            mid = (t_in + t_out) / 2
+            lx = Vi[0] + 48 * math.cos(math.radians(mid))
+            ly = Vi[1] + 48 * math.sin(math.radians(mid))
+            f.text(lx, ly, "72°", 12, RED, anchor="middle")
+    f.text(580, 316, "每个外角 72°（沿边走，每个顶点转一次）", 12, DARK, anchor="middle")
+    f.text(580, 336, "外角和 = 5×72° = 360°，与边数无关", 13, RED,
+           anchor="middle", weight="bold")
+    f.save("polygon-interior.svg")
+
+
+def fig_parallelogram():
+    f = Fig(760, 360)
+    # ① 左：性质三件套
+    f.text(210, 40, "① 性质三件套", 14, DARK, anchor="middle", weight="bold")
+    A, B, C, D = (120, 90), (360, 90), (300, 270), (60, 270)
+    O = (210, 180)
+    f.poly([A, B, C, D], "none", DARK, 2.2)
+    f.line(A[0], A[1], C[0], C[1], GREY, 1.6)
+    f.line(B[0], B[1], D[0], D[1], GREY, 1.6)
+    # 对边平行记号（紫色）与相等记号
+    f.chevron(250, 90, PURP, 8)
+    f.chevron(190, 270, PURP, 8)
+    f.tick(A[0], A[1], B[0], B[1], 1, DARK)
+    f.tick(C[0], C[1], D[0], D[1], 1, DARK)
+    f.tick(A[0], A[1], D[0], D[1], 2, DARK)
+    f.tick(B[0], B[1], C[0], C[1], 2, DARK)
+    # 对角线互相平分记号
+    f.tick(A[0], A[1], O[0], O[1], 3, DARK)
+    f.tick(O[0], O[1], C[0], C[1], 3, DARK)
+    f.tick(B[0], B[1], O[0], O[1], 4, DARK)
+    f.tick(O[0], O[1], D[0], D[1], 4, DARK)
+    # 对角相等弧
+    aAD = math.degrees(math.atan2(D[1] - A[1], D[0] - A[0]))
+    f.arc(A[0], A[1], 22, 0, aAD, RED, 2.0)
+    aCB = math.degrees(math.atan2(B[1] - C[1], B[0] - C[0]))
+    f.arc(C[0], C[1], 22, 180, aCB, RED, 2.0)
+    f.arc(B[0], B[1], 22, 180, aAD, BLUE, 2.0)
+    f.arc(D[0], D[1], 22, 0, aCB, BLUE, 2.0)
+    for p, name, off in [(A, "A", (-10, -6)), (B, "B", (10, -6)),
+                         (C, "C", (12, 18)), (D, "D", (-12, 18)),
+                         (O, "O", (12, 4))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 13, DARK, anchor="middle")
+    f.text(210, 320, "红弧：∠A=∠C；蓝弧：∠B=∠D（邻角互补）", 12, DARK,
+           anchor="middle")
+    f.text(210, 342, "对边平行且相等，对角线互相平分", 12, DARK, anchor="middle")
+    # ② 右：沿对角线拆成两个全等三角形
+    f.text(590, 40, "② 拆开看：两个全等三角形", 14, DARK, anchor="middle", weight="bold")
+    A2, B2, C2, D2 = (480, 110), (700, 110), (660, 280), (440, 280)
+    f.poly([A2, B2, C2], GRNF, GRN, 1.8)
+    f.poly([A2, C2, D2], BLUEF, BLUE, 1.8)
+    f.line(A2[0], A2[1], C2[0], C2[1], DARK, 1.8)
+    f.line(A2[0], A2[1], B2[0], B2[1], DARK, 2.0)
+    f.line(B2[0], B2[1], C2[0], C2[1], DARK, 2.0)
+    f.line(C2[0], C2[1], D2[0], D2[1], DARK, 2.0)
+    f.line(D2[0], D2[1], A2[0], A2[1], DARK, 2.0)
+    # 内错角弧：AD 截 AC（绿），AB 截 AC（蓝）
+    aA2C2 = math.degrees(math.atan2(C2[1] - A2[1], C2[0] - A2[0]))
+    aA2D2 = math.degrees(math.atan2(D2[1] - A2[1], D2[0] - A2[0]))
+    f.arc(A2[0], A2[1], 22, aA2C2, aA2D2, GRN, 1.8)
+    f.arc(A2[0], A2[1], 22, 0, aA2C2, BLUE, 1.8)
+    aC2A2 = aA2C2 + 180
+    aC2B2 = math.degrees(math.atan2(B2[1] - C2[1], B2[0] - C2[0]))
+    aC2D2 = math.degrees(math.atan2(D2[1] - C2[1], D2[0] - C2[0]))
+    f.arc(C2[0], C2[1], 22, aC2B2, aC2A2, GRN, 1.8)
+    f.arc(C2[0], C2[1], 22, aC2D2, aC2A2, BLUE, 1.8)
+    f.text(560, 304, "同色弧＝一对内错角", 12, DARK, anchor="middle")
+    for p, name, off in [(A2, "A", (-12, -6)), (B2, "B", (10, -6)),
+                         (C2, "C", (12, 18)), (D2, "D", (-12, 18))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 13, DARK, anchor="middle")
+    f.text(590, 336, "AB∥DC、AD∥BC → 内错角相等 + 公共边 AC", 12, DARK,
+           anchor="middle")
+    f.text(590, 356, "→ ASA → 两个三角形全等 → 对边相等", 12, RED,
+           anchor="middle", weight="bold")
+    f.save("parallelogram-properties.svg")
+
+
+def fig_special():
+    f = Fig(760, 380)
+    # ① 矩形
+    f.text(140, 52, "① 矩形：加直角", 14, DARK, anchor="middle", weight="bold")
+    A, B, C, D = (50, 120), (230, 120), (230, 260), (50, 260)
+    O = (140, 190)
+    f.poly([A, B, C, D], "none", DARK, 2.2)
+    f.line(A[0], A[1], C[0], C[1], GREY, 1.6)
+    f.line(B[0], B[1], D[0], D[1], GREY, 1.6)
+    f.right_angle(A[0], A[1], 0, 90, 9, DARK)
+    f.right_angle(B[0], B[1], 180, 90, 9, DARK)
+    f.right_angle(C[0], C[1], 180, 270, 9, DARK)
+    f.right_angle(D[0], D[1], 0, 270, 9, DARK)
+    for p, q in [(A, O), (B, O), (C, O), (D, O)]:
+        f.tick(p[0], p[1], q[0], q[1], 1, DARK)
+    for p, name, off in [(A, "A", (-16, -10)), (B, "B", (16, -10)),
+                         (C, "C", (16, 20)), (D, "D", (-16, 20)),
+                         (O, "O", (14, -6))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 12, DARK, anchor="middle")
+    f.text(140, 316, "对角线相等且互相平分", 12, DARK, anchor="middle")
+    f.text(140, 338, "OA=OB=OC=OD", 13, RED, anchor="middle", weight="bold")
+    # ② 菱形
+    f.text(380, 52, "② 菱形：邻边相等", 14, DARK, anchor="middle", weight="bold")
+    A2, B2, C2, D2 = (380, 100), (480, 190), (380, 280), (280, 190)
+    O2 = (380, 190)
+    f.poly([A2, B2, C2, D2], "none", DARK, 2.2)
+    f.line(A2[0], A2[1], C2[0], C2[1], GREY, 1.6)
+    f.line(B2[0], B2[1], D2[0], D2[1], GREY, 1.6)
+    f.right_angle(O2[0], O2[1], 90, 180, 9, DARK)
+    for s, e in [(A2, B2), (B2, C2), (C2, D2), (D2, A2)]:
+        f.tick(s[0], s[1], e[0], e[1], 1, DARK)
+    f.tick(A2[0], A2[1], O2[0], O2[1], 2, DARK)
+    f.tick(O2[0], O2[1], C2[0], C2[1], 2, DARK)
+    f.tick(B2[0], B2[1], O2[0], O2[1], 3, DARK)
+    f.tick(O2[0], O2[1], D2[0], D2[1], 3, DARK)
+    for p, name, off in [(A2, "A", (0, -12)), (B2, "B", (16, 4)),
+                         (C2, "C", (0, 22)), (D2, "D", (-16, 4)),
+                         (O2, "O", (12, -8))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 12, DARK, anchor="middle")
+    f.text(400, 146, "d1/2", 11, GREY)
+    f.text(430, 184, "d2/2", 11, GREY)
+    f.text(380, 316, "对角线互相垂直平分、平分对角", 12, DARK, anchor="middle")
+    f.text(380, 338, "面积 = 1/2 × d1 × d2", 13, RED, anchor="middle", weight="bold")
+    # ③ 正方形
+    f.text(620, 52, "③ 正方形：两样都加", 14, DARK, anchor="middle", weight="bold")
+    A3, B3, C3, D3 = (540, 130), (700, 130), (700, 290), (540, 290)
+    O3 = (620, 210)
+    f.poly([A3, B3, C3, D3], "none", DARK, 2.2)
+    f.line(A3[0], A3[1], C3[0], C3[1], GREY, 1.6)
+    f.line(B3[0], B3[1], D3[0], D3[1], GREY, 1.6)
+    f.right_angle(O3[0], O3[1], 90, 180, 9, DARK)
+    for p, q in [(A3, O3), (B3, O3), (C3, O3), (D3, O3)]:
+        f.tick(p[0], p[1], q[0], q[1], 1, DARK)
+    for p, name, off in [(A3, "A", (-16, -10)), (B3, "B", (16, -10)),
+                         (C3, "C", (16, 20)), (D3, "D", (-16, 20)),
+                         (O3, "O", (14, -6))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 12, DARK, anchor="middle")
+    f.text(620, 316, "对角线相等 + 互相垂直平分", 12, DARK, anchor="middle")
+    f.text(620, 338, "正方形 = 矩形 ∩ 菱形", 13, RED, anchor="middle", weight="bold")
+    f.save("special-quadrilaterals.svg")
+
+
+def fig_trapezoid():
+    f = Fig(760, 380)
+    # ① 左：等腰梯形平移一腰
+    f.text(230, 40, "① 等腰梯形：平移一腰", 14, DARK, anchor="middle", weight="bold")
+    A, B, C, D = (140, 110), (320, 110), (370, 280), (90, 280)
+    E = (190, 280)  # A + (C - B)，AE ∥ BC
+    f.poly([A, B, C, E], BLUEF, BLUE, 1.6)
+    f.poly([A, D, E], GRNF, GRN, 1.6)
+    f.poly([A, B, C, D], "none", DARK, 2.2)
+    f.line(A[0], A[1], E[0], E[1], RED, 2.2, dash="7 4")
+    # 腰相等记号 + 平行记号
+    f.tick(A[0], A[1], D[0], D[1], 1, DARK)
+    f.tick(B[0], B[1], C[0], C[1], 1, DARK)
+    f.chevron(215, 150, PURP, 7)
+    f.chevron(348, 195, PURP, 7)
+    # 等腰三角形 ADE 底角弧
+    aDA = math.degrees(math.atan2(A[1] - D[1], A[0] - D[0]))
+    f.arc(D[0], D[1], 22, 0, aDA, GRN, 1.8)
+    aEA = math.degrees(math.atan2(A[1] - E[1], A[0] - E[0]))
+    f.arc(E[0], E[1], 22, 180, aEA, GRN, 1.8)
+    f.text(D[0] + 46, D[1] - 26, "∠ADE", 11, GRN, anchor="middle")
+    f.text(E[0] + 52, E[1] - 26, "∠AED", 11, GRN, anchor="middle")
+    for p, name, off in [(A, "A", (-12, -4)), (B, "B", (10, -4)),
+                         (C, "C", (14, 18)), (D, "D", (-12, 18)),
+                         (E, "E", (0, 20))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 13, DARK, anchor="middle")
+    f.text(230, 322, "AE∥BC：拆成平行四边形 ABCE + 等腰 △ADE", 12, DARK,
+           anchor="middle")
+    f.text(230, 346, "AD=AE=BC → ∠ADE=∠AED", 12, RED, anchor="middle", weight="bold")
+    # ② 右：中点四边形
+    f.text(575, 40, "② 中点四边形：连中点", 14, DARK, anchor="middle", weight="bold")
+    A2, B2, C2, D2 = (450, 100), (700, 120), (660, 300), (470, 280)
+    f.line(A2[0], A2[1], C2[0], C2[1], GREY, 1.6, dash="6 4")
+    f.line(B2[0], B2[1], D2[0], D2[1], GREY, 1.6, dash="6 4")
+    E2 = ((A2[0] + B2[0]) / 2, (A2[1] + B2[1]) / 2)
+    F2 = ((B2[0] + C2[0]) / 2, (B2[1] + C2[1]) / 2)
+    G2 = ((C2[0] + D2[0]) / 2, (C2[1] + D2[1]) / 2)
+    H2 = ((D2[0] + A2[0]) / 2, (D2[1] + A2[1]) / 2)
+    f.poly([E2, F2, G2, H2], YELF, YEL, 2.0)
+    f.poly([A2, B2, C2, D2], "none", DARK, 2.2)
+    for s, e in [(A2, E2), (E2, B2), (B2, F2), (F2, C2),
+                 (C2, G2), (G2, D2), (D2, H2), (H2, A2)]:
+        f.tick(s[0], s[1], e[0], e[1], 1, GREY, size=5)
+    for p, name, off in [(A2, "A", (-14, -6)), (B2, "B", (14, -6)),
+                         (C2, "C", (14, 18)), (D2, "D", (-14, 18)),
+                         (E2, "E", (0, -10)), (F2, "F", (16, 4)),
+                         (G2, "G", (0, 22)), (H2, "H", (-16, 4))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 12, DARK, anchor="middle")
+    f.text(575, 322, "EF、HG 都是中位线：平行于 AC 且等于 AC 的一半", 12, DARK,
+           anchor="middle")
+    f.text(575, 346, "同理 EH、FG 平行于 BD → EFGH 是平行四边形", 12, RED,
+           anchor="middle", weight="bold")
+    f.save("trapezoid-midpoints.svg")
+
+
 if __name__ == "__main__":
     fig_lines()
     fig_angle()
@@ -538,3 +779,7 @@ if __name__ == "__main__":
     fig_isosceles()
     fig_pythagoras()
     fig_midline()
+    fig_polygon()
+    fig_parallelogram()
+    fig_special()
+    fig_trapezoid()

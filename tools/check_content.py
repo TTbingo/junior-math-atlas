@@ -54,7 +54,9 @@ CONCEPT_INTRO = {
     "弧长": "m2-04-05-arc-sector-cone",
     "扇形": "m2-04-05-arc-sector-cone",
     "圆锥": "m2-04-05-arc-sector-cone",
-    "正多边形": "m2-04-06-regular-polygon",
+    # 2026-11-04 二批调整：正多边形（各边相等、各角相等）在多边形篇 m2-03-01 正式引入，
+    # m2-04-06 只展开它与圆的关系——登记随引入点前移。
+    "正多边形": "m2-03-01-polygon",
     "相似": "m2-05-02-similar-triangles",
     "位似": "m2-05-04-homothety",
     "投影": "m2-05-05-projection-views",
