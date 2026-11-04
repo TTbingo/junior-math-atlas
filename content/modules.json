@@ -1,0 +1,359 @@
+{
+  "schema": 1,
+  "note": "体系依据《中考冲刺专题突破·数学》(2024)：第一部分 31 讲、第二部分 31 微专题、第三部分 25 微专题。",
+  "modules": [
+    {
+      "id": "m1",
+      "no": 1,
+      "title": "第一部分 · 玩转基础",
+      "short": "基础",
+      "desc": "31 讲覆盖中考全部考点：数与式、方程与不等式、函数、三角形与四边形、相似、圆、图形变换、统计与概率。先把概念和定理的来路讲清，再练基础题型。",
+      "strand": "图形与几何 / 数与代数 / 统计与概率"
+    },
+    {
+      "id": "m2",
+      "no": 2,
+      "title": "第二部分 · 专题专练",
+      "short": "专题",
+      "desc": "31 个微专题，把中考高频模型一次讲透：全等的四种辅助线、相似的四种结构、圆与最值的四类构图、函数与应用的固定套路。每个专题只回答两件事——识别信号是什么，为什么要这样作辅助线。",
+      "strand": "图形与几何 / 数与代数 / 综合与实践"
+    },
+    {
+      "id": "m3",
+      "no": 3,
+      "title": "第三部分 · 满分突破",
+      "short": "满分",
+      "desc": "25 个压轴微专题：图形变换、最值与定值、隐形圆、存在性、双曲线与抛物线综合、新定义。目标不是多做题，而是看到条件就能判断该调用哪一套构图。",
+      "strand": "图形与几何 / 数与代数 / 综合与实践"
+    }
+  ],
+  "topics": [
+    {
+      "id": "m1-01",
+      "module": "m1",
+      "no": 1,
+      "title": "数与式",
+      "desc": "实数、整式、二次根式、因式分解、分式：初中代数的全部语言。",
+      "domain": "数与代数",
+      "points": [
+        "m1-01-01-real-numbers",
+        "m1-01-02-integral-expressions",
+        "m1-01-03-quadratic-radicals",
+        "m1-01-04-factorization",
+        "m1-01-05-algebraic-fractions"
+      ]
+    },
+    {
+      "id": "m1-02",
+      "module": "m1",
+      "no": 2,
+      "title": "方程与不等式",
+      "desc": "从一元一次到一元二次：等式与不等式的变形规则、解的判定。",
+      "domain": "数与代数",
+      "points": [
+        "m1-02-01-linear-equations",
+        "m1-02-02-fractional-equations",
+        "m1-02-03-quadratic-equations",
+        "m1-02-04-discriminant-vieta",
+        "m1-02-05-linear-inequalities"
+      ]
+    },
+    {
+      "id": "m1-03",
+      "module": "m1",
+      "no": 3,
+      "title": "函数",
+      "desc": "坐标系是舞台，函数是主角：一次、反比例、二次三类函数的图象与性质。",
+      "domain": "数与代数",
+      "points": [
+        "m1-03-01-coordinate-system-functions",
+        "m1-03-02-linear-function",
+        "m1-03-03-inverse-proportion",
+        "m1-03-04-quadratic-graph",
+        "m1-03-05-quadratic-comprehensive",
+        "m1-03-06-quadratic-applications"
+      ]
+    },
+    {
+      "id": "m1-04",
+      "module": "m1",
+      "no": 4,
+      "title": "三角形与四边形",
+      "desc": "几何证明的主战场：全等、特殊三角形、平行四边形家族的判定与性质。",
+      "domain": "图形与几何",
+      "points": [
+        "m1-04-01-geometry-basics",
+        "m1-04-02-triangles",
+        "m1-04-03-congruence",
+        "m1-04-04-right-triangle-ratios",
+        "m1-04-05-quadrilaterals",
+        "m1-04-06-special-parallelograms"
+      ]
+    },
+    {
+      "id": "m1-05",
+      "module": "m1",
+      "no": 5,
+      "title": "相似图形",
+      "desc": "相似是长度的比例语言：判定、性质、与全等的分工。",
+      "domain": "图形与几何",
+      "points": [
+        "m1-05-01-similarity-1",
+        "m1-05-02-similarity-2"
+      ]
+    },
+    {
+      "id": "m1-06",
+      "module": "m1",
+      "no": 6,
+      "title": "圆",
+      "desc": "圆的基本性质、直线与圆的位置关系、弧长扇形与圆锥的计算。",
+      "domain": "图形与几何",
+      "points": [
+        "m1-06-01-circle-properties",
+        "m1-06-02-line-circle-position",
+        "m1-06-03-circle-calculations"
+      ]
+    },
+    {
+      "id": "m1-07",
+      "module": "m1",
+      "no": 7,
+      "title": "图形变换与投影",
+      "desc": "平移、旋转、轴对称三把手术刀，加上三视图。",
+      "domain": "图形与几何",
+      "points": [
+        "m1-07-01-transformations",
+        "m1-07-02-projection-views"
+      ]
+    },
+    {
+      "id": "m1-08",
+      "module": "m1",
+      "no": 8,
+      "title": "统计与概率",
+      "desc": "数据的收集与整理、概率的古典计算。",
+      "domain": "统计与概率",
+      "points": [
+        "m1-08-01-data-collection",
+        "m1-08-02-probability"
+      ]
+    },
+    {
+      "id": "m2-01",
+      "module": "m2",
+      "no": 1,
+      "title": "含参与方程不等式",
+      "desc": "参数藏在系数里：分类讨论的边界在哪里。",
+      "domain": "数与代数",
+      "points": [
+        "m2-01-01-parametric-fractional",
+        "m2-01-02-parametric-inequalities"
+      ]
+    },
+    {
+      "id": "m2-02",
+      "module": "m2",
+      "no": 2,
+      "title": "几何基础与全等模型",
+      "desc": "中点、角平分线、垂直三类信号对应的辅助线。",
+      "domain": "图形与几何",
+      "points": [
+        "m2-02-01-geometry-models",
+        "m2-02-02-double-median",
+        "m2-02-03-cut-and-supplement",
+        "m2-02-04-three-perpendiculars",
+        "m2-02-05-triangle-midline"
+      ]
+    },
+    {
+      "id": "m2-03",
+      "module": "m2",
+      "no": 3,
+      "title": "相似模型",
+      "desc": "从「一线三等角」到「子母型」：比例关系的四种常见来源。",
+      "domain": "图形与几何",
+      "points": [
+        "m2-03-01-equal-angles",
+        "m2-03-02-mother-child-similarity",
+        "m2-03-03-basic-similarity",
+        "m2-03-04-similarity-comprehensive"
+      ]
+    },
+    {
+      "id": "m2-04",
+      "module": "m2",
+      "no": 4,
+      "title": "圆与最值模型",
+      "desc": "动点轨迹、定边定角、将军饮马、阿氏圆：最值问题的几何解法。",
+      "domain": "图形与几何",
+      "points": [
+        "m2-04-01-concyclic",
+        "m2-04-02-defined-circle",
+        "m2-04-03-drinking-horse",
+        "m2-04-04-apollonius",
+        "m2-04-05-fermat-point",
+        "m2-04-06-fixed-value",
+        "m2-04-07-circle-comprehensive"
+      ]
+    },
+    {
+      "id": "m2-05",
+      "module": "m2",
+      "no": 5,
+      "title": "图形变换专题",
+      "desc": "旋转出全等，折叠出等腰：变换背后的不变量。",
+      "domain": "图形与几何",
+      "points": [
+        "m2-05-01-rotation",
+        "m2-05-02-folding"
+      ]
+    },
+    {
+      "id": "m2-06",
+      "module": "m2",
+      "no": 6,
+      "title": "函数专题",
+      "desc": "反比例与二次函数的综合套路：k 的几何意义、存在性与面积。",
+      "domain": "数与代数",
+      "points": [
+        "m2-06-01-inverse-k",
+        "m2-06-02-inverse-comprehensive",
+        "m2-06-03-quadratic-polygon-existence",
+        "m2-06-04-quadratic-area"
+      ]
+    },
+    {
+      "id": "m2-07",
+      "module": "m2",
+      "no": 7,
+      "title": "应用题与创新",
+      "desc": "把文字翻译成方程、函数或不等式，再用数学说话。",
+      "domain": "综合与实践",
+      "points": [
+        "m2-07-01-equation-applications",
+        "m2-07-02-function-applications",
+        "m2-07-03-ruler-compass",
+        "m2-07-04-math-culture",
+        "m2-07-05-statistics-probability",
+        "m2-07-06-practice",
+        "m2-07-07-patterns"
+      ]
+    },
+    {
+      "id": "m3-01",
+      "module": "m3",
+      "no": 1,
+      "title": "图形变换",
+      "desc": "折叠与旋转压轴：先找不变量，再定轨迹。",
+      "domain": "图形与几何",
+      "points": [
+        "m3-01-01-translation-folding",
+        "m3-01-02-rotation-gua-dou"
+      ]
+    },
+    {
+      "id": "m3-02",
+      "module": "m3",
+      "no": 2,
+      "title": "最值与定值",
+      "desc": "七类最值构图的完整谱系。",
+      "domain": "图形与几何",
+      "points": [
+        "m3-02-01-single-segment-extremum",
+        "m3-02-02-broken-line-extremum",
+        "m3-02-03-apollonius",
+        "m3-02-04-fermat",
+        "m3-02-05-reverse-equal-line",
+        "m3-02-06-ratio-perimeter-area",
+        "m3-02-07-fixed-value"
+      ]
+    },
+    {
+      "id": "m3-03",
+      "module": "m3",
+      "no": 3,
+      "title": "三角函数与“12345”模型",
+      "desc": "用三角函数把角度信息变成比例信息。",
+      "domain": "图形与几何",
+      "points": [
+        "m3-03-01-trig-12345"
+      ]
+    },
+    {
+      "id": "m3-04",
+      "module": "m3",
+      "no": 4,
+      "title": "隐形圆",
+      "desc": "没有圆却要作圆：三类隐形圆的识别。",
+      "domain": "图形与几何",
+      "points": [
+        "m3-04-01-concyclic",
+        "m3-04-02-defined-circle",
+        "m3-04-03-fixed-side-angle"
+      ]
+    },
+    {
+      "id": "m3-05",
+      "module": "m3",
+      "no": 5,
+      "title": "坐标系中的存在性",
+      "desc": "设点、列方程、验范围：存在性问题的固定流程。",
+      "domain": "数与代数",
+      "points": [
+        "m3-05-01-polygon-existence",
+        "m3-05-02-angle-existence"
+      ]
+    },
+    {
+      "id": "m3-06",
+      "module": "m3",
+      "no": 6,
+      "title": "双曲线综合",
+      "desc": "反比例函数的二级结论与综合应用。",
+      "domain": "数与代数",
+      "points": [
+        "m3-06-01-hyperbola-lemmas",
+        "m3-06-02-hyperbola-comprehensive"
+      ]
+    },
+    {
+      "id": "m3-07",
+      "module": "m3",
+      "no": 7,
+      "title": "圆与多边形综合",
+      "desc": "圆与四边形、相似、最值的交叉。",
+      "domain": "图形与几何",
+      "points": [
+        "m3-07-01-circle-comprehensive",
+        "m3-07-02-polygon-comprehensive"
+      ]
+    },
+    {
+      "id": "m3-08",
+      "module": "m3",
+      "no": 8,
+      "title": "抛物线综合",
+      "desc": "图象分析、参数讨论、几何综合。",
+      "domain": "数与代数",
+      "points": [
+        "m3-08-01-parabola-analysis",
+        "m3-08-02-parabola-comprehensive"
+      ]
+    },
+    {
+      "id": "m3-09",
+      "module": "m3",
+      "no": 9,
+      "title": "中考新题型",
+      "desc": "网格作图、新定义、综合实践：读懂规则再动手。",
+      "domain": "综合与实践",
+      "points": [
+        "m3-09-01-grid-construction",
+        "m3-09-02-new-definition-geometry",
+        "m3-09-03-new-definition-number",
+        "m3-09-04-comprehensive-practice"
+      ]
+    }
+  ]
+}

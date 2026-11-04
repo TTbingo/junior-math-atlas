@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" width="520" height="240" role="img" aria-label="数轴上用单位正方形的对角线标出根号2的位置">
+  <rect width="520" height="240" fill="#ffffff"/>
+  <text x="40" y="40" font-size="14" fill="#2d3748">把对角线转到数轴上，落点就是 √2</text>
+  <text x="40" y="62" font-size="12" fill="#718096">这个落点不在任何等分刻度上，所以 √2 不是分数</text>
+  <!-- 数轴 -->
+  <line x1="40" y1="180" x2="486" y2="180" stroke="#4a5568" stroke-width="2"/>
+  <polygon points="486,180 474,175 474,185" fill="#4a5568"/>
+  <text x="492" y="184" font-size="14" fill="#4a5568">x</text>
+  <!-- 单位正方形 -->
+  <polygon points="80,180 180,180 180,80 80,80" fill="#ebf4ff" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="130" y="170" font-size="13" fill="#2b6cb0" text-anchor="middle">边长 1</text>
+  <!-- 对角线 -->
+  <line x1="80" y1="180" x2="180" y2="80" stroke="#2b6cb0" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="192" y="88" font-size="14" fill="#2b6cb0">对角线 √2</text>
+  <!-- 旋转弧 -->
+  <path d="M 180 80 A 141.4 141.4 0 0 1 221.4 180" fill="none" stroke="#c53030" stroke-width="2"/>
+  <!-- 刻度 -->
+  <g stroke="#4a5568" stroke-width="2">
+    <line x1="80" y1="174" x2="80" y2="186"/>
+    <line x1="180" y1="174" x2="180" y2="186"/>
+    <line x1="221.4" y1="170" x2="221.4" y2="190"/>
+    <line x1="280" y1="174" x2="280" y2="186"/>
+    <line x1="380" y1="174" x2="380" y2="186"/>
+  </g>
+  <g font-size="14" fill="#2d3748" text-anchor="middle">
+    <text x="80" y="206">0</text>
+    <text x="180" y="206">1</text>
+    <text x="280" y="206">2</text>
+    <text x="380" y="206">3</text>
+  </g>
+  <text x="221.4" y="226" font-size="13" fill="#c53030" text-anchor="middle">√2 ≈ 1.414</text>
+</svg>
