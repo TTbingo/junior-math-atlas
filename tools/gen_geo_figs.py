@@ -783,3 +783,333 @@ if __name__ == "__main__":
     fig_parallelogram()
     fig_special()
     fig_trapezoid()
+
+
+# ============ 几何第三批（m2-04 圆 6 篇） ============
+
+def fig_circle_perp():
+    f = Fig(760, 360)
+    # ① 垂径定理
+    f.text(190, 40, "① 垂径定理：连圆心，作垂线", 14, DARK, anchor="middle", weight="bold")
+    O, R = (190, 175), 110
+    half = math.sqrt(110**2 - 50**2)
+    A, B = (190 - half, 225), (190 + half, 225)
+    D, C = (190, 225), (190, 285)
+    f.circle(O[0], O[1], R, "none", DARK, 2.2)
+    f.line(A[0], A[1], B[0], B[1], DARK, 2.2)
+    f.line(O[0], O[1], C[0], C[1], RED, 2.2)
+    f.line(O[0], O[1], A[0], A[1], GREY, 1.4)
+    f.text(128, 196, "R", 11, GREY)
+    aA = math.degrees(math.atan2(A[1] - O[1], A[0] - O[0]))
+    aB = math.degrees(math.atan2(B[1] - O[1], B[0] - O[0]))
+    f.arc(O[0], O[1], R, aB, aA, RED, 3.2)
+    f.right_angle(D[0], D[1], -90, 180, 9)
+    f.tick(A[0], A[1], D[0], D[1], 1, DARK)
+    f.tick(D[0], D[1], B[0], B[1], 1, DARK)
+    f.text(204, 196, "d", 12, RED)
+    f.text(141, 245, "a/2", 12, DARK, anchor="middle")
+    for p, name, off in [(O, "O", (12, 4)), (A, "A", (-16, 0)), (B, "B", (16, 0)),
+                         (D, "D", (-14, 18)), (C, "C", (14, 4))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 13, DARK, anchor="middle")
+    f.text(190, 316, "OD⊥AB → AD=DB，OD 平分弧 AB", 12, DARK, anchor="middle")
+    f.text(190, 341, "R²=d²+(a/2)²（勾股）", 13, RED, anchor="middle", weight="bold")
+    # ② 拱桥
+    f.text(600, 40, "② 拱桥：矢高与半径", 14, DARK, anchor="middle", weight="bold")
+    O2, R2 = (600, 155), 100
+    half2 = math.sqrt(R2**2 - 75**2)
+    A2, B2 = (600 - half2, 230), (600 + half2, 230)
+    aA2 = math.degrees(math.atan2(A2[1] - O2[1], A2[0] - O2[0]))
+    aB2 = math.degrees(math.atan2(B2[1] - O2[1], B2[0] - O2[0]))
+    arch = [(600 + R2 * math.cos(math.radians(a)),
+             155 + R2 * math.sin(math.radians(a)))
+            for a in [aA2 + i * 3 for i in range(int((aB2 + 360 - aA2) / 3) + 1)]]
+    f.poly(arch, "none", DARK, 2.4)
+    f.line(505, 230, 715, 230, DARK, 2.2)
+    f.line(O2[0], O2[1], 600, 55, GREY, 1.4)
+    f.text(588, 104, "R", 11, GREY)
+    f.line(O2[0], O2[1], 600, 230, GREY, 1.4, dash="5 4")
+    f.right_angle(600, 230, -90, 180, 9)
+    f.arrow_line(575, 230, 575, 58, RED, 1.8)
+    f.text(560, 150, "h", 12, RED)
+    f.arrow_line(A2[0], 254, B2[0], 254, GREY, 1.6)
+    f.text(600, 276, "a（跨度）", 12, GREY, anchor="middle")
+    for p, name, off in [(O2, "O", (12, 4)), ((600, 230), "M", (12, 4)),
+                         (A2, "", (0, 0)), (B2, "", (0, 0))]:
+        if name:
+            f.dot(p[0], p[1])
+            f.text(p[0] + off[0], p[1] + off[1], name, 13, DARK, anchor="middle")
+    f.dot(A2[0], A2[1]); f.dot(B2[0], B2[1])
+    f.text(600, 316, "R² = (a/2)² + (R−h)²", 13, RED, anchor="middle", weight="bold")
+    f.text(600, 341, "圆心到桥面 = R−h（垂足是跨度中点）", 12, DARK, anchor="middle")
+    f.save("circle-perpendicular.svg")
+
+
+def fig_central_inscribed():
+    f = Fig(760, 380)
+    # ① 圆心角与圆周角
+    f.text(200, 36, "① 圆周角 = 圆心角的一半", 14, DARK, anchor="middle", weight="bold")
+    O, R = (200, 195), 120
+    A = (200 + R * math.cos(math.radians(140)), 195 + R * math.sin(math.radians(140)))
+    B = (200 + R * math.cos(math.radians(40)), 195 + R * math.sin(math.radians(40)))
+    C = (200, 75)
+    f.circle(O[0], O[1], R, "none", DARK, 2.0)
+    f.arc(O[0], O[1], R, 40, 140, RED, 3.2)
+    f.line(O[0], O[1], A[0], A[1], DARK, 2.0)
+    f.line(O[0], O[1], B[0], B[1], DARK, 2.0)
+    f.line(C[0], C[1], A[0], A[1], BLUE, 2.2)
+    f.line(C[0], C[1], B[0], B[1], BLUE, 2.2)
+    f.arc(O[0], O[1], 26, 40, 140, RED, 2.0)
+    f.text(200, 239, "100°", 12, RED, anchor="middle")
+    aCA = math.degrees(math.atan2(A[1] - C[1], A[0] - C[0]))
+    aCB = math.degrees(math.atan2(B[1] - C[1], B[0] - C[0]))
+    f.arc(C[0], C[1], 30, aCB, aCA, BLUE, 2.0)
+    f.text(200, 122, "50°", 12, BLUE, anchor="middle")
+    f.text(200, 331, "弧 AB", 11, RED, anchor="middle")
+    for p, name, off in [(O, "O", (12, 4)), (A, "A", (-14, 18)), (B, "B", (14, 18)),
+                         (C, "C", (0, -12))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 13, DARK, anchor="middle")
+    f.text(200, 355, "∠AOB=100°（圆心角），∠ACB=50°（圆周角）", 12, DARK, anchor="middle")
+    # ② 直径所对的圆周角
+    f.text(600, 36, "② 直径所对的圆周角是直角", 14, DARK, anchor="middle", weight="bold")
+    O2, R2 = (600, 190), 110
+    A2, B2 = (490, 190), (710, 190)
+    C2, D2 = (600, 80), (600, 300)
+    f.circle(O2[0], O2[1], R2, "none", DARK, 2.0)
+    f.line(A2[0], A2[1], B2[0], B2[1], DARK, 3.0)
+    for P in (C2, D2):
+        f.line(P[0], P[1], A2[0], A2[1], BLUE, 2.0)
+        f.line(P[0], P[1], B2[0], B2[1], BLUE, 2.0)
+    f.right_angle(C2[0], C2[1], 45, 135, 9)
+    f.right_angle(D2[0], D2[1], 225, 315, 9)
+    for p, name, off in [(O2, "O", (10, -12)), (A2, "A", (-16, -8)), (B2, "B", (16, -8)),
+                         (C2, "C", (0, -12)), (D2, "D", (0, 20))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 13, DARK, anchor="middle")
+    f.text(600, 340, "AB 是直径 → ∠ACB=∠ADB=90°", 12, DARK, anchor="middle")
+    f.text(600, 362, "90° 圆周角反过来锁定直径", 13, RED, anchor="middle", weight="bold")
+    f.save("central-inscribed.svg")
+
+
+def fig_circle_position():
+    f = Fig(760, 400)
+    f.text(380, 26, "① 点与圆：比较 OP 与半径 r", 14, DARK, anchor="middle", weight="bold")
+    # 三个点位置场景
+    for cx, px, verdict in [(130, 155, "d<r：点在圆内"), (380, 425, "d=r：点在圆上"),
+                            (630, 700, "d>r：点在圆外")]:
+        f.circle(cx, 120, 45, "none", DARK, 1.8)
+        f.line(cx, 120, px, 120, GREY, 1.4, dash="5 4")
+        f.dot(cx, 120)
+        f.text(cx + 8, 112, "O", 12, DARK)
+        f.dot(px, 120, RED)
+        f.text(px + 9, 108, "P", 12, RED)
+        f.text(cx, 186, verdict, 12, DARK, anchor="middle")
+        f.text((cx + px) / 2, 132, "d", 11, GREY, anchor="middle")
+    f.text(380, 212, "② 直线与圆：比较圆心距 d 与半径 r", 14, DARK, anchor="middle", weight="bold")
+    # 相交
+    f.circle(130, 318, 42, "none", DARK, 1.8)
+    f.line(85, 343, 175, 343, DARK, 2.2)
+    f.line(130, 318, 130, 343, GREY, 1.4, dash="5 4")
+    f.text(138, 334, "d", 11, GREY)
+    for x in (130 - math.sqrt(42**2 - 25**2), 130 + math.sqrt(42**2 - 25**2)):
+        f.dot(x, 343, RED, 2.6)
+    f.dot(130, 318)
+    f.text(138, 310, "O", 12, DARK)
+    f.text(130, 382, "d<r：相交（两个公共点）", 12, DARK, anchor="middle")
+    # 相切
+    f.circle(380, 318, 42, "none", DARK, 1.8)
+    f.line(335, 276, 425, 276, DARK, 2.2)
+    f.line(380, 318, 380, 276, GREY, 1.4, dash="5 4")
+    f.text(388, 296, "d", 11, GREY)
+    f.right_angle(380, 276, -90, 180, 8)
+    f.dot(380, 276, RED)
+    f.dot(380, 318)
+    f.text(388, 310, "O", 12, DARK)
+    f.text(380, 382, "d=r：相切（一个公共点）", 12, DARK, anchor="middle")
+    # 相离
+    f.circle(630, 318, 42, "none", DARK, 1.8)
+    f.line(585, 254, 675, 254, DARK, 2.2)
+    f.line(630, 318, 630, 254, GREY, 1.4, dash="5 4")
+    f.text(638, 282, "d", 11, GREY)
+    f.dot(630, 318)
+    f.text(638, 310, "O", 12, DARK)
+    f.text(630, 382, "d>r：相离（无公共点）", 12, DARK, anchor="middle")
+    f.save("circle-position.svg")
+
+
+def fig_tangent():
+    f = Fig(760, 390)
+    # ① 切线性质
+    f.text(200, 36, "① 切线：恰一个公共点，垂直于半径", 14, DARK, anchor="middle", weight="bold")
+    O, R = (190, 190), 95
+    f.circle(O[0], O[1], R, "none", DARK, 2.0)
+    f.line(75, 285, 305, 285, DARK, 2.4)
+    f.line(190, 190, 190, 285, RED, 2.2)
+    f.right_angle(190, 285, -90, 0, 10)
+    f.text(146, 240, "半径", 11, RED)
+    f.line(100, 80, 280, 130, GREY, 1.5, dash="6 4")
+    f.dot(165.5, 98.2, GREY, 2.6)
+    f.dot(258.3, 124.0, GREY, 2.6)
+    f.text(284, 105, "割线", 11, GREY)
+    for p, name, off in [(O, "O", (12, 4)), ((190, 285), "C", (10, 20)),
+                         ((75, 285), "A", (-12, -12)), ((305, 285), "B", (12, -12))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 13, DARK, anchor="middle")
+    f.text(200, 352, "切线 AB ⊥ 半径 OC；割线（虚线）有两个公共点", 12, DARK, anchor="middle")
+    # ② 切线长定理
+    f.text(570, 36, "② 切线长定理：PA=PB，OP 平分 ∠APB", 14, DARK, anchor="middle", weight="bold")
+    O2, R2, P = (560, 240), 80, (560, 70)
+    pa = math.sqrt(170**2 - 80**2)
+    th = math.degrees(math.acos(80 / 170))
+    A = (560 + 80 * math.cos(math.radians(-90 + th)), 240 + 80 * math.sin(math.radians(-90 + th)))
+    B = (560 + 80 * math.cos(math.radians(-90 - th)), 240 + 80 * math.sin(math.radians(-90 - th)))
+    f.circle(O2[0], O2[1], R2, "none", DARK, 2.0)
+    f.line(P[0], P[1], A[0], A[1], DARK, 2.2)
+    f.line(P[0], P[1], B[0], B[1], DARK, 2.2)
+    f.line(O2[0], O2[1], A[0], A[1], BLUE, 1.8)
+    f.line(O2[0], O2[1], B[0], B[1], BLUE, 1.8)
+    f.line(P[0], P[1], O2[0], O2[1], RED, 2.0, dash="6 4")
+    aPtoA = math.degrees(math.atan2(A[1] - P[1], A[0] - P[0]))
+    aPtoB = math.degrees(math.atan2(B[1] - P[1], B[0] - P[0]))
+    f.arc(P[0], P[1], 24, aPtoA, 90, GRN, 1.8)
+    f.arc(P[0], P[1], 24, 90, aPtoB, GRN, 1.8)
+    aAtoO = math.degrees(math.atan2(O2[1] - A[1], O2[0] - A[0]))
+    aAtoP = math.degrees(math.atan2(P[1] - A[1], P[0] - A[0]))
+    f.right_angle(A[0], A[1], aAtoO, aAtoP, 9)
+    aBtoO = math.degrees(math.atan2(O2[1] - B[1], O2[0] - B[0]))
+    aBtoP = math.degrees(math.atan2(P[1] - B[1], P[0] - B[0]))
+    f.right_angle(B[0], B[1], aBtoO, aBtoP, 9)
+    f.tick(P[0], P[1], A[0], A[1], 1, DARK)
+    f.tick(P[0], P[1], B[0], B[1], 1, DARK)
+    f.text(520, 106, "平分", 11, GRN, anchor="middle")
+    for p, name, off in [(P, "P", (0, -14)), (O2, "O", (12, 4)),
+                         (A, "A", (18, 6)), (B, "B", (-18, 6))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 13, DARK, anchor="middle")
+    f.text(570, 352, "∠OAP=∠OBP=90°；∠AOB+∠APB=180°", 12, DARK, anchor="middle")
+    f.text(570, 374, "HL 全等：△OAP≌△OBP", 13, RED, anchor="middle", weight="bold")
+    f.save("tangent-lines.svg")
+
+
+def fig_arc_cone():
+    f = Fig(760, 380)
+    # ① 扇形
+    f.text(190, 34, "① 扇形：n° 占整圆的 n/360", 14, DARK, anchor="middle", weight="bold")
+    O, R = (190, 205), 110
+    arcpts = [(190 + R * math.cos(math.radians(a)), 205 + R * math.sin(math.radians(a)))
+              for a in range(30, 151, 5)]
+    f.poly([O] + arcpts + [O], YELF, DARK, 1.6)
+    f.arc(O[0], O[1], R, 30, 150, RED, 3.0)
+    A, B = arcpts[0], arcpts[-1]
+    f.line(O[0], O[1], A[0], A[1], DARK, 2.2)
+    f.line(O[0], O[1], B[0], B[1], DARK, 2.2)
+    f.arc(O[0], O[1], 26, 30, 150, DARK, 1.6)
+    f.text(190, 249, "n°", 12, DARK, anchor="middle")
+    f.text(238, 214, "R", 11, GREY)
+    f.text(190, 334, "l（弧长）", 12, RED, anchor="middle")
+    for p, name, off in [(O, "O", (12, 4)), (A, "A", (16, 4)), (B, "B", (-16, 4))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 13, DARK, anchor="middle")
+    f.text(190, 358, "l=nπR/180　S=nπR²/360=½lR", 12, RED, anchor="middle", weight="bold")
+    # ② 圆锥与展开
+    f.text(600, 34, "② 圆锥：侧面展开是扇形", 14, DARK, anchor="middle", weight="bold")
+    V, base, rx, ry = (460, 90), (460, 280), 65, 13
+    f.line(V[0], V[1], base[0] - rx, base[1], DARK, 2.2)
+    f.line(V[0], V[1], base[0] + rx, base[1], DARK, 2.2)
+    ell = [(460 + rx * math.cos(math.radians(a)), 280 + ry * math.sin(math.radians(a)))
+           for a in range(0, 360, 6)]
+    f.poly(ell, "none", DARK, 1.8)
+    f.line(V[0], V[1], base[0], base[1], GREY, 1.4, dash="5 4")
+    f.text(468, 188, "h", 12, GREY)
+    f.line(base[0], base[1], base[0] + rx, base[1], GREY, 1.6)
+    f.text(492, 298, "r", 12, GREY)
+    f.right_angle(460, 280, -90, 0, 8)
+    f.text(516, 170, "l（母线）", 11, DARK, anchor="middle")
+    for p, name, off in [(V, "V", (0, -12)), (base, "O", (10, 4))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 12, DARK, anchor="middle")
+    # 展开扇形
+    O2, R2 = (665, 250), 85
+    pts = [(665 + R2 * math.cos(math.radians(a)), 250 + R2 * math.sin(math.radians(a)))
+           for a in range(120, 241, 5)]
+    f.poly([O2] + pts + [O2], YELF, DARK, 1.6)
+    f.arc(O2[0], O2[1], R2, 120, 240, RED, 3.0)
+    E1, E2 = pts[0], pts[-1]
+    f.line(O2[0], O2[1], E1[0], E1[1], DARK, 2.0)
+    f.line(O2[0], O2[1], E2[0], E2[1], DARK, 2.0)
+    f.arc(O2[0], O2[1], 26, 120, 240, DARK, 1.6)
+    f.text(620, 250, "θ", 12, DARK, anchor="middle")
+    f.text(560, 306, "2πr", 12, RED, anchor="middle")
+    f.text(640, 206, "l", 11, DARK, anchor="middle")
+    f.arrow_line(540, 250, 573, 250, RED, 1.8)
+    f.text(554, 220, "剪开摊平", 11, RED, anchor="middle")
+    for p, name, off in [(O2, "O", (12, 4)), (E1, "", (0, 0)), (E2, "", (0, 0))]:
+        if name:
+            f.dot(p[0], p[1])
+            f.text(p[0] + off[0], p[1] + off[1], name, 12, DARK, anchor="middle")
+    f.text(600, 336, "母线 l → 扇形半径；底面周长 2πr → 扇形弧长", 12, DARK, anchor="middle")
+    f.text(600, 360, "S侧=πrl；θ=360°·r/l", 12, RED, anchor="middle", weight="bold")
+    f.save("arc-sector-cone.svg")
+
+
+def fig_regular_poly():
+    f = Fig(760, 380)
+    # ① 正六边形
+    f.text(200, 30, "① 正六边形：两圆同心，R=a", 14, DARK, anchor="middle", weight="bold")
+    O, R = (200, 190), 95
+    V = [(200 + R * math.cos(math.radians(a)), 190 + R * math.sin(math.radians(a)))
+         for a in (-90, -30, 30, 90, 150, 210)]
+    A, B, C = V[0], V[1], V[2]
+    f.circle(O[0], O[1], R, "none", DARK, 1.8)
+    rin = R * math.sqrt(3) / 2
+    inner = [(200 + rin * math.cos(math.radians(a)), 190 + rin * math.sin(math.radians(a)))
+             for a in range(0, 360, 5)]
+    f.poly(inner, "none", GREY, 1.4, dash="5 4")
+    f.poly(V, "none", DARK, 2.2)
+    f.line(O[0], O[1], B[0], B[1], RED, 2.0)
+    f.text(258, 132, "R", 11, RED)
+    M = ((A[0] + B[0]) / 2, (A[1] + B[1]) / 2)
+    f.line(O[0], O[1], M[0], M[1], GREY, 1.6, dash="5 4")
+    f.right_angle(M[0], M[1], 120, 210, 8)
+    f.text(210, 152, "r", 11, GREY)
+    f.text(231, 100, "a/2", 11, DARK, anchor="middle")
+    f.arc(O[0], O[1], 32, -30, 30, PURP, 2.0)
+    f.text(246, 190, "60°", 12, PURP, anchor="middle")
+    for p, name, off in [(O, "O", (12, 4)), (A, "A", (0, -12)), (B, "B", (16, 0)),
+                         (C, "C", (16, 8))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 12, DARK, anchor="middle")
+    f.text(200, 330, "中心角 60°=外角；边心距 r=√3/2·R", 12, DARK, anchor="middle")
+    f.text(200, 354, "R²=r²+(a/2)²；S=½×周长×r", 12, RED, anchor="middle", weight="bold")
+    # ② 正方形
+    f.text(600, 30, "② 正方形：对角线即直径", 14, DARK, anchor="middle", weight="bold")
+    O2, R2 = (600, 190), 80
+    S = [(600 + R2 * math.cos(math.radians(a)), 190 + R2 * math.sin(math.radians(a)))
+         for a in (225, 315, 45, 135)]
+    A2, B2, C2, D2 = S[3], S[2], S[1], S[0]
+    f.circle(O2[0], O2[1], R2, "none", DARK, 1.8)
+    f.poly(S, "none", DARK, 2.2)
+    f.line(A2[0], A2[1], C2[0], C2[1], GREY, 1.4)
+    f.line(B2[0], B2[1], D2[0], D2[1], GREY, 1.4)
+    f.text(600, 100, "2R=√2·a", 11, GREY, anchor="middle")
+    f.line(O2[0], O2[1], C2[0], C2[1], GREY, 1.6, dash="5 4")
+    f.right_angle(C2[0], C2[1], 180, 90, 8)
+    f.text(626, 178, "r=a/2", 11, GREY, anchor="middle")
+    f.text(600, 288, "a", 12, DARK, anchor="middle")
+    for p, name, off in [(O2, "O", (0, -20)), (A2, "A", (-14, -8)), (B2, "B", (14, -8)),
+                         (C2, "C", (14, 20)), (D2, "D", (-14, 20))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 12, DARK, anchor="middle")
+    f.text(600, 330, "对角线=2R=√2·a，边心距 r=a/2", 12, DARK, anchor="middle")
+    f.text(600, 354, "面积=½×周长×r=a²", 12, RED, anchor="middle", weight="bold")
+    f.save("regular-polygon.svg")
+
+
+if __name__ == "__main__":
+    fig_circle_perp()
+    fig_central_inscribed()
+    fig_circle_position()
+    fig_tangent()
+    fig_arc_cone()
+    fig_regular_poly()
