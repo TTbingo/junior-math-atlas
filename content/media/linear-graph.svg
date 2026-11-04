@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 400" width="480" height="400" role="img" aria-label="两条直线 y 等于 2x 加 1 与 y 等于负 x 加 3，分别与 y 轴交于 1 和 3，前者上升后者下降">
+  <rect width="480" height="400" fill="#ffffff"/>
+<line x1="96.0" y1="240" x2="382.0" y2="240" stroke="#2d3748" stroke-width="1.4"/>
+<polygon points="382.0,240 374.0,236 374.0,244" fill="#2d3748"/>
+<line x1="200" y1="318.0" x2="200" y2="84.0" stroke="#2d3748" stroke-width="1.4"/>
+<polygon points="200,84.0 196,92.0 204,92.0" fill="#2d3748"/>
+<line x1="148.0" y1="237" x2="148.0" y2="243" stroke="#2d3748" stroke-width="1"/>
+<text x="148.0" y="256" font-size="11" fill="#718096" text-anchor="middle" font-family="Microsoft YaHei, PingFang SC, sans-serif">-2</text>
+<line x1="252.0" y1="237" x2="252.0" y2="243" stroke="#2d3748" stroke-width="1"/>
+<text x="252.0" y="256" font-size="11" fill="#718096" text-anchor="middle" font-family="Microsoft YaHei, PingFang SC, sans-serif">2</text>
+<line x1="304.0" y1="237" x2="304.0" y2="243" stroke="#2d3748" stroke-width="1"/>
+<text x="304.0" y="256" font-size="11" fill="#718096" text-anchor="middle" font-family="Microsoft YaHei, PingFang SC, sans-serif">4</text>
+<line x1="356.0" y1="237" x2="356.0" y2="243" stroke="#2d3748" stroke-width="1"/>
+<text x="356.0" y="256" font-size="11" fill="#718096" text-anchor="middle" font-family="Microsoft YaHei, PingFang SC, sans-serif">6</text>
+<line x1="197" y1="266.0" x2="203" y2="266.0" stroke="#2d3748" stroke-width="1"/>
+<text x="193" y="270.0" font-size="11" fill="#718096" text-anchor="end" font-family="Microsoft YaHei, PingFang SC, sans-serif">-1</text>
+<line x1="197" y1="214.0" x2="203" y2="214.0" stroke="#2d3748" stroke-width="1"/>
+<text x="193" y="218.0" font-size="11" fill="#718096" text-anchor="end" font-family="Microsoft YaHei, PingFang SC, sans-serif">1</text>
+<line x1="197" y1="162.0" x2="203" y2="162.0" stroke="#2d3748" stroke-width="1"/>
+<text x="193" y="166.0" font-size="11" fill="#718096" text-anchor="end" font-family="Microsoft YaHei, PingFang SC, sans-serif">3</text>
+<line x1="197" y1="110.0" x2="203" y2="110.0" stroke="#2d3748" stroke-width="1"/>
+<text x="193" y="114.0" font-size="11" fill="#718096" text-anchor="end" font-family="Microsoft YaHei, PingFang SC, sans-serif">5</text>
+<text x="384.0" y="258" font-size="12" fill="#2d3748" font-family="Microsoft YaHei, PingFang SC, sans-serif">x</text>
+<text x="208" y="82.0" font-size="12" fill="#2d3748" font-family="Microsoft YaHei, PingFang SC, sans-serif">y</text>
+<text x="192" y="255" font-size="11" fill="#718096" text-anchor="end" font-family="Microsoft YaHei, PingFang SC, sans-serif">O</text>
+<line x1="148.0" y1="318.0" x2="275.4" y2="63.2" stroke="#2b6cb0" stroke-width="2.0"/>
+<line x1="127.2" y1="89.2" x2="345.6" y2="307.6" stroke="#2f855a" stroke-width="2.0"/>
+<circle cx="200.0" cy="214.0" r="3.5" fill="#2b6cb0"/>
+<circle cx="200.0" cy="162.0" r="3.5" fill="#2f855a"/>
+<text x="283.2" y="104.79999999999998" font-size="12" fill="#2b6cb0" text-anchor="start" font-family="Microsoft YaHei, PingFang SC, sans-serif">y = 2x + 1</text>
+<text x="309.2" y="182.8" font-size="12" fill="#2f855a" text-anchor="start" font-family="Microsoft YaHei, PingFang SC, sans-serif">y = −x + 3</text>
+<text x="106.39999999999999" y="302.4" font-size="11" fill="#2b6cb0" text-anchor="start" font-family="Microsoft YaHei, PingFang SC, sans-serif">k &gt; 0 上升</text>
+<text x="257.2" y="302.4" font-size="11" fill="#2f855a" text-anchor="start" font-family="Microsoft YaHei, PingFang SC, sans-serif">k &lt; 0 下降</text>
+<text x="215.6" y="99.6" font-size="11" fill="#718096" text-anchor="start" font-family="Microsoft YaHei, PingFang SC, sans-serif">与 y 轴交点纵坐标就是 b</text>
+</svg>

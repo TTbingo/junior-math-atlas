@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 420" width="460" height="420" role="img" aria-label="反比例函数 y 等于 x 分之 6 的两支双曲线，第一象限上点 P（2，3）与两轴围成面积为 6 的矩形">
+  <rect width="460" height="420" fill="#ffffff"/>
+<line x1="44.0" y1="240" x2="408.0" y2="240" stroke="#2d3748" stroke-width="1.4"/>
+<polygon points="408.0,240 400.0,236 400.0,244" fill="#2d3748"/>
+<line x1="200" y1="396.0" x2="200" y2="84.0" stroke="#2d3748" stroke-width="1.4"/>
+<polygon points="200,84.0 196,92.0 204,92.0" fill="#2d3748"/>
+<line x1="96.0" y1="237" x2="96.0" y2="243" stroke="#2d3748" stroke-width="1"/>
+<text x="96.0" y="256" font-size="11" fill="#718096" text-anchor="middle" font-family="Microsoft YaHei, PingFang SC, sans-serif">-4</text>
+<line x1="148.0" y1="237" x2="148.0" y2="243" stroke="#2d3748" stroke-width="1"/>
+<text x="148.0" y="256" font-size="11" fill="#718096" text-anchor="middle" font-family="Microsoft YaHei, PingFang SC, sans-serif">-2</text>
+<line x1="252.0" y1="237" x2="252.0" y2="243" stroke="#2d3748" stroke-width="1"/>
+<text x="252.0" y="256" font-size="11" fill="#718096" text-anchor="middle" font-family="Microsoft YaHei, PingFang SC, sans-serif">2</text>
+<line x1="304.0" y1="237" x2="304.0" y2="243" stroke="#2d3748" stroke-width="1"/>
+<text x="304.0" y="256" font-size="11" fill="#718096" text-anchor="middle" font-family="Microsoft YaHei, PingFang SC, sans-serif">4</text>
+<line x1="356.0" y1="237" x2="356.0" y2="243" stroke="#2d3748" stroke-width="1"/>
+<text x="356.0" y="256" font-size="11" fill="#718096" text-anchor="middle" font-family="Microsoft YaHei, PingFang SC, sans-serif">6</text>
+<line x1="197" y1="344.0" x2="203" y2="344.0" stroke="#2d3748" stroke-width="1"/>
+<text x="193" y="348.0" font-size="11" fill="#718096" text-anchor="end" font-family="Microsoft YaHei, PingFang SC, sans-serif">-4</text>
+<line x1="197" y1="292.0" x2="203" y2="292.0" stroke="#2d3748" stroke-width="1"/>
+<text x="193" y="296.0" font-size="11" fill="#718096" text-anchor="end" font-family="Microsoft YaHei, PingFang SC, sans-serif">-2</text>
+<line x1="197" y1="188.0" x2="203" y2="188.0" stroke="#2d3748" stroke-width="1"/>
+<text x="193" y="192.0" font-size="11" fill="#718096" text-anchor="end" font-family="Microsoft YaHei, PingFang SC, sans-serif">2</text>
+<line x1="197" y1="136.0" x2="203" y2="136.0" stroke="#2d3748" stroke-width="1"/>
+<text x="193" y="140.0" font-size="11" fill="#718096" text-anchor="end" font-family="Microsoft YaHei, PingFang SC, sans-serif">4</text>
+<text x="410.0" y="258" font-size="12" fill="#2d3748" font-family="Microsoft YaHei, PingFang SC, sans-serif">x</text>
+<text x="208" y="82.0" font-size="12" fill="#2d3748" font-family="Microsoft YaHei, PingFang SC, sans-serif">y</text>
+<text x="192" y="255" font-size="11" fill="#718096" text-anchor="end" font-family="Microsoft YaHei, PingFang SC, sans-serif">O</text>
+<polyline points="226.0,84.0 228.1,95.9 230.3,106.0 232.4,114.9 234.6,122.6 236.7,129.4 238.8,135.5 241.0,141.0 243.1,145.9 245.2,150.3 247.4,154.4 249.5,158.1 251.7,161.5 253.8,164.6 255.9,167.5 258.1,170.1 260.2,172.6 262.3,174.9 264.5,177.1 266.6,179.1 268.8,181.0 270.9,182.8 273.0,184.5 275.2,186.0 277.3,187.5 279.4,188.9 281.6,190.3 283.7,191.6 285.9,192.8 288.0,193.9 290.1,195.0 292.3,196.0 294.4,197.0 296.5,198.0 298.7,198.9 300.8,199.8 303.0,200.6 305.1,201.4 307.2,202.2 309.4,202.9 311.5,203.6 313.6,204.3 315.8,205.0 317.9,205.6 320.1,206.2 322.2,206.8 324.3,207.4 326.5,207.9 328.6,208.5 330.8,209.0 332.9,209.5 335.0,210.0 337.2,210.4 339.3,210.9 341.4,211.3 343.6,211.8 345.7,212.2 347.9,212.6 350.0,213.0 352.1,213.3 354.3,213.7 356.4,214.1 358.5,214.4 360.7,214.8 362.8,215.1 365.0,215.4 367.1,215.7 369.2,216.0 371.4,216.3 373.5,216.6 375.6,216.9 377.8,217.2 379.9,217.5 382.1,217.7 384.2,218.0 386.3,218.2 388.5,218.5 390.6,218.7 392.7,219.0 394.9,219.2 397.0,219.4 399.2,219.6 401.3,219.9 403.4,220.1 405.6,220.3 407.7,220.5 409.8,220.7 412.0,220.9 414.1,221.1 416.3,221.2 418.4,221.4" fill="none" stroke="#2b6cb0" stroke-width="2.0"/>
+<polyline points="-18.4,258.6 -16.3,258.8 -14.1,258.9 -12.0,259.1 -9.8,259.3 -7.7,259.5 -5.6,259.7 -3.4,259.9 -1.3,260.1 0.8,260.4 3.0,260.6 5.1,260.8 7.3,261.0 9.4,261.3 11.5,261.5 13.7,261.8 15.8,262.0 17.9,262.3 20.1,262.5 22.2,262.8 24.4,263.1 26.5,263.4 28.6,263.7 30.8,264.0 32.9,264.3 35.0,264.6 37.2,264.9 39.3,265.2 41.5,265.6 43.6,265.9 45.7,266.3 47.9,266.7 50.0,267.0 52.1,267.4 54.3,267.8 56.4,268.2 58.6,268.7 60.7,269.1 62.8,269.6 65.0,270.0 67.1,270.5 69.2,271.0 71.4,271.5 73.5,272.1 75.7,272.6 77.8,273.2 79.9,273.8 82.1,274.4 84.2,275.0 86.4,275.7 88.5,276.4 90.6,277.1 92.8,277.8 94.9,278.6 97.0,279.4 99.2,280.2 101.3,281.1 103.5,282.0 105.6,283.0 107.7,284.0 109.9,285.0 112.0,286.1 114.1,287.2 116.3,288.4 118.4,289.7 120.6,291.1 122.7,292.5 124.8,294.0 127.0,295.5 129.1,297.2 131.2,299.0 133.4,300.9 135.5,302.9 137.7,305.1 139.8,307.4 141.9,309.9 144.1,312.5 146.2,315.4 148.3,318.5 150.5,321.9 152.6,325.6 154.8,329.7 156.9,334.1 159.0,339.0 161.2,344.5 163.3,350.6 165.4,357.4 167.6,365.1 169.7,374.0 171.9,384.1 174.0,396.0" fill="none" stroke="#2b6cb0" stroke-width="2.0"/>
+<rect x="200" y="162.0" width="52.0" height="78.0" fill="#2b6cb0" fill-opacity="0.12" stroke="#2b6cb0" stroke-width="1.2" stroke-dasharray="4 3"/>
+<circle cx="252.0" cy="162.0" r="4.5" fill="#2b6cb0"/>
+<text x="260" y="154" font-size="12" fill="#2b6cb0" text-anchor="start" font-family="Microsoft YaHei, PingFang SC, sans-serif">P(2，3)</text>
+<line x1="275.4" y1="112.6" x2="254.6" y2="154.2" stroke="#718096" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="278.0" y="107.4" font-size="11" fill="#2b6cb0" text-anchor="start" font-family="Microsoft YaHei, PingFang SC, sans-serif">矩形面积 = |k| = 6</text>
+<text x="330.0" y="146.39999999999998" font-size="12" fill="#2b6cb0" text-anchor="start" font-family="Microsoft YaHei, PingFang SC, sans-serif">y = 6/x</text>
+<text x="240" y="408" font-size="11" fill="#718096" text-anchor="middle" font-family="Microsoft YaHei, PingFang SC, sans-serif">两支关于原点对称，永远不与坐标轴相交</text>
+</svg>
