@@ -13,3 +13,6 @@ content/_backup_points_grades/
 # 系统
 .DS_Store
 Thumbs.db
+
+# 验收截图
+shots/

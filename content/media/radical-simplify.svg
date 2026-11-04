@@ -23,5 +23,5 @@
   <text x="240" y="104" font-size="14" fill="#c53030">√12 = √(4 × 3)</text>
   <text x="266" y="130" font-size="14" fill="#c53030">= √4 × √3 = 2√3</text>
   <text x="240" y="160" font-size="12" fill="#718096">2√3 就是这个大正方形的边长</text>
-  <text x="240" y="180" font-size="12" fill="#718096">（四块并排，每边两块）</text>
+  <text x="240" y="180" font-size="12" fill="#718096">（排成 2 行 2 列）</text>
 </svg>

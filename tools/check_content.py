@@ -7,6 +7,11 @@
 4. 例题场景在枚举内且同页不重复（build.py 已查，这里再兜一次）
 5. 正文禁用跳步话术（显然 / 易证 / 不难看出）
 6. 公式配对：$ 数量为偶数，避免裸公式漏渲染
+7. 概念超前引用：正文不得使用排在后面的点位才引入的概念词
+   （2026-11-04 教训：二元一次方程组用「方程是一条直线」作主要解释，
+     而坐标系与一次函数分别排在 m1-03-01 / m1-03-02，学生当时还没学。
+     prerequisites 顺序对了不等于正文没超前引用。）
+   允许「提前借用」，但同一段必须写明是借用，否则报错。
 """
 import json
 import pathlib
@@ -15,6 +20,43 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 C = ROOT / "content"
+
+# 概念词 → 首次引入它的点位。正文在引入点之前出现该词，视为超前引用。
+CONCEPT_INTRO = {
+    "平面直角坐标系": "m1-03-01-coordinates-and-function",
+    "坐标平面": "m1-03-01-coordinates-and-function",
+    "一次函数": "m1-03-02-linear-function",
+    "反比例函数": "m1-03-04-inverse-proportion",
+    "双曲线": "m1-03-04-inverse-proportion",
+    "二次函数": "m1-03-05-quadratic-function",
+    "抛物线": "m1-03-05-quadratic-function",
+    "判别式": "m1-02-04-discriminant-vieta",
+}
+# 注：「对称轴」不列入。x 轴、y 轴本身就是对称轴，属几何基础用语，不是抛物线的专属概念。
+
+# 同段出现这些词，说明作者已声明是提前借用，放行
+BORROW_MARKERS = ("提前借用", "后续学习", "等学了", "等学到", "以后会学", "后面会学",
+                  "后面才学", "再回看", "下一篇")
+
+# related 本就是跨篇导航，不参与超前检查
+SKIP_SECTIONS = ("related",)
+
+
+def _paras(v):
+    """把一个板块摊平成若干段落字符串。"""
+    if isinstance(v, str):
+        return [v]
+    if isinstance(v, list):
+        out = []
+        for x in v:
+            out.extend(_paras(x))
+        return out
+    if isinstance(v, dict):
+        out = []
+        for x in v.values():
+            out.extend(_paras(x))
+        return out
+    return []
 
 
 def main():
@@ -59,6 +101,25 @@ def main():
             if text.count("$") % 2:
                 bad.append(f"{pid}.{k}: $ 不成对（{text.count('$')} 个）")
 
+        # 概念超前引用
+        for k, v in secs.items():
+            if k in SKIP_SECTIONS:
+                continue
+            for para in _paras(v):
+                hit = [w for w in CONCEPT_INTRO if w in para]
+                if not hit:
+                    continue
+                if any(m in para for m in BORROW_MARKERS):
+                    continue
+                for w in hit:
+                    intro = CONCEPT_INTRO[w]
+                    if intro not in order:
+                        continue
+                    if order[pid] < order[intro]:
+                        bad.append(
+                            f"{pid}.{k}: 超前引用「{w}」（该概念在 {intro} 才引入，本篇排在它之前）"
+                        )
+
     # 环检测：prerequisites 图上是否有环
     state = {}
 
@@ -83,7 +144,7 @@ def main():
         for b in bad:
             print("  ✗", b)
         return 1
-    print("✓ 内容体检通过：前置顺序、关联自指、场景重复、跳步话术、公式配对全部正常")
+    print("✓ 内容体检通过：前置顺序、关联自指、场景重复、跳步话术、公式配对、概念超前全部正常")
     return 0
 
 

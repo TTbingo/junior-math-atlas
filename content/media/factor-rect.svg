@@ -37,6 +37,6 @@
   <text x="330" y="120" font-size="14" fill="#4a5568">= (x + 3)(x + 2)</text>
   <text x="330" y="152" font-size="12" fill="#718096">长 = x + 3，宽 = x + 2</text>
   <text x="330" y="174" font-size="12" fill="#718096">横竖各切一刀，</text>
-  <text x="330" y="194" font-size="12" fill="#718096">六块正好拼齐</text>
+  <text x="330" y="194" font-size="12" fill="#718096">四块正好拼齐</text>
   <text x="270" y="252" font-size="12" fill="#718096" text-anchor="middle">五个 x 长条拆成 3 + 2，六个小方块排成 2 × 3</text>
 </svg>
