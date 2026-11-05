@@ -59,6 +59,11 @@ class Fig:
             f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{r}" fill="{color}" '
             f'stroke="{color}" stroke-width="1"/>')
 
+    def rect(self, x, y, w, h, fill="none", stroke=DARK, width=1.6):
+        """以左上角为起点画矩形。"""
+        self.poly([(x, y), (x + w, y), (x + w, y + h), (x, y + h)],
+                  fill, stroke, width)
+
     def text(self, x, y, s, size=12, color=DARK, anchor="start", weight=None):
         w = f' font-weight="{weight}"' if weight else ""
         self.buf.append(
@@ -1739,6 +1744,278 @@ def fig_trig_applications():
     f.save("trig-applications.svg")
 
 
+
+def fig_data_collection():
+    f = Fig(740, 360)
+    f.text(24, 28, "普查与抽样调查：总体里的每个个体，和抽出来的那一部分", 15, DARK, weight="bold")
+    # ── 左：普查 ──
+    f.text(185, 60, "普查：每一个都查", 13, DARK, anchor="middle", weight="bold")
+    f.rect(50, 78, 270, 170, "none", DARK, 1.8)
+    f.text(56, 94, "总体：全校 1200 名学生", 11, GREY)
+    for r in range(4):
+        for c in range(12):
+            x, y = 72 + c * 20, 118 + r * 30
+            f.dot(x, y, GREYM, 2.6)
+    for (dx, dy) in [(0, 0), (1, 0), (0, 1)]:
+        x, y = 72 + (2 + dx) * 20, 118 + dy * 30
+        f.dot(x, y, RED, 4.2)
+    f.text(185, 268, "三个红点代表「一个不漏地问」——问遍 1200 人", 11, RED, anchor="middle")
+    f.text(185, 290, "结论精确，但费时费钱", 11, GREY, anchor="middle")
+    # ── 右：抽样 ──
+    f.text(470, 60, "抽样调查：抽一部分", 13, DARK, anchor="middle", weight="bold")
+    f.rect(340, 78, 250, 170, "none", DARK, 1.8)
+    f.text(346, 94, "总体：全校 1200 名学生", 11, GREY)
+    for r in range(4):
+        for c in range(10):
+            x, y = 360 + c * 22, 118 + r * 30
+            f.dot(x, y, GREYM, 2.6)
+    picked = [(0, 0), (3, 1), (5, 0), (7, 2), (2, 3)]
+    for (c, r) in picked:
+        x, y = 360 + c * 22, 118 + r * 30
+        f.dot(x, y, GRN, 4.2)
+        f.line(x, y, 618, 118, GRN, 1.0, dash="3 3")
+    f.rect(618, 96, 104, 96, GRNF, GRN, 1.8)
+    f.text(670, 128, "样本", 13, GRN, anchor="middle", weight="bold")
+    f.text(670, 152, "50 人", 13, GRN, anchor="middle", weight="bold")
+    f.text(670, 176, "样本容量 = 50", 10, GREY, anchor="middle")
+    f.text(470, 268, "五个绿点代表随机抽到的 50 人", 11, GRN, anchor="middle")
+    f.text(470, 290, "便宜快速，但结论是估计值", 11, GREY, anchor="middle")
+    f.text(370, 330, "抽样要成立靠三条：随机 · 有代表性 · 样本量足够", 12, DARK, weight="bold")
+    f.save("data-collection.svg")
+
+
+def fig_statistical_charts():
+    f = Fig(780, 340)
+    f.text(24, 28, "三种统计图各管一件事", 15, DARK, weight="bold")
+    # ── 条形图 ──
+    f.text(140, 56, "条形图：比多少", 12, DARK, anchor="middle", weight="bold")
+    ox, oy = 60, 280
+    f.line(ox, 40, ox, oy, DARK, 1.6)
+    f.line(ox, oy, 240, oy, DARK, 1.6)
+    for v in (4, 8, 12, 16):
+        y = oy - v * 11.5
+        f.line(ox - 4, y, ox, y, GREYM, 1.0)
+        f.text(ox - 8, y + 4, str(v), 9, GREY, anchor="end")
+    data = [("篮球", 16), ("足球", 10), ("乒乓", 8), ("其他", 6)]
+    for i, (name, v) in enumerate(data):
+        x = ox + 22 + i * 40
+        h = v * 11.5
+        f.rect(x, oy - h, 26, h, BLUEF, BLUE, 1.8)
+        f.text(x + 13, oy - h - 6, str(v), 11, BLUE, anchor="middle", weight="bold")
+        f.text(x + 13, oy + 16, name, 10, DARK, anchor="middle")
+    f.text(26, 160, "人数", 10, GREY)
+    f.text(140, 316, "纵轴必须从 0 起", 10, RED, anchor="middle")
+    f.line(258, 40, 258, 320, GREY, 1.0)
+    # ── 折线图 ──
+    f.text(400, 56, "折线图：看变化", 12, DARK, anchor="middle", weight="bold")
+    ox2, oy2 = 300, 280
+    f.line(ox2, 60, ox2, oy2, DARK, 1.6)
+    f.line(ox2, oy2, 490, oy2, DARK, 1.6)
+    pts = [(1, 2), (2, 6), (3, 11), (4, 17), (5, 22), (6, 26)]
+    xy = [(ox2 + 24 + (i) * 30, oy2 - v * 8) for i, (m, v) in enumerate(pts)]
+    for i in range(len(xy) - 1):
+        f.line(xy[i][0], xy[i][1], xy[i + 1][0], xy[i + 1][1], RED, 2.0)
+    for (x, y), (m, v) in zip(xy, pts):
+        f.dot(x, y, RED, 3.2)
+        f.text(x, oy2 + 16, f"{m}月", 9, DARK, anchor="middle")
+        f.text(x + 9, y - 11, str(v), 9, RED)
+    f.text(292, 60, "气温", 10, GREY)
+    f.text(400, 316, "横轴是连续变化的时间", 10, RED, anchor="middle")
+    f.line(508, 40, 508, 320, GREY, 1.0)
+    # ── 扇形图 ──
+    f.text(650, 56, "扇形图：看占比", 12, DARK, anchor="middle", weight="bold")
+    cx, cy, r = 640, 175, 78
+    segs = [("篮球", 144), ("足球", 90), ("乒乓", 72), ("其他", 54)]
+    a0 = -90.0
+    for i, (name, ang) in enumerate(segs):
+        a1 = a0 + ang
+        poly_pts = [(cx, cy)]
+        steps = max(4, int(ang / 8))
+        for k in range(steps + 1):
+            a = math.radians(a0 + ang * k / steps)
+            poly_pts.append((cx + r * math.cos(a), cy + r * math.sin(a)))
+        f.poly(poly_pts, [BLUEF, REDF, GRNF, YELF][i], [BLUE, RED, GRN, YEL][i], 1.6)
+        amid = math.radians(a0 + ang / 2)
+        lx, ly = cx + (r + 26) * math.cos(amid), cy + (r + 26) * math.sin(amid)
+        f.text(lx, ly, f"{name}\n{ang}°", 10, [BLUE, RED, GRN, YEL][i], anchor="middle")
+        a0 = a1
+    f.text(650, 316, "圆心角 = 360° × 百分比", 10, RED, anchor="middle")
+    f.save("statistical-charts.svg")
+
+
+def fig_central_tendency():
+    f = Fig(720, 330)
+    f.text(24, 28, "同一组数据的三个代表数", 15, DARK, weight="bold")
+    x0, x1, y = 90, 650, 205
+
+    def X(v):
+        return x0 + (v - 2) / 8 * (x1 - x0)
+
+    f.line(x0 - 20, y, x1 + 30, y, DARK, 2.0)
+    for v in (2, 4, 6, 8, 10):
+        f.line(X(v), y - 6, X(v), y + 6, DARK, 1.4)
+        f.text(X(v), y + 26, str(v), 11, DARK, anchor="middle")
+    f.text(x1 + 40, y + 4, "数据", 11, GREY)
+    for v, dy in [(2, 0), (4, -18), (4, 18), (6, 0), (10, 0)]:
+        f.dot(X(v), y + dy, PURP, 5.0)
+    f.text(X(2) - 14, y - 12, "2", 11, PURP, anchor="end")
+    f.text(X(10) + 14, y - 12, "10", 11, PURP, anchor="start")
+    # 众数 4
+    f.line(X(4), y - 44, X(4), y - 26, GRN, 1.8)
+    f.text(X(4), y - 58, "众数 = 4", 12, GRN, anchor="middle", weight="bold")
+    f.text(X(4), y - 76, "出现次数最多（3 次）", 10, GREY, anchor="middle")
+    # 中位数 4（5 个数取正中间）
+    f.line(X(4), y + 44, X(4), y + 26, BLUE, 1.8)
+    f.text(X(4), y + 62, "中位数 = 4", 12, BLUE, anchor="middle", weight="bold")
+    f.text(X(4), y + 80, "排序后正中间那个", 10, GREY, anchor="middle")
+    # 平均数 5.2
+    xa = X(5.2)
+    f.line(xa, y + 44, xa, y + 26, RED, 1.8)
+    f.text(xa + 14, y + 62, "平均数 = 5.2", 12, RED, anchor="middle", weight="bold")
+    f.text(xa + 14, y + 80, "被 10 这个极端值拉偏", 10, GREY, anchor="middle")
+    f.text(360, 128, "数据：2、4、4、6、10", 12, DARK, anchor="middle")
+    f.text(360, 306, "极端值 10 把平均数拉走，中位数与众数分毫未动", 12, DARK, anchor="middle", weight="bold")
+    f.save("central-tendency.svg")
+
+
+def fig_variance():
+    f = Fig(720, 400)
+    f.text(24, 28, "平均数几乎相同，稳定性却天差地别", 15, DARK, weight="bold")
+    rows = [
+        # 标题, 刻度下限, 刻度上限, 刻度, 平均数, 方差, 标准差, 多数数据值, 多数次数, 少数数据值
+        ("甲：10 次射击，9 环 9 次、7 环 1 次", 7, 9, (7, 8, 9), 8.8, "0.36", "0.6", 9, 9, 7),
+        ("乙：10 次射击，10 环 9 次、0 环 1 次", 0, 10, (0, 2, 4, 6, 8, 10), 9, "9", "3", 10, 9, 0),
+    ]
+    for idx, (title, lo, hi, ticks, mean, var, sd, big, cnt, small) in enumerate(rows):
+        y0 = 120 + idx * 155
+        f.text(40, y0 - 46, title, 12, DARK, weight="bold")
+        x0, x1 = 130, 630
+
+        def X(v, lo=lo, hi=hi, x0=x0, x1=x1):
+            return x0 + (v - lo) / (hi - lo) * (x1 - x0)
+
+        f.line(x0 - 30, y0, x1 + 40, y0, DARK, 2.0)
+        for v in ticks:
+            f.line(X(v), y0 - 5, X(v), y0 + 5, GREYM, 1.2)
+            f.text(X(v), y0 + 24, str(v), 10, GREY, anchor="middle")
+        # 多数数据叠在 big 处，用微小偏移表示「多次」
+        for k in range(cnt):
+            f.dot(X(big) + (k % 3 - 1) * 5, y0 - 18 + (k // 3 - 1) * 5, PURP, 4.0)
+        f.dot(X(small), y0 - 18, PURP, 4.8)
+        xm = X(mean)
+        f.line(xm, y0 - 38, xm, y0 + 16, RED, 1.6, dash="4 3")
+        f.text(xm, y0 - 48, f"平均数 {mean}", 10, RED, anchor="middle")
+        f.text(360, y0 + 52, f"方差 {var}，标准差 {sd}", 11, DARK, anchor="middle")
+    f.text(360, 372, "点越聚在平均数附近，方差越小；乙有一次 0 环，波动被放大到 25 倍", 12, DARK, anchor="middle", weight="bold")
+    f.save("variance.svg")
+
+
+
+def fig_sample_estimation():
+    f = Fig(740, 330)
+    f.text(24, 28, "用样本估计总体：从抽出来的那一部分，推断全体", 15, DARK, weight="bold")
+    # 左：抽样
+    f.text(160, 62, "第一步：抽样", 13, DARK, anchor="middle", weight="bold")
+    f.rect(45, 82, 230, 150, "none", DARK, 1.8)
+    f.text(52, 100, "总体：全校 800 名学生", 11, GREY)
+    for r in range(3):
+        for c in range(9):
+            f.dot(66 + c * 22, 124 + r * 32, GREYM, 2.6)
+    for (c, r) in [(0, 0), (3, 1), (5, 0), (7, 2), (2, 2), (6, 1)]:
+        x, y = 66 + c * 22, 124 + r * 32
+        f.dot(x, y, GRN, 4.2)
+        f.line(x, y, 240, 160, GRN, 1.0, dash="3 3")
+    f.rect(240, 132, 108, 74, GRNF, GRN, 1.8)
+    f.text(294, 156, "样本 100 人", 12, GRN, anchor="middle", weight="bold")
+    f.text(294, 176, "平均 35 分钟", 11, GRN, anchor="middle")
+    f.text(294, 196, "样本平均数", 10, GREY, anchor="middle")
+    f.text(160, 262, "样本的统计量", 12, GRN, anchor="middle", weight="bold")
+    # 箭头
+    f.arrow_line(360, 160, 434, 160, DARK, 2.6)
+    f.text(397, 142, "估计", 12, DARK, anchor="middle", weight="bold")
+    # 右：估计
+    f.text(590, 62, "第二步：推断全体", 13, DARK, anchor="middle", weight="bold")
+    f.rect(452, 82, 250, 150, "none", DARK, 1.8)
+    f.text(459, 100, "总体：全校 800 名学生", 11, GREY)
+    f.rect(472, 120, 210, 44, BLUEF, BLUE, 1.8)
+    f.text(577, 147, "估计：平均阅读时间 ≈ 35 分钟", 12, BLUE, anchor="middle", weight="bold")
+    f.text(577, 186, "估计值 ≠ 真值，存在抽样误差", 11, RED, anchor="middle")
+    f.text(577, 208, "加「约」是诚实，不是含糊", 10, GREY, anchor="middle")
+    f.text(590, 262, "总体的估计值", 12, BLUE, anchor="middle", weight="bold")
+    f.text(370, 306, "抽样方法随机且有代表性 → 无系统性偏差；样本容量足够 → 偶然波动小", 12, DARK, anchor="middle", weight="bold")
+    f.save("sample-estimation.svg")
+
+
+def fig_events_probability():
+    f = Fig(740, 330)
+    f.text(24, 28, "三类事件与概率这把尺子", 15, DARK, weight="bold")
+    boxes = [
+        ("必然事件", "太阳从东方升起", "P = 1", GRNF, GRN, 45),
+        ("不可能事件", "石头从天上掉下来", "P = 0", REDF, RED, 265),
+        ("随机事件", "掷一枚骰子的点数", "0 < P < 1", BLUEF, BLUE, 485),
+    ]
+    for title, body, val, fill, stroke, bx in boxes:
+        f.rect(bx, 70, 210, 120, fill, stroke, 1.8)
+        f.text(bx + 105, 96, title, 13, stroke, anchor="middle", weight="bold")
+        f.text(bx + 105, 126, body, 11, DARK, anchor="middle")
+        f.text(bx + 105, 168, val, 14, stroke, anchor="middle", weight="bold")
+    # 概率标度条
+    f.text(370, 226, "概率：可能性大小的刻度", 12, DARK, anchor="middle", weight="bold")
+    x0, x1, y = 90, 650, 262
+    f.line(x0, y, x1, y, DARK, 3.0)
+    for v, lab in [(x0, "0"), (x1, "1")]:
+        f.line(v, y - 8, v, y + 8, DARK, 2.0)
+    f.text(x0, y + 26, "0 · 一定不会发生", 11, GREY, anchor="middle")
+    f.text(x1, y + 26, "1 · 一定会发生", 11, GREY, anchor="middle")
+    xa = x0 + (x1 - x0) * 0.42
+    f.line(xa, y - 26, xa, y + 8, RED, 2.4)
+    f.text(xa, y - 36, "P(A)", 13, RED, anchor="middle", weight="bold")
+    f.text(370, y + 48, "前提：结果总数有限，且每种结果出现的机会均等", 11, DARK, anchor="middle")
+    f.save("events-probability.svg")
+
+
+def fig_frequency_estimate():
+    f = Fig(760, 350)
+    f.text(24, 28, "频率随试验次数增加而稳定在概率附近", 15, DARK, weight="bold")
+    # 左：频率折线
+    ox, oy = 80, 270
+    f.line(ox, 60, ox, oy, DARK, 1.6)
+    f.line(ox, oy, 470, oy, DARK, 1.6)
+    for lab, v in [("0.6", 0.6), ("0.5", 0.5), ("0.4", 0.4)]:
+        y = oy - v * 320
+        f.line(ox - 4, y, ox, y, GREYM, 1.0)
+        f.text(ox - 8, y + 4, lab, 9, GREY, anchor="end")
+    f.text(ox - 30, 200, "频率", 10, GREY)
+    f.line(ox, oy - 0.5 * 320, 470, oy - 0.5 * 320, RED, 1.4, dash="5 4")
+    f.text(452, oy - 0.5 * 320 - 8, "P = 0.5", 11, RED, anchor="end", weight="bold")
+    seq = [0.7, 0.4, 0.6, 0.5, 0.45, 0.55, 0.5, 0.5, 0.5, 0.48, 0.52, 0.5]
+    px = [ox + 30 + i * 30 for i in range(len(seq))]
+    py = [oy - v * 320 for v in seq]
+    for i in range(len(px) - 1):
+        f.line(px[i], py[i], px[i + 1], py[i + 1], BLUE, 1.8)
+    for x, y in zip(px, py):
+        f.dot(x, y, BLUE, 2.8)
+    f.text(275, oy + 22, "试验次数 →（越多越稳）", 10, DARK, anchor="middle")
+    f.text(275, 316, "次数少时频率乱跳，次数多时收紧在 P 附近", 10, BLUE, anchor="middle")
+    f.line(500, 50, 500, 320, GREY, 1.0)
+    # 右：模拟试验
+    f.text(630, 56, "模拟试验：转盘代替摸球", 12, DARK, anchor="middle", weight="bold")
+    cx, cy, r = 585, 160, 68
+    f.circle(cx, cy, r, "none", DARK, 2.0)
+    for k in range(8):
+        a0 = math.radians(-90 + k * 45)
+        a1 = math.radians(-90 + (k + 1) * 45)
+        pts = [(cx, cy), (cx + r * math.cos(a0), cy + r * math.sin(a0)),
+               (cx + r * math.cos(a1), cy + r * math.sin(a1))]
+        f.poly(pts, REDF if k == 0 else "none", RED if k == 0 else GREY, 1.6 if k == 0 else 1.0)
+    f.text(cx + r * 0.5, cy - r * 0.5, "红区", 10, RED, anchor="middle")
+    f.text(585, 250, "8 等份，1 份为红", 10, GREY, anchor="middle")
+    f.text(630, 278, "转 200 次，红区停了 26 次", 11, DARK, anchor="middle")
+    f.text(630, 298, "频率 26/200 = 0.13", 12, RED, anchor="middle", weight="bold")
+    f.text(630, 318, "于是估计 P ≈ 0.13", 11, DARK, anchor="middle")
+    f.save("frequency-estimate.svg")
+
+
 if __name__ == "__main__":
     fig_lines()
     fig_angle()
@@ -1771,3 +2048,10 @@ if __name__ == "__main__":
     fig_trig_ratios()
     fig_right_triangle()
     fig_trig_applications()
+    fig_data_collection()
+    fig_statistical_charts()
+    fig_central_tendency()
+    fig_variance()
+    fig_sample_estimation()
+    fig_events_probability()
+    fig_frequency_estimate()

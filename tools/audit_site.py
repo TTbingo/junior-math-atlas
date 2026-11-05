@@ -175,7 +175,7 @@ for pid, d in docs.items():
         if not pf.get("right") or not pf.get("why") or not pf.get("wrong"):
             add("ERR", pid, f"pitfalls[{i}] 缺 wrong/why/right")
 
-# ---------- 5. TeX 纪律 ----------
+# ---------- 6. TeX 纪律 ----------
 def walk(o, path=""):
     if isinstance(o, str):
         yield path, o
@@ -200,6 +200,28 @@ for pid, d in docs.items():
         bad = re.findall(r"\\(frac|times|cdot|circ|angle|triangle|sqrt|perp|parallel|geqslant|leqslant|tfrac|overrightarrow)", stripped)
         if bad:
             add("ERR", pid, f"{path} $ 外有 TeX 命令: {set(bad)}")
+
+# ---------- 5b. 正文不得夹英文单词 ----------
+# 标准缩写白名单（几何判定定理等通用记号）；其余英文单词一律视为行文事故
+LATIN_OK = {"SSS", "SAS", "ASA", "AAS", "SSA", "HL", "AA", "delta", "why"}
+LATIN_RE = re.compile(r"[一-鿿]\s*([a-zA-Z]{3,})\s*[，。；、）]?|[一-鿿]\s*([a-zA-Z]{3,})")
+for pid, d in docs.items():
+    for path, txt in walk(d["sections"]):
+        # 去掉 $...$ 数学片段后再查，避免误报数学符号
+        stripped = re.sub(r"\$[^$]*\$", "〔M〕", txt)
+        for m in LATIN_RE.finditer(stripped):
+            w = m.group(1) or m.group(2)
+            if not w or w in LATIN_OK:
+                continue
+            # 形如 m2-01-03 的 id 引用允许
+            if re.match(r"^[a-z]\d", w):
+                continue
+            # 全大写连写是几何点名（△ABC、quad DBCF 之类），不算英文单词
+            if w.isupper() and len(w) >= 2:
+                continue
+            i = m.start()
+            add("ERR", pid, f"{path} 夹了英文单词「{w}」: …{stripped[max(0, i - 30):i + 30]}…")
+            break
 
 # ---------- 输出 ----------
 by_level = {"ERR": [], "WARN": []}
