@@ -88,3 +88,5 @@ MATH_NO_CLEAN=1 python build.py # 原地覆盖（沙箱禁止整树删 dist 时�
    - 教材版本：2024 版把 2012 版的「有理数」「整式的加减」「整式的乘除与因式分解」「一次函数」「圆」各拆成两章，共 34 章——**不要按 2012 版章号写**
 42. **「课标学段」不能当定位用**：初中全是「第四学段（7~9 年级）」，颗粒度太粗，读者无法据此翻书。页头保留学段行（它是课标属性），另设「教材定位」独立区块（section.textbook）承载精确位置。
 43. **批量改 JSON 里的长文本**：按行号定位做替换极易出错（括号嵌套、正则转义、note 拼接）。稳妥做法是「结构化重建」——把数据放进独立脚本的字典，脚本整体重写 JSON，并在写盘前做重复片段检测（同一 14 字以上的片段在一条文本里出现两次 = 拼接污染）。
+44. **本机网络环境**：`gh` CLI 在 `D:/tools/gh/bin/gh.exe`（不在 PATH）；HTTPS/443 被防火墙挡，调用 GitHub API 需 `HTTPS_PROXY=http://127.0.0.1:17897`（Dove 代理）；git 推送走 SSH（`~/.ssh/config` 已配 github.com）可直接用。GitHub Pages 域名 `ttbingo.github.io` 直连可通，但 Chromium 会走系统代理导致 Playwright 访问失败——**线上验证用 curl 直连（`env -u HTTPS_PROXY -u HTTP_PROXY curl ...`）比 Playwright 可靠**。
+45. **workbuddy.host 一个 workspace 只能有一个 app**：发布工具按**会话 workspace 根目录**（含 `.wbapp_*.genie` 标记那层）绑定 app，不按传入的 directory。换 directory、指向 workspace 外目录都无效。往已有 app 的 workspace 发布别的站会**直接覆盖线上内容**（2026-11-05 部署初中站时连续 3 次把小学站覆盖，靠重新部署 math-site/dist 恢复）。新站要独立域名必须**在新会话/新 workspace** 里发布，步骤见 `PUBLISH.md`。
