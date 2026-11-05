@@ -1586,6 +1586,159 @@ def fig_geometric_extremum():
     f.save("geometric-extremum.svg")
 
 
+def fig_trig_ratios():
+    f = Fig(700, 430)
+    f.text(30, 32, "① 锐角三角函数：对边、邻边、斜边", 15, DARK, weight="bold")
+    A, B, C = (170, 300), (500, 110), (500, 300)
+    # 斜边 AB（灰）、A 的邻边 AC（蓝）、A 的对边 BC（红）
+    f.line(A[0], A[1], B[0], B[1], GREY, 3.0)
+    f.line(A[0], A[1], C[0], C[1], BLUE, 3.0)
+    f.line(B[0], B[1], C[0], C[1], RED, 3.0)
+    # 直角记号在 C
+    f.right_angle(C[0], C[1], 180, 270, 12)
+    # 角 A 的弧（红色）
+    aA = math.degrees(math.atan2(B[1] - A[1], B[0] - A[0]))
+    f.arc(A[0], A[1], 52, aA, 0, RED, 2.2)
+    f.text(A[0] + 62, A[1] - 14, "α", 14, RED, anchor="middle", weight="bold")
+    # 角 B 的弧（绿色）
+    aB = math.degrees(math.atan2(A[1] - B[1], A[0] - B[0]))
+    f.arc(B[0], B[1], 48, 90, aB, GRN, 2.2)
+    f.text(B[0] - 32, B[1] + 34, "β", 14, GRN, anchor="middle", weight="bold")
+    for p, name, off in [(A, "A", (-14, 16)), (B, "B", (12, -6)), (C, "C", (16, 10))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 13, DARK, anchor="middle")
+    # 边名：a 在 BC 右侧，b 在 AC 下方，c 在 AB 中点上方
+    f.text(516, 214, "a", 14, RED, anchor="middle", weight="bold")
+    f.text(335, 324, "b", 14, BLUE, anchor="middle", weight="bold")
+    f.text(322, 190, "c", 14, GREY, anchor="middle", weight="bold")
+    f.text(516, 214, "", 10, RED)
+    # 说明：对 A 而言
+    f.text(516, 240, "A 的对边", 11, RED)
+    f.text(380, 346, "A 的邻边", 11, BLUE)
+    f.text(300, 168, "斜边", 11, GREY)
+    # 右侧公式区
+    x0 = 566
+    f.text(x0, 96, "以 A 为准：", 12, DARK, weight="bold")
+    f.text(x0, 124, "sin A = a / c", 13, RED)
+    f.text(x0, 150, "cos A = b / c", 13, BLUE)
+    f.text(x0, 176, "tan A = a / b", 13, DARK)
+    f.text(x0, 210, "以 B 为准：", 12, GRN, weight="bold")
+    f.text(x0, 238, "sin B = b / c", 13, GRN)
+    f.text(x0, 264, "cos B = a / c", 13, GRN)
+    f.text(x0, 290, "tan B = b / a", 13, GRN)
+    f.line(x0, 306, 686, 306, GREY, 1.0)
+    f.text(x0, 330, "换到另一个角，", 11, DARK)
+    f.text(x0, 352, "a 与 b 就互换", 11, DARK)
+    f.text(x0, 382, "斜边 c 始终不变", 11, GREY)
+    f.save("trig-ratios.svg")
+
+
+def fig_right_triangle():
+    f = Fig(760, 380)
+    f.text(28, 30, "① 解直角三角形的三条路径　　② 坡角与坡度", 15, DARK, weight="bold")
+    # 左：通用示意图
+    A, B, C = (120, 250), (250, 105), (250, 250)
+    f.line(A[0], A[1], B[0], B[1], GREY, 3.2)      # 斜边
+    f.line(A[0], A[1], C[0], C[1], BLUE, 2.6)     # 一条直角边
+    f.line(B[0], B[1], C[0], C[1], GRN, 2.6)      # 另一条直角边
+    f.right_angle(C[0], C[1], 180, 270, 10)
+    aA = math.degrees(math.atan2(B[1] - A[1], B[0] - A[0]))
+    f.arc(A[0], A[1], 44, aA, 0, RED, 2.0)
+    f.text(A[0] + 56, A[1] - 6, "α", 14, RED, anchor="middle", weight="bold")
+    for p, name, off in [(A, "A", (-14, 16)), (B, "B", (12, -6)), (C, "C", (16, 10))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 13, DARK, anchor="middle")
+    f.text(146, 146, "c（斜边）", 11, GREY, anchor="middle")
+    f.text(186, 272, "已知 b", 11, BLUE, anchor="middle")
+    f.text(272, 180, "求 a", 11, GRN, anchor="middle")
+    f.text(120, 292, "未知边先标出，再选公式", 11, DARK)
+    # 三条路径
+    y0 = 316
+    f.text(28, y0, "已知斜边 → 用正弦、余弦", 12, RED)
+    f.text(28, y0 + 22, "已知一条直角边和锐角 → 用正切或余弦", 12, BLUE)
+    f.text(28, y0 + 44, "已知两条直角边 → 先勾股，再求比值", 12, GRN)
+    # 右：坡角示意图
+    O = (520, 300)
+    f.line(460, 300, 745, 300, DARK, 2.0)          # 地面
+    f.line(O[0], O[1], 700, 180, GREY, 3.0)         # 坡面
+    f.line(O[0], O[1], O[0], 180, BLUE, 2.4)        # 铅直
+    f.arc(O[0], O[1], 54, -34, 0, RED, 2.2)
+    f.text(O[0] + 66, O[1] - 10, "α", 13, RED, anchor="middle", weight="bold")
+    f.text(O[0] - 14, O[1] + 18, "O", 12, DARK, anchor="middle")
+    f.text(612, 232, "l", 13, GREY, anchor="middle", weight="bold")
+    f.text(502, 240, "h", 13, BLUE, anchor="middle", weight="bold")
+    f.text(614, 322, "b", 13, DARK, anchor="middle", weight="bold")
+    f.text(464, 324, "地面", 11, GREY)
+    f.text(470, 104, "坡角 α 是坡面与水平面的夹角", 12, DARK)
+    f.text(470, 130, "坡度 i = h / b = tan α", 13, RED, weight="bold")
+    f.text(470, 156, "i = 0.75 表示每 100 米水平距离上升 75 米", 11, GREY)
+    f.save("right-triangle-solving.svg")
+
+
+def fig_trig_applications():
+    f = Fig(780, 360)
+    f.text(24, 28, "三角函数的三种典型应用", 15, DARK, weight="bold")
+    # ── 左格：测树高 ──
+    f.text(130, 56, "测树高", 13, DARK, anchor="middle", weight="bold")
+    gy = 300
+    f.line(30, gy, 250, gy, DARK, 2.0)                      # 地面
+    f.line(210, gy, 210, 110, GRN, 3.0)                     # 树
+    f.text(222, 150, "树", 11, GRN)
+    E = (60, gy - 26)                                       # 眼睛
+    f.line(30, E[1], 250, E[1], GREY, 1.2, dash="5 4")      # 视平线
+    f.text(34, E[1] - 6, "视平线", 10, GREY)
+    f.line(E[0], E[1], 210, 110, RED, 2.0)                  # 视线
+    f.arc(E[0], E[1], 46, -30, 0, RED, 2.0)
+    f.text(E[0] + 58, E[1] - 6, "α", 12, RED, anchor="middle", weight="bold")
+    f.dot(E[0], E[1])
+    f.text(88, 292, "眼睛", 10, DARK, anchor="middle")
+    f.line(E[0], gy, 210, gy, BLUE, 1.6, dash="4 3")        # 水平距离 b
+    f.text(135, gy + 16, "b", 12, BLUE, anchor="middle", weight="bold")
+    f.line(E[0], E[1], E[0], gy, BLUE, 1.6, dash="4 3")     # 眼睛高 e
+    f.text(E[0] - 14, (E[1] + gy) / 2, "e", 11, BLUE, anchor="middle")
+    f.text(214, (gy + 110) / 2, "h", 12, GRN, anchor="middle", weight="bold")
+    f.text(130, 336, "h = b·tan α + e", 13, RED, anchor="middle", weight="bold")
+    f.line(258, 60, 258, 320, GREY, 1.0)
+    # ── 中格：测山高（山顶在山脚落点正上方）──
+    f.text(400, 56, "测山高", 13, DARK, anchor="middle", weight="bold")
+    P, C, T = (300, 260), (500, 300), (500, 96)
+    f.line(270, 300, 540, 300, DARK, 1.8)                   # 地面
+    f.line(T[0], T[1], C[0], C[1], GRN, 3.0)                # 山体
+    f.line(T[0], T[1], 452, 300, GRN, 2.0)                  # 山另一侧
+    f.text(436, 252, "山", 11, GRN)
+    f.line(P[0], P[1], T[0], T[1], RED, 2.0)                # 视线（山顶）
+    f.line(P[0], P[1], C[0], C[1], BLUE, 2.0)               # 视线（山脚落点）
+    f.line(280, P[1], 520, P[1], GREY, 1.2, dash="5 4")     # 水平线
+    aA = math.degrees(math.atan2(T[1] - P[1], T[0] - P[0]))
+    f.arc(P[0], P[1], 42, aA, 0, RED, 2.0)
+    f.text(P[0] + 54, P[1] - 10, "α", 12, RED, anchor="middle", weight="bold")
+    aC = math.degrees(math.atan2(C[1] - P[1], C[0] - P[0]))
+    f.arc(P[0], P[1], 42, 0, aC, BLUE, 2.0)
+    f.text(P[0] + 56, P[1] + 22, "β", 12, BLUE, anchor="middle", weight="bold")
+    f.dot(P[0], P[1]); f.text(P[0] - 14, P[1] + 18, "P", 11, DARK, anchor="middle")
+    f.text(400, P[1] - 8, "d", 11, DARK, anchor="middle")
+    f.text(C[0] + 14, 196, "H", 12, GRN, anchor="middle", weight="bold")
+    f.text(400, 336, "H = d·(tan α + tan β)", 13, RED, anchor="middle", weight="bold")
+    f.line(528, 60, 528, 320, GREY, 1.0)
+    # ── 右格：坡角与坡度 ──
+    f.text(670, 56, "坡角与坡度", 13, DARK, anchor="middle", weight="bold")
+    O2 = (585, 230)
+    f.line(540, 230, 760, 230, DARK, 2.0)
+    f.line(O2[0], O2[1], 720, 128, GREY, 3.0)               # 坡面
+    f.line(O2[0], O2[1], O2[0], 128, BLUE, 2.4)             # 铅直
+    f.arc(O2[0], O2[1], 48, -34, 0, RED, 2.2)
+    f.text(O2[0] + 60, O2[1] - 10, "α", 13, RED, anchor="middle", weight="bold")
+    f.text(O2[0] - 14, O2[1] + 18, "O", 12, DARK, anchor="middle")
+    f.text(660, 168, "l", 12, GREY, anchor="middle", weight="bold")
+    f.text(569, 180, "h", 12, BLUE, anchor="middle", weight="bold")
+    f.text(660, 252, "b", 12, DARK, anchor="middle", weight="bold")
+    f.text(536, 222, "地面", 11, GREY)
+    f.text(650, 282, "i = h / b = tan α", 13, RED, anchor="middle", weight="bold")
+    f.text(650, 306, "坡度 i 就是坡角的正切", 11, GREY, anchor="middle")
+    f.text(650, 330, "i = 0.75 → 3 : 4 : 5", 12, DARK, anchor="middle")
+    f.save("trig-applications.svg")
+
+
 if __name__ == "__main__":
     fig_lines()
     fig_angle()
@@ -1615,3 +1768,6 @@ if __name__ == "__main__":
     fig_translation_rotation()
     fig_transform_coords()
     fig_geometric_extremum()
+    fig_trig_ratios()
+    fig_right_triangle()
+    fig_trig_applications()
