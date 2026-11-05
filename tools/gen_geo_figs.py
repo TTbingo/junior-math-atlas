@@ -819,12 +819,13 @@ def fig_circle_perp():
     f.text(560, 150, "h", 12, RED)
     f.arrow_line(A2[0], 254, B2[0], 254, GREY, 1.6)
     f.text(600, 276, "a（跨度）", 12, GREY, anchor="middle")
-    for p, name, off in [(O2, "O", (12, 4)), ((600, 230), "M", (12, 4)),
-                         (A2, "", (0, 0)), (B2, "", (0, 0))]:
-        if name:
-            f.dot(p[0], p[1])
-            f.text(p[0] + off[0], p[1] + off[1], name, 13, DARK, anchor="middle")
+    for p, name, off in [(O2, "O", (12, 4)), ((600, 230), "M", (12, 4))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 13, DARK, anchor="middle")
+    # 桥面弦的两端点：图上要标出 A、B（alt 与 caption 都提到弦 AB）
     f.dot(A2[0], A2[1]); f.dot(B2[0], B2[1])
+    f.text(A2[0] - 2, 214, "A", 13, DARK, anchor="middle")
+    f.text(B2[0] + 2, 214, "B", 13, DARK, anchor="middle")
     f.text(600, 316, "R² = (a/2)² + (R−h)²", 13, RED, anchor="middle", weight="bold")
     f.text(600, 341, "圆心到桥面 = R−h（垂足是跨度中点）", 12, DARK, anchor="middle")
     f.save("circle-perpendicular.svg")
@@ -1053,12 +1054,14 @@ def fig_regular_poly():
     f.poly(inner, "none", GREY, 1.4, dash="5 4")
     f.poly(V, "none", DARK, 2.2)
     f.line(O[0], O[1], B[0], B[1], RED, 2.0)
-    f.text(258, 132, "R", 11, RED)
+    f.text(236, 160, "R", 11, RED)
     M = ((A[0] + B[0]) / 2, (A[1] + B[1]) / 2)
     f.line(O[0], O[1], M[0], M[1], GREY, 1.6, dash="5 4")
     f.right_angle(M[0], M[1], 120, 210, 8)
     f.text(210, 152, "r", 11, GREY)
     f.text(231, 100, "a/2", 11, DARK, anchor="middle")
+    f.dot(M[0], M[1])
+    f.text(252, 124, "M", 12, DARK, anchor="middle")
     f.arc(O[0], O[1], 32, -30, 30, PURP, 2.0)
     f.text(246, 190, "60°", 12, PURP, anchor="middle")
     for p, name, off in [(O, "O", (12, 4)), (A, "A", (0, -12)), (B, "B", (16, 0)),
@@ -1077,10 +1080,14 @@ def fig_regular_poly():
     f.poly(S, "none", DARK, 2.2)
     f.line(A2[0], A2[1], C2[0], C2[1], GREY, 1.4)
     f.line(B2[0], B2[1], D2[0], D2[1], GREY, 1.4)
-    f.text(600, 100, "2R=√2·a", 11, GREY, anchor="middle")
+    # O→C 半条对角线：标外接圆直径 2R
     f.line(O2[0], O2[1], C2[0], C2[1], GREY, 1.6, dash="5 4")
     f.right_angle(C2[0], C2[1], 180, 90, 8)
-    f.text(626, 178, "r=a/2", 11, GREY, anchor="middle")
+    f.text(615, 148, "2R=√2·a", 11, GREY, anchor="middle")
+    # 边心距：O 垂直到边 AB 的中点，垂足处画直角记号
+    f.line(O2[0], O2[1], O2[0], A2[1], GREY, 1.6)
+    f.right_angle(O2[0], A2[1], 180, 270, 8)
+    f.text(590, 216, "r=a/2", 11, GREY, anchor="end")
     f.text(600, 288, "a", 12, DARK, anchor="middle")
     for p, name, off in [(O2, "O", (0, -20)), (A2, "A", (-14, -8)), (B2, "B", (14, -8)),
                          (C2, "C", (14, 20)), (D2, "D", (-14, 20))]:
