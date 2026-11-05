@@ -111,6 +111,7 @@ def main():
     points = {}
     for f in sorted((C / "points").glob("*.json")):
         points[f.stem] = json.loads(f.read_text(encoding="utf-8"))
+    tb = json.loads((C / "textbook.json").read_text(encoding="utf-8"))
 
     bad = []
     for pid, p in points.items():
@@ -139,6 +140,28 @@ def main():
             # 「后续」必须排在本文之后——否则是把前置误标成了后续
             if r.get("kind") == "后续" and r["id"] in order and order[r["id"]] < order[pid]:
                 bad.append(f"{pid}: 「后续」{r['id']} 实际排在本文之前，应改为「前置」或「常一起考」")
+
+        # 教材定位：必须有，且章节能在教材目录里查到
+        ref = p.get("textbook_ref")
+        if not ref:
+            bad.append(f"{pid}: 缺 textbook_ref（教材定位）")
+        else:
+            vol = tb["volumes"].get(ref.get("volume"))
+            if not vol:
+                bad.append(f"{pid}: 教材册次 {ref.get('volume')} 不在教材目录内")
+            else:
+                ch = vol["chapters"].get(ref.get("chapter"))
+                if not ch:
+                    bad.append(f"{pid}: 教材章节 {ref.get('volume')} 第{ref.get('chapter')}章 不在目录内")
+                else:
+                    for sec in ref.get("sections", []):
+                        if sec not in ch["sections"]:
+                            bad.append(f"{pid}: 教材节号 {sec} 不在 {ref['volume']} 第{ref['chapter']}章 内")
+                if not ref.get("note"):
+                    bad.append(f"{pid}: textbook_ref 缺 note（要说明与教材的对应关系）")
+                elif ref.get("sections") and ref["note"].startswith(ref["sections"][0] + " "):
+                    # note 直接以「32.1 正弦、余弦与正切」开头 = 复制了定位行
+                    bad.append(f"{pid}: textbook_ref.note 与定位行重复（应以「对应/落在」开头讲差异）")
 
         # 三类关联要齐全
         kinds = {r.get("kind") for r in rel}

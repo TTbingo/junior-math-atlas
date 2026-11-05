@@ -54,7 +54,8 @@ def load_all():
     std = {s["id"]: s for s in read_json(C / "standards.json")["items"]}
     mod = read_json(C / "modules.json")
     points = {p.stem: read_json(p) for p in sorted((C / "points").glob("*.json"))}
-    return tax, site, std, mod, points
+    tb = read_json(C / "textbook.json")
+    return tax, site, std, mod, points, tb
 
 # --------------------------------------------------------------- markdown
 MATH_FALLBACK = [
@@ -390,8 +391,9 @@ def validate(tax, std, mod, points):
 class Index:
     """按「模块 → 节 → 知识点」组织。清单里已写和待写都在，只是待写的不出现在页面链接里。"""
 
-    def __init__(self, tax, std, mod, points):
+    def __init__(self, tax, std, mod, points, tb):
         self.tax, self.std, self.mod, self.points = tax, std, mod, points
+        self.tb = tb
         self.point_titles = mod.get("point_titles", {})
         self.modules = {m["id"]: m for m in mod["modules"]}
         self.module_order = [m["id"] for m in mod["modules"]]
@@ -460,6 +462,46 @@ def render_media(p, depth, idx):
             f'<img src="{src}" width="{m.get("width",480)}" height="{m.get("height",260)}" '
             f'alt="{attr(m.get("alt",""))}" loading="lazy">'
             f'<figcaption>{esc(m.get("caption",""))}</figcaption></figure>')
+    return "".join(out)
+
+
+def textbook_line(p, idx):
+    """把 textbook_ref 渲染成「册次 · 第X章 章名 · X.Y 节名」。
+
+    教材定位比「第四学段」精确得多——读者据此能翻到课本的那一节。
+    """
+    ref = p.get("textbook_ref")
+    if not ref:
+        return ""
+    tb = idx.tb
+    vol = tb["volumes"].get(ref.get("volume"))
+    if not vol:
+        return ""
+    ch = vol["chapters"].get(ref.get("chapter"))
+    if not ch:
+        return ""
+    parts = [f'<span class="tb-vol">{esc(vol["label"])}</span>',
+             f'<span class="tb-ch">第{esc(ref["chapter"])}章 {esc(ch["title"])}</span>']
+    for sec in ref.get("sections", []):
+        name = ch["sections"].get(sec)
+        if name:
+            parts.append(f'<span class="tb-sec">{esc(sec)} {esc(name)}</span>')
+    return '<span class="tb-line">' + "".join(parts) + "</span>"
+
+
+def render_textbook(p, depth, idx):
+    """教材定位区块：定位行 + 对应说明。"""
+    line = textbook_line(p, idx)
+    if not line:
+        return ""
+    ref = p.get("textbook_ref", {})
+    tb = idx.tb
+    out = [f'<section class="block textbook"><h2>教材定位</h2>',
+           f'<p class="tb-edition">{esc(tb["publisher"])}《{esc(tb["edition"])}》</p>',
+           f'<p class="tb-main">{line}</p>']
+    if ref.get("note"):
+        out.append(f'<p class="tb-note">{render_inline(ref["note"])}</p>')
+    out.append("</section>")
     return "".join(out)
 
 
@@ -755,6 +797,7 @@ def emit_point(idx, pid, depth=2):
             '</h1>' + head + '</div>',
             '<div class="panel panel-body">',
             f'<section class="block overview">{overview}</section>']
+    body.append(render_textbook(p, depth, idx))
     body.append(render_standards(p, depth, idx))
     secs = render_sections(p, depth, idx, 2)
     if p.get("media"):
@@ -1061,7 +1104,7 @@ def copy_assets():
 
 
 def build():
-    tax, site, std, mod, points = load_all()
+    tax, site, std, mod, points, tb = load_all()
     validate(tax, std, mod, points)
     if errors:
         print(f"校验失败：{len(errors)} 个错误")
@@ -1070,7 +1113,7 @@ def build():
         if len(errors) > 60:
             print(f"  … 另有 {len(errors)-60} 条")
         return 1
-    idx = Index(tax, std, mod, points)
+    idx = Index(tax, std, mod, points, tb)
     idx.site_title_sub = site.get("subtitle", "")
 
     safe_rebuild()
@@ -1132,7 +1175,7 @@ def verify_output():
 
 
 def check():
-    tax, site, std, mod, points = load_all()
+    tax, site, std, mod, points, tb = load_all()
     validate(tax, std, mod, points)
     if errors:
         print(f"✗ {len(errors)} 个错误")

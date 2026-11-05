@@ -442,3 +442,20 @@ ul.pending { color: var(--text-faint); }
 }
 .ptref:hover { border-bottom-style: solid; background: var(--accent-soft); }
 .ptref-dead { color: var(--text-faint); }
+
+/* ---------- 教材定位 ---------- */
+.textbook { border-left: 3px solid var(--ok, #2f7d55); padding-left: .9rem; }
+.textbook h2 { margin-top: 0; }
+.tb-edition { font-size: var(--fs-sm); color: var(--text-sub); margin: 0 0 .4rem; }
+.tb-main { margin: 0 0 .4rem; }
+.tb-line { display: inline-flex; flex-wrap: wrap; gap: .4rem; align-items: baseline; }
+.tb-line > span {
+  display: inline-block; padding: .12rem .5rem; border-radius: 3px;
+  font-size: var(--fs-sm); border: 1px solid currentColor; white-space: nowrap;
+}
+.tb-vol { color: var(--ok, #2f7d55); font-weight: 600; }
+.tb-ch { color: var(--accent); font-weight: 600; }
+.tb-sec { color: var(--text-sub); }
+.tb-note { margin: 0; font-size: var(--fs-sm); color: var(--text-sub); }
+/* 小字号下 KaTeX 的上标（^{\circ} 等）会被挤断行，公式一律不换行 */
+.tb-note .math, .tb-note .katex { white-space: nowrap; font-size: 1.02em; }
