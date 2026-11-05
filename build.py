@@ -80,6 +80,36 @@ def attr(s):
     return s.replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;").replace(">", "&gt;")
 
 
+# 渲染期上下文：当前页面的 depth 与知识点索引，供 [[id]] 生成站内链接
+RENDER_CTX = {"depth": 2, "idx": None}
+
+
+def set_render_ctx(idx, depth):
+    RENDER_CTX["idx"] = idx
+    RENDER_CTX["depth"] = depth
+
+
+def _point_link(m):
+    """把 [[m2-05-02]] 转成指向该知识点页的链接，链接文字是知识点名称。
+
+    正文里用短 ID（m2-05-02）更易读，而 idx.points 的键是完整 slug
+    （m2-05-02-similar-triangles），这里做一次短 ID → slug 的映射。
+    """
+    short = m.group(1)
+    idx = RENDER_CTX.get("idx")
+    if idx is None:
+        return f'<span class="ptref-dead">{esc(short)}</span>'
+    # 短 ID 精确匹配 slug 前缀，且必须唯一
+    hits = [k for k in idx.points if k == short or k.startswith(short + "-")]
+    if len(hits) != 1:
+        # 找不到或匹配到多个：退回纯文本，不生成错链接
+        return f'<span class="ptref-dead">{esc(short)}</span>'
+    pid = hits[0]
+    title = idx.points[pid]["title"]
+    href = idx.rel(pid, RENDER_CTX["depth"])
+    return f'<a class="ptref" href="{href}">{esc(title)}</a>'
+
+
 def md_inline(s):
     s = esc(s)
     s = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", s, flags=re.S)
@@ -87,6 +117,8 @@ def md_inline(s):
     s = re.sub(r"`([^`\n]+)`", r'<code class="inline">\1</code>', s)
     s = re.sub(r"@@([A-Za-z0-9_-]+)", r'<span class="figref" data-fig="\1"></span>', s)
     s = re.sub(r"@point:([a-z0-9-]+)", r'<span class="ptref" data-point="\1"></span>', s)
+    # [[知识点 id]] → 站点内链接（文字是知识点名称，不是 id）
+    s = re.sub(r"\[\[(m[123]-\d{2}-\d{2})\]\]", _point_link, s)
     return s
 
 
@@ -689,6 +721,7 @@ def build_toc(entries):
 
 # --------------------------------------------------------------- pages
 def emit_point(idx, pid, depth=2):
+    set_render_ctx(idx, depth)
     p = idx.points[pid]
     tax = idx.tax
     scope_label = tax["scopes"].get(p.get("scope", "core"), "")
@@ -778,6 +811,7 @@ def render_related_block_tail(p, depth, idx):
 
 
 def emit_topic(idx, tid, depth=2):
+    set_render_ctx(idx, depth)
     """主题页：这一节讲什么、对应课标哪几条、下面有哪些知识点。"""
     t = idx.topics[tid]
     mid = t["module"]
@@ -835,6 +869,7 @@ def emit_topic(idx, tid, depth=2):
 
 
 def emit_module(idx, mid, depth=1):
+    set_render_ctx(idx, depth)
     """模块页：这个模块由哪些主题组成。"""
     m = idx.modules[mid]
     tids = idx.module_topics(mid)
@@ -887,6 +922,7 @@ def emit_module(idx, mid, depth=1):
     }))
 
 def emit_home(idx, depth=0):
+    set_render_ctx(idx, depth)
     tax = idx.tax
     n_written = len(idx.point_order)
     n_topics = len(idx.topic_order)
@@ -940,6 +976,7 @@ def emit_home(idx, depth=0):
     }))
 
 def emit_404(idx, depth=0):
+    set_render_ctx(idx, depth)
     main = ('<div class="panel panel-h1"><h1 id="_top">页面不存在</h1></div>'
             '<div class="panel panel-body"><section class="block">'
             '<p>这个地址下还没有内容。<a href="index.html">回到首页</a>。</p>'

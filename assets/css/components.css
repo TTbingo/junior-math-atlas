@@ -431,3 +431,14 @@ ul.pending { color: var(--text-faint); }
 /* 待写知识点：置灰、不可点 */
 .items .is-pending { color: var(--text-sub, #718096); }
 .items .is-pending .tag-soon { margin-left: .5rem; }
+
+/* ---------- 正文内的知识点跳转链接 ---------- */
+.ptref {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--accent-soft);
+  padding-bottom: 1px;
+  white-space: nowrap;
+}
+.ptref:hover { border-bottom-style: solid; background: var(--accent-soft); }
+.ptref-dead { color: var(--text-faint); }

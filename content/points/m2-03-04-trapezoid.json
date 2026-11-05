@@ -60,7 +60,7 @@
       "steps": [
         {
           "conclusion": "等腰梯形在同一底上的两个角相等。",
-          "proof": "证「等腰 → 同一底上两角相等」用平移一腰：过 $A$ 作 $AE\\parallel BC$ 交 $DC$ 于 $E$（图 1 左）。$AB\\parallel EC$（$E$ 在 $DC$ 上），加上 $AE\\parallel BC$——两组对边分别平行，$ABCE$ 是平行四边形，故 $AE=BC$。又等腰梯形 $AD=BC$，于是 $AD=AE$，$\\triangle ADE$ 是等腰三角形，底角相等：$\\angle ADC=\\angle AED$；而 $AE\\parallel BC$、$DE$ 与 $DC$ 共线，$\\angle AED$ 与 $\\angle BCD$ 是同位角（m2-01-03）——$\\angle ADC=\\angle BCD$，同一底上两角相等。",
+          "proof": "证「等腰 → 同一底上两角相等」用平移一腰：过 $A$ 作 $AE\\parallel BC$ 交 $DC$ 于 $E$（图 1 左）。$AB\\parallel EC$（$E$ 在 $DC$ 上），加上 $AE\\parallel BC$——两组对边分别平行，$ABCE$ 是平行四边形，故 $AE=BC$。又等腰梯形 $AD=BC$，于是 $AD=AE$，$\\triangle ADE$ 是等腰三角形，底角相等：$\\angle ADC=\\angle AED$；而 $AE\\parallel BC$、$DE$ 与 $DC$ 共线，$\\angle AED$ 与 $\\angle BCD$ 是同位角（[[m2-01-03]]）——$\\angle ADC=\\angle BCD$，同一底上两角相等。",
           "key": "依据是「平移一腰」把梯形拆成平行四边形加三角形：$AB\\parallel EC$ 与 $AE\\parallel BC$ 给出两组对边分别平行，$ABCE$ 是平行四边形，$AE=BC$；等腰梯形 $AD=BC$ 于是 $AD=AE$，$\\triangle ADE$ 等腰、底角相等；最后 $AE\\parallel BC$ 且 $DE$ 与 $DC$ 共线，$\\angle AED$ 与 $\\angle BCD$ 是同位角，角才落到下底上。"
         },
         {
@@ -75,13 +75,13 @@
         },
         {
           "conclusion": "顺次连接四边形各边中点所得的四边形是平行四边形。",
-          "proof": "中点四边形是平行四边形：见「说明」第 3 段的中位线接力——两对中位线分别平行且等于同一条对角线的一半，$EF\\parallel HG$ 且 $EF=HG$（一组对边平行且相等，m2-03-02 判定②）即得平行四边形。",
-          "key": "依据是中位线定理（m2-02-06）加上 m2-03-02 的判定②：两对中位线分别平行于同一条对角线、且都等于该对角线的一半，于是 $EF\\parallel HG$ 且 $EF=HG$，正好是「一组对边平行且相等」，所以中点四边形是平行四边形。"
+          "proof": "中点四边形是平行四边形：见「说明」第 3 段的中位线接力——两对中位线分别平行且等于同一条对角线的一半，$EF\\parallel HG$ 且 $EF=HG$（一组对边平行且相等，[[m2-03-02]] 判定②）即得平行四边形。",
+          "key": "依据是中位线定理（[[m2-02-06]]）加上 [[m2-03-02]] 的判定②：两对中位线分别平行于同一条对角线、且都等于该对角线的一半，于是 $EF\\parallel HG$ 且 $EF=HG$，正好是「一组对边平行且相等」，所以中点四边形是平行四边形。"
         },
         {
           "conclusion": "梯形的中位线平行于两底，且等于两底之和的一半。",
-          "proof": "梯形中位线（$E$、$F$ 分别是腰 $AD$、$BC$ 的中点）：连接 $DF$ 并延长，交 $AB$ 的延长线于 $G$。$\\triangle DCF$ 与 $\\triangle GBF$ 中：$CF=BF$（F 是 $BC$ 中点）、$\\angle DFC=\\angle GFB$（对顶角）、$\\angle DCF=\\angle GBF$（$DC\\parallel AB$，同位角）——ASA，$\\triangle DCF\\cong\\triangle GBF$，得 $DC=GB$、$DF=GF$。于是在 $\\triangle DAG$ 中，$E$ 是 $AD$ 中点、$F$ 是 $DG$ 中点——$EF$ 是中位线（m2-02-06）：$EF\\parallel AG$（即平行于两底）且 $EF=\\tfrac12 AG=\\tfrac12(AB+BG)=\\tfrac12(AB+DC)$，两底和的一半。",
-          "key": "依据是「补一个三角形」：延长 $DF$ 交 $AB$ 的延长线于 $G$，梯形被补成 $\\triangle DAG$，$E$、$F$ 恰是它两条边上的中点，于是 $EF$ 是这个三角形的中位线（m2-02-06），给出 $EF\\parallel AG$ 与 $EF=\\tfrac12 AG$。而 $AG=AB+BG$、$BG=DC$ 来自 ASA 全等得到的 $DC=GB$，所以结果是两底和的一半。"
+          "proof": "梯形中位线（$E$、$F$ 分别是腰 $AD$、$BC$ 的中点）：连接 $DF$ 并延长，交 $AB$ 的延长线于 $G$。$\\triangle DCF$ 与 $\\triangle GBF$ 中：$CF=BF$（F 是 $BC$ 中点）、$\\angle DFC=\\angle GFB$（对顶角）、$\\angle DCF=\\angle GBF$（$DC\\parallel AB$，同位角）——ASA，$\\triangle DCF\\cong\\triangle GBF$，得 $DC=GB$、$DF=GF$。于是在 $\\triangle DAG$ 中，$E$ 是 $AD$ 中点、$F$ 是 $DG$ 中点——$EF$ 是中位线（[[m2-02-06]]）：$EF\\parallel AG$（即平行于两底）且 $EF=\\tfrac12 AG=\\tfrac12(AB+BG)=\\tfrac12(AB+DC)$，两底和的一半。",
+          "key": "依据是「补一个三角形」：延长 $DF$ 交 $AB$ 的延长线于 $G$，梯形被补成 $\\triangle DAG$，$E$、$F$ 恰是它两条边上的中点，于是 $EF$ 是这个三角形的中位线（[[m2-02-06]]），给出 $EF\\parallel AG$ 与 $EF=\\tfrac12 AG$。而 $AG=AB+BG$、$BG=DC$ 来自 ASA 全等得到的 $DC=GB$，所以结果是两底和的一半。"
         }
       ],
       "experiment": "任意画一个四边形（越歪越好），量出四边中点并顺次连线；用直尺比对：连线段分别与两条对角线平行，长度恰是对应对角线的一半。换一个有直角的、一个对角线相等的四边形再试——中点四边形先后变成矩形与菱形（角/边被原对角线「传染」）。"
@@ -97,7 +97,7 @@
         "scene": "测量与工程",
         "context": "水渠截面",
         "question": "等腰梯形水渠截面，上底宽 8 米，下底宽 14 米，深（高）4 米。求截面两腰的长度与周长。",
-        "solution": "下底比上底长 $14-8=6$（米），等腰梯形被双高均分，每侧水平段 $6\\div 2=3$（米）。腰 $=\\sqrt{3^2+4^2}=\\sqrt{9+16}=\\sqrt{25}=5$（米）（勾股，m2-02-05）。周长 $=8+14+5+5=32$（米）。",
+        "solution": "下底比上底长 $14-8=6$（米），等腰梯形被双高均分，每侧水平段 $6\\div 2=3$（米）。腰 $=\\sqrt{3^2+4^2}=\\sqrt{9+16}=\\sqrt{25}=5$（米）（勾股，[[m2-02-05]]）。周长 $=8+14+5+5=32$（米）。",
         "answer": "两腰各长 5 米，截面周长 32 米。"
       },
       {

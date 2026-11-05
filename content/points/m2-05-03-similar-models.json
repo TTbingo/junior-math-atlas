@@ -45,7 +45,7 @@
       "A 字型：$DE\\parallel BC$ 截 $\\triangle ABC$ 两边，$\\triangle ADE\\sim\\triangle ABC$（公共角 $\\angle A$ 加同位角相等，AA）。形状像字母 A——顶角公共，平行线当横杠。全等模型里的「平移型」是它 $k=1$ 的版本。",
       "8 字型：两条平行线被一对交叉直线所截，交叉点连出「两个对顶的三角形」相似（对顶角相等加平行线角，AA）。形状像数字 8——上圈下圈对顶。对应关系是交叉的：上圈的左顶点对应下圈的右顶点（两点在同一条截线两端），照「同名位置」直觉写对应式必错。",
       "母子型（射影定理）：Rt$\\triangle ABC$ 斜边 $BC$ 上的高 $AD$ 把它拆成两个小直角三角形，三个直角三角形两两相似（公共锐角加直角）。由此得射影定理：$AD^2=BD\\cdot DC$、$AB^2=BD\\cdot BC$、$AC^2=DC\\cdot BC$——「高的平方 = 两段斜边的乘积」。「母子」指原三角形与它拆出的小三角形共一个锐角。",
-      "一线三等角型：$B$、$D$、$C$ 排在同一直线上，$A$、$E$ 在线外，$\\angle B=\\angle C=\\angle ADE$——两个小三角形相似（等角配平角推出第三对角相等，AA），全等模型的一线三等角（m2-02-03）换成等角值不同或边成比例就是这里。$\\angle B=\\angle C=\\angle ADE=90^{\\circ}$ 时特称「一线三垂直」，是网格与坐标系题的常客。"
+      "一线三等角型：$B$、$D$、$C$ 排在同一直线上，$A$、$E$ 在线外，$\\angle B=\\angle C=\\angle ADE$——两个小三角形相似（等角配平角推出第三对角相等，AA），全等模型的一线三等角（[[m2-02-03]]）换成等角值不同或边成比例就是这里。$\\angle B=\\angle C=\\angle ADE=90^{\\circ}$ 时特称「一线三垂直」，是网格与坐标系题的常客。"
     ],
     "scenarios": [
       "树影测高：同一时刻阳光平行照射，竖直标杆与树、各自的影子构成 A 字型（光线当平行横杠）——标杆高:标杆影长 = 树高:树影长，量影子即可算不着的树顶。",
@@ -61,13 +61,13 @@
       "steps": [
         {
           "conclusion": "A 字型：$DE\\parallel BC$ 时 $\\triangle ADE\\sim\\triangle ABC$，比例式即平行线分线段成比例。",
-          "proof": "$\\angle A$ 公共；$\\angle ADE=\\angle B$（$DE\\parallel BC$ 同位角，m2-01-03）。AA 得 $\\triangle ADE\\sim\\triangle ABC$，比例式即 m2-05-01 的比例转移。",
-          "key": "依据是 AA 加平行线同位角（m2-01-03）：$\\angle A$ 是公共角，$\\angle ADE=\\angle B$ 由 $DE\\parallel BC$ 的同位角相等得到，两角对应相等即相似；写出的比例式与 m2-05-01 的比例转移是同一个式子，说明 A 字型不是新结论，而是比例定理的一种外形。"
+          "proof": "$\\angle A$ 公共；$\\angle ADE=\\angle B$（$DE\\parallel BC$ 同位角，[[m2-01-03]]）。AA 得 $\\triangle ADE\\sim\\triangle ABC$，比例式即 [[m2-05-01]] 的比例转移。",
+          "key": "依据是 AA 加平行线同位角（[[m2-01-03]]）：$\\angle A$ 是公共角，$\\angle ADE=\\angle B$ 由 $DE\\parallel BC$ 的同位角相等得到，两角对应相等即相似；写出的比例式与 [[m2-05-01]] 的比例转移是同一个式子，说明 A 字型不是新结论，而是比例定理的一种外形。"
         },
         {
           "conclusion": "8 字型：$\\triangle ABP\\sim\\triangle DCP$，比例式 $\\tfrac{AP}{DP}=\\tfrac{BP}{CP}=\\tfrac{AB}{DC}$。",
-          "proof": "两条交叉直线相交于 $P$，$AD$ 与 $BC$ 各是一条截线，$AB\\parallel CD$。$\\angle APB=\\angle CPD$（对顶角，m2-01-03）；$\\angle PAB=\\angle PDC$（内错角，截线 $AD$ 截平行线 $AB$、$CD$）。AA 得 $\\triangle ABP\\sim\\triangle DCP$，比例式 $\\tfrac{AP}{DP}=\\tfrac{BP}{CP}=\\tfrac{AB}{DC}$——配对规律：站在同一条截线两端的两个顶点互为对应。",
-          "key": "依据是两组角分别由平行线性质给出：$\\angle APB=\\angle CPD$ 是对顶角（m2-01-03），$\\angle PAB=\\angle PDC$ 是截线 $AD$ 截平行线 $AB$、$CD$ 所得的内错角，AA 判定成立。对应顶点要按「站在同一条截线两端的两个顶点互为对应」来排：$A$、$D$ 同在截线 $AD$ 上、$B$、$C$ 同在截线 $BC$ 上，所以相似写作 $\\triangle ABP\\sim\\triangle DCP$，比例式才不会写反。"
+          "proof": "两条交叉直线相交于 $P$，$AD$ 与 $BC$ 各是一条截线，$AB\\parallel CD$。$\\angle APB=\\angle CPD$（对顶角，[[m2-01-03]]）；$\\angle PAB=\\angle PDC$（内错角，截线 $AD$ 截平行线 $AB$、$CD$）。AA 得 $\\triangle ABP\\sim\\triangle DCP$，比例式 $\\tfrac{AP}{DP}=\\tfrac{BP}{CP}=\\tfrac{AB}{DC}$——配对规律：站在同一条截线两端的两个顶点互为对应。",
+          "key": "依据是两组角分别由平行线性质给出：$\\angle APB=\\angle CPD$ 是对顶角（[[m2-01-03]]），$\\angle PAB=\\angle PDC$ 是截线 $AD$ 截平行线 $AB$、$CD$ 所得的内错角，AA 判定成立。对应顶点要按「站在同一条截线两端的两个顶点互为对应」来排：$A$、$D$ 同在截线 $AD$ 上、$B$、$C$ 同在截线 $BC$ 上，所以相似写作 $\\triangle ABP\\sim\\triangle DCP$，比例式才不会写反。"
         },
         {
           "conclusion": "母子型：直角三角形斜边上的高把图形分成两个与原三角形相似的小三角形，$\\triangle ABD\\sim\\triangle CBA\\sim\\triangle CAD$，由此 $AB^2=BD\\cdot BC$、$AD^2=BD\\cdot DC$、$AC^2=DC\\cdot BC$。",
@@ -115,7 +115,7 @@
     ],
     "inferences": [
       "四副面孔与全等模型一一同构：A 字型↔平移型、8 字型↔对顶型、一线三等角↔一线三等角（全等版）、母子型没有全等对应（$k=1$ 时拆出的三角形不可能与原三角形全等）——全等是相似在 $k=1$ 处的截面。",
-      "射影定理可反推勾股：$AB^2+AC^2=BD\\cdot BC+DC\\cdot BC=(BD+DC)\\cdot BC=BC^2$——勾股定理（m2-02-05）的又一条证明路线，且和拼图证明互不依赖。",
+      "射影定理可反推勾股：$AB^2+AC^2=BD\\cdot BC+DC\\cdot BC=(BD+DC)\\cdot BC=BC^2$——勾股定理（[[m2-02-05]]）的又一条证明路线，且和拼图证明互不依赖。",
       "「母子型」里 $\\triangle ABD\\sim\\triangle CBA\\sim\\triangle CAD$ 三连相似是这张图的完整描述：任何「求高、求分点、求斜边段」的问题都在这六个比值间倒腾。"
     ],
     "pitfalls": [
