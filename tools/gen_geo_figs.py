@@ -1380,6 +1380,205 @@ def fig_projection_views():
     f.save("projection-views.svg")
 
 
+def fig_symmetry():
+    f = Fig(760, 380)
+    # ① 左：轴对称
+    f.text(190, 30, "① 轴对称：对称轴垂直平分对应点连线", 14, DARK, anchor="middle", weight="bold")
+    lx = 200
+    f.line(lx, 55, lx, 330, DARK, 2.0)
+    f.text(lx + 8, 66, "l", 12, DARK)
+    A, B, C = (90, 110), (140, 230), (60, 245)
+    A2 = (2 * lx - A[0], A[1])
+    B2 = (2 * lx - B[0], B[1])
+    C2 = (2 * lx - C[0], C[1])
+    for P, Q in [(A, A2), (B, B2), (C, C2)]:
+        f.line(P[0], P[1], Q[0], Q[1], GREY, 1.2, dash="5 4")
+        mx = (P[0] + Q[0]) / 2
+        f.tick(P[0], P[1], mx, P[1], 1, GREY)
+        f.tick(mx, P[1], Q[0], Q[1], 1, GREY)
+    f.poly([A, B, C], YELF, DARK, 1.8)
+    f.poly([A2, B2, C2], "none", DARK, 1.8)
+    f.right_angle(lx, 110, 90, 0, 11, GREY)
+    f.text(lx - 12, 126, "M", 11, DARK, anchor="middle")
+    for p, name, off in [(A, "A", (-12, -6)), (B, "B", (0, -10)), (C, "C", (-8, -8)),
+                         (A2, "A′", (12, -6)), (B2, "B′", (2, -14)), (C2, "C′", (12, -8))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 12, DARK, anchor="middle")
+    f.text(190, 356, "翻折重合：AB=A′B′，AM=MA′，l⊥AA′", 12, DARK, anchor="middle")
+    # ② 右：中心对称
+    f.text(580, 30, "② 中心对称：对称中心平分对应点连线", 14, DARK, anchor="middle", weight="bold")
+    O = (580, 195)
+    A, B, C = (460, 120), (440, 255), (550, 275)
+    A2 = (2 * O[0] - A[0], 2 * O[1] - A[1])
+    B2 = (2 * O[0] - B[0], 2 * O[1] - B[1])
+    C2 = (2 * O[0] - C[0], 2 * O[1] - C[1])
+    for P, Q in [(A, A2), (B, B2), (C, C2)]:
+        f.line(P[0], P[1], Q[0], Q[1], GREY, 1.2, dash="5 4")
+    f.poly([A, B, C], YELF, DARK, 1.8)
+    f.poly([A2, B2, C2], "none", DARK, 1.8)
+    # 等长刻痕放在靠近 O 的 30% 处，避开 B′C′ 边
+    for P in (B, B2):
+        t = 0.55
+        f.tick(O[0], O[1], O[0] + t * (P[0] - O[0]), O[1] + t * (P[1] - O[1]), 2, DARK)
+    f.dot(O[0], O[1], RED)
+    f.text(O[0] + 12, O[1] + 18, "O", 12, RED, anchor="middle")
+    for p, name, off in [(A, "A", (-10, -8)), (B, "B", (-12, 4)), (C, "C", (12, 4)),
+                         (A2, "A′", (12, -8)), (B2, "B′", (12, 4)), (C2, "C′", (12, 4))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 12, DARK, anchor="middle")
+    f.text(580, 356, "旋转 180° 重合：OB=OB′，O 是 BB′ 中点", 12, DARK, anchor="middle")
+    f.save("symmetry.svg")
+
+
+def fig_translation_rotation():
+    f = Fig(760, 380)
+    # ① 左：平移
+    f.text(200, 30, "① 平移：方向 + 距离", 14, DARK, anchor="middle", weight="bold")
+    A, B, C = (80, 245), (160, 195), (180, 270)
+    dx, dy = 150, -80
+    A2 = (A[0] + dx, A[1] + dy)
+    B2 = (B[0] + dx, B[1] + dy)
+    C2 = (C[0] + dx, C[1] + dy)
+    for P, Q in [(A, A2), (B, B2), (C, C2)]:
+        f.arrow_line(P[0], P[1], Q[0], Q[1], GREY, 1.6)
+        f.tick(P[0], P[1], Q[0], Q[1], 1, GREY)
+    f.poly([A, B, C], YELF, DARK, 1.8)
+    f.poly([A2, B2, C2], "none", DARK, 1.8)
+    for p, name, off in [(A, "A", (-12, -6)), (B, "B", (0, -10)), (C, "C", (10, 10)),
+                         (A2, "A′", (0, 16)), (B2, "B′", (6, -10)), (C2, "C′", (10, 10))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 12, DARK, anchor="middle")
+    f.text(300, 74, "位移向量处处相同", 11, GREY, anchor="middle")
+    f.text(200, 356, "对应点连线平行且相等，图形不变", 12, DARK, anchor="middle")
+    # ② 右：旋转（绕 O 逆时针 90°，两个三角形互不重叠）
+    f.text(590, 30, "② 旋转：中心 + 方向 + 角度", 14, DARK, anchor="middle", weight="bold")
+    O = (620, 250)
+    A, B, C = (700, 205), (730, 175), (655, 150)
+
+    def rot(p):
+        dx_, dy_ = p[0] - O[0], p[1] - O[1]
+        return (O[0] + dy_, O[1] - dx_)
+
+    A2, B2, C2 = rot(A), rot(B), rot(C)
+    f.line(O[0], O[1], A[0], A[1], GREY, 1.2, dash="5 4")
+    f.line(O[0], O[1], A2[0], A2[1], GREY, 1.2, dash="5 4")
+    f.tick(O[0], O[1], A[0], A[1], 1, GREY)
+    f.tick(O[0], O[1], A2[0], A2[1], 1, GREY)
+    r = math.hypot(A[0] - O[0], A[1] - O[1])
+    aA = math.degrees(math.atan2(A[1] - O[1], A[0] - O[0]))
+    aA2 = math.degrees(math.atan2(A2[1] - O[1], A2[0] - O[0]))
+    mid = aA + (((aA2 - aA + 180) % 360) - 180) / 2
+    f.arc(O[0], O[1], r, aA, aA2, RED, 1.2)
+    f.arc(O[0], O[1], 45, aA, aA2, RED, 2.0)
+    px, py = O[0] + r * math.cos(math.radians(aA2)), O[1] + r * math.sin(math.radians(aA2))
+    f.arrow_head(px, py, (px - O[0]) / r, (py - O[1]) / r, RED, 8)
+    f.poly([A, B, C], YELF, DARK, 1.8)
+    f.poly([A2, B2, C2], "none", DARK, 1.8)
+    f.dot(O[0], O[1], RED)
+    f.text(O[0] + 12, O[1] + 18, "O", 12, RED, anchor="middle")
+    amx = O[0] + 66 * math.cos(math.radians(mid))
+    amy = O[1] + 66 * math.sin(math.radians(mid))
+    f.text(amx, amy, "旋转角", 11, RED, anchor="middle")
+    for p, name, off in [(A, "A", (10, 6)), (B, "B", (10, -4)), (C, "C", (-12, -6)),
+                         (A2, "A′", (-12, 4)), (B2, "B′", (-10, -8)), (C2, "C′", (-12, 8))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 12, DARK, anchor="middle")
+    f.text(590, 356, "OA=OA′，∠AOA′=旋转角（方向不写要考虑两解）", 12, DARK, anchor="middle")
+    f.save("translation-rotation.svg")
+
+
+def fig_transform_coords():
+    f = Fig(680, 360)
+    f.text(340, 28, "三种对称的坐标规律：P(3,1) 的三个像", 14, DARK, anchor="middle", weight="bold")
+    O = (340, 240)
+    u = 50
+    f.arrow_line(O[0], O[1], 650, O[1], DARK, 1.6)
+    f.arrow_line(O[0], O[1], O[0], 52, DARK, 1.6)
+    f.text(640, O[1] + 20, "x", 11, DARK)
+    f.text(O[0] - 14, 62, "y", 11, DARK)
+    f.text(O[0] - 14, O[1] + 18, "O", 12, DARK, anchor="middle")
+    P = (O[0] + 3 * u, O[1] - 1 * u)
+    P1 = (O[0] + 3 * u, O[1] + 1 * u)
+    P2 = (O[0] - 3 * u, O[1] - 1 * u)
+    P3 = (O[0] - 3 * u, O[1] + 1 * u)
+    # 轴向刻度数字
+    for k, lab in [(3, "3"), (-3, "−3")]:
+        f.text(O[0] + k * u + 7, O[1] + 20, lab, 10, GREY)
+    f.poly([P, P1, P3, P2], "none", GREYM, 1.2, dash="4 4")
+    f.line(P[0], P[1], P1[0], P1[1], GREY, 1.2, dash="5 4")
+    f.line(P[0], P[1], P2[0], P2[1], GREY, 1.2, dash="5 4")
+    f.line(P[0], P[1], P3[0], P3[1], GREY, 1.2, dash="5 4")
+    f.tick(P[0], P[1], P1[0], P1[1], 1, GREY)
+    f.tick(P[0], P[1], P2[0], P2[1], 1, GREY)
+    f.dot(P[0], P[1], YEL)
+    f.text(P[0] + 10, P[1] - 10, "P(3,1)", 12, YEL)
+    f.dot(P1[0], P1[1], BLUE)
+    f.text(P1[0] + 10, P1[1] + 18, "P₁(3,−1)", 12, BLUE)
+    f.text(P1[0] + 10, P1[1] - 12, "关于 x 轴：y 变号", 11, BLUE)
+    f.dot(P2[0], P2[1], GRN)
+    f.text(P2[0] - 10, P2[1] - 12, "P₂(−3,1)", 12, GRN, anchor="end")
+    f.text(P2[0] - 10, P2[1] + 18, "关于 y 轴：x 变号", 11, GRN, anchor="end")
+    f.dot(P3[0], P3[1], PURP)
+    f.text(P3[0] - 10, P3[1] + 18, "P₃(−3,−1)", 12, PURP, anchor="end")
+    f.text(P3[0] - 10, P3[1] - 12, "关于原点：双变号", 11, PURP, anchor="end")
+    f.text(340, 338, "四点是同一矩形的四角：变谁的号，一目了然", 12, DARK, anchor="middle")
+    f.save("transform-coordinates.svg")
+
+
+def fig_geometric_extremum():
+    f = Fig(760, 400)
+    # ① 左：将军饮马
+    f.text(230, 28, "① 将军饮马：对称拉直", 14, DARK, anchor="middle", weight="bold")
+    ry = 225
+    f.line(40, ry, 440, ry, BLUE, 2.2)
+    f.text(50, ry - 8, "l", 12, BLUE)
+    A, B = (90, 125), (330, 160)
+    A2 = (90, 2 * ry - A[1])
+    f.line(A[0], A[1], A2[0], A2[1], GREY, 1.2, dash="5 4")
+    f.right_angle(A2[0], ry, 90, 0, 10, GREY)
+    f.text(A2[0] - 14, ry + 16, "M", 11, DARK, anchor="middle")
+    f.tick(A[0], A[1], A[0], ry, 1, GREY)
+    f.tick(A[0], ry, A2[0], A2[1], 1, GREY)
+    t = (ry - A2[1]) / (B[1] - A2[1])
+    Px = A2[0] + t * (B[0] - A2[0])
+    f.line(A2[0], A2[1], B[0], B[1], RED, 2.0)
+    f.line(A[0], A[1], Px, ry, DARK, 1.4, dash="5 4")
+    for p, name, off in [(A, "A", (-12, -6)), (B, "B", (12, -6)), (A2, "A′", (-14, 10)),
+                         ((Px, ry), "P", (0, 20))]:
+        f.dot(p[0], p[1])
+        f.text(p[0] + off[0], p[1] + off[1], name, 12, DARK, anchor="middle")
+    f.text(230, 372, "AP+PB = A′P+PB ≥ A′B（两点之间线段最短）", 12, RED, anchor="middle", weight="bold")
+    # ② 右：隐圆
+    f.text(590, 28, "② 隐圆：定边直角锁圆", 14, DARK, anchor="middle", weight="bold")
+    O = (610, 255)
+    r = 75
+    A, B = (O[0] - r, O[1]), (O[0] + r, O[1])
+    Q = (O[0], O[1] - 100)
+    Pn = (O[0], O[1] - r)
+    Pf = (O[0], O[1] + r)
+    f.circle(O[0], O[1], r, "none", GREY, 1.4)
+    f.line(A[0], A[1], B[0], B[1], DARK, 1.8)
+    f.line(Pn[0], Pn[1], A[0], A[1], DARK, 1.4)
+    f.line(Pn[0], Pn[1], B[0], B[1], DARK, 1.4)
+    f.right_angle(Pn[0], Pn[1], 135, 45, 10, RED)
+    f.line(Q[0], Q[1], Pf[0], Pf[1], PURP, 1.1, dash="2 4")
+    f.line(Q[0], Q[1], Pn[0], Pn[1], PURP, 2.2)
+    f.text(566, 240, "r=3", 11, GRN)
+    f.text(624, 232, "d=4", 11, PURP)
+    f.text(Q[0] - 10, Q[1] - 4, "Q", 12, DARK, anchor="end")
+    f.text(Pn[0] - 10, Pn[1] - 2, "P", 12, DARK, anchor="end")
+    f.text(630, (Q[1] + Pn[1]) / 2 + 6, "min=1", 11, PURP)
+    f.text(622, 316, "max=7", 11, PURP)
+    for p in (A, B, O, Q, Pn):
+        f.dot(p[0], p[1])
+    f.dot(Pf[0], Pf[1], GREYM)
+    f.text(A[0] - 12, A[1] - 6, "A", 12, DARK, anchor="middle")
+    f.text(B[0] + 12, B[1] - 6, "B", 12, DARK, anchor="middle")
+    f.text(O[0] - 12, O[1] + 22, "O", 12, GREY, anchor="middle")
+    f.text(590, 372, "∠APB=90° → P 在以 AB 为直径的圆上，QP ∈ [d−r, d+r]", 12, RED, anchor="middle", weight="bold")
+    f.save("geometric-extremum.svg")
+
+
 if __name__ == "__main__":
     fig_lines()
     fig_angle()
@@ -1405,3 +1604,7 @@ if __name__ == "__main__":
     fig_similar_models()
     fig_homothety()
     fig_projection_views()
+    fig_symmetry()
+    fig_translation_rotation()
+    fig_transform_coords()
+    fig_geometric_extremum()
