@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>圆 · 初中数学知识图谱</title>
+<meta name="description" content="圆的性质几乎都藏在半径、弦、圆心角这三样东西的组合里，切线是它与外界联系的通道。（约 11.9%）">
+<script>(function () {
+  try {
+    var s = localStorage.getItem('mathsite:theme') || 'auto';
+    var t = (s === 'auto')
+      ? (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : s;
+    document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+})();
+</script>
+<link rel="stylesheet" href="../../assets/css/tokens.css">
+<link rel="stylesheet" href="../../assets/css/layout.css">
+<link rel="stylesheet" href="../../assets/css/components.css">
+<link rel="stylesheet" href="../../assets/css/print.css">
+<link rel="stylesheet" href="../../assets/katex/katex.min.css">
+
+</head>
+<body class="page-topic" data-depth="2">
+<a class="skip-link" href="#main">跳到正文</a>
+
+<header class="topbar">
+  <button class="drawer-btn" id="drawer-btn" aria-label="打开目录" aria-expanded="false">☰</button>
+  <a class="site-title" href="../../index.html">初中数学知识图谱</a>
+  <div class="topbar-right">
+    <button class="search-btn" id="search-btn" aria-label="搜索">搜索 <kbd>Ctrl K</kbd></button>
+    <button class="theme-btn" id="theme-btn" aria-label="切换主题" title="切换主题">◐</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-inner"><nav class="side-nav" aria-label="模块目录"><details class="side-group" ><summary><a href="../../m1/index.html">代数</a><span class="side-n">20</span></summary><ul><li class="side-term"><a href="../../t/m1-01/index.html">数与式</a></li><li class="side-term"><a href="../../t/m1-02/index.html">方程与不等式</a></li><li class="side-term"><a href="../../t/m1-03/index.html">函数</a></li></ul></details><details class="side-group" open><summary><a href="../../m2/index.html">几何</a><span class="side-n">33</span></summary><ul><li class="side-term"><a href="../../t/m2-01/index.html">图形的初步认识</a></li><li class="side-term"><a href="../../t/m2-02/index.html">三角形</a></li><li class="side-term"><a href="../../t/m2-03/index.html">四边形</a></li><li class="side-term"><a href="../../t/m2-04/index.html" aria-current="page">圆</a></li><li><ul class="side-sub"><li class="side-item"><a href="../../points/m2-04-01-circle-properties/index.html">圆的概念与垂径定理</a></li><li class="side-item"><a href="../../points/m2-04-02-central-inscribed-angles/index.html">圆心角、弧与圆周角定理</a></li><li class="side-item"><a href="../../points/m2-04-03-circle-position/index.html">点、直线与圆的位置关系</a></li><li class="side-item"><a href="../../points/m2-04-04-tangent-lines/index.html">切线的判定与切线长定理</a></li><li class="side-item"><a href="../../points/m2-04-05-arc-sector-cone/index.html">弧长、扇形面积与圆锥</a></li><li class="side-item"><a href="../../points/m2-04-06-regular-polygon/index.html">正多边形与圆</a></li></ul></li><li class="side-term"><a href="../../t/m2-05/index.html">相似与投影</a></li><li class="side-term"><a href="../../t/m2-06/index.html">图形与变换</a></li><li class="side-term"><a href="../../t/m2-07/index.html">锐角三角函数</a></li></ul></details><details class="side-group" ><summary><a href="../../m3/index.html">统计与概率</a><span class="side-n">8</span></summary><ul><li class="side-term"><a href="../../t/m3-01/index.html">统计</a></li><li class="side-term"><a href="../../t/m3-02/index.html">概率</a></li></ul></details></nav></div>
+  </aside>
+  <div class="sidebar-mask" id="sidebar-mask" hidden></div>
+
+  <div class="main-pane">
+    <main id="main"><div class="panel panel-h1"><h1 id="_top">圆</h1><p class="grade-sub">圆的性质几乎都藏在半径、弦、圆心角这三样东西的组合里，切线是它与外界联系的通道。（约 11.9%）</p></div><div class="panel panel-body"><section class="block overview"><table class="kv"><tbody><tr><th>所属模块</th><td><a href="../../m2/index.html">几何</a></td></tr><tr><th>课标学段</th><td>第四学段（7~9 年级）</td></tr><tr><th>知识点</th><td>6 篇</td></tr></tbody></table></section><section class="block"><h2 id="list">知识点</h2><ul class="topic-list"><li><a href="../../points/m2-04-01-circle-properties/index.html"><span class="tl-t">圆的概念与垂径定理</span><span class="tl-s">圆是到定点的距离等于定长的点的集合——半径 <span class="math" data-tex="r">r</span> 一把尺子定乾坤。弦、直径、弧（劣弧、优弧、半圆）是圆里的基本零件；垂径定理说：垂直于弦的直径平分这条弦，并且平分弦所对的两条弧。配上弦心距 <span class="math" data-tex="d">d</span>，就得到计算主力 <span class="math" data-tex="R^2=d^2+(a/2)^2">R^2=d^2+(a/2)^2</span>——知二求二，拱桥、管道水深全是它的应用。</span><span class="tl-m"><span class="badge">掌握</span><span class="badge">中考必考</span></span></a></li><li><a href="../../points/m2-04-02-central-inscribed-angles/index.html"><span class="tl-t">圆心角、弧与圆周角定理</span><span class="tl-s">圆心角（顶点在圆心）给弧定「度数」：<span class="math" data-tex="n^{\circ}">n^\circ</span> 的圆心角对着 <span class="math" data-tex="n^{\circ}">n^\circ</span> 的弧。同圆等圆中，等弦 <span class="math" data-tex="\Leftrightarrow">\Leftrightarrow</span> 等弧 <span class="math" data-tex="\Leftrightarrow">\Leftrightarrow</span> 等圆心角，一条绳上的三兄弟。主角是圆周角定理：一条弧所对的圆周角等于它所对圆心角的一半——站在圆上看，视角恒是圆心视角的一半。三个赠品：同弧圆周角相等、直径对直角、圆内接四边形对角互补。</span><span class="tl-m"><span class="badge">掌握</span><span class="badge">中考必考</span></span></a></li><li><a href="../../points/m2-04-03-circle-position/index.html"><span class="tl-t">点、直线与圆的位置关系</span><span class="tl-s">圆是「距离的王国」，位置关系全靠一个比较：点与圆看 <span class="math" data-tex="OP">OP</span> 与 <span class="math" data-tex="R">R</span>（内、上、外）；直线与圆看圆心到直线的距离 <span class="math" data-tex="d">d</span> 与 <span class="math" data-tex="R">R</span>（相交、相切、相离）。作圆的谜底也在这里：过一点、两点都有无数个圆，过不共线的三点恰好一个——圆心是三边垂直平分线的交点（外心）。直角三角形的外心有个漂亮结论：就在斜边中点，外接圆半径是斜边的一半。</span><span class="tl-m"><span class="badge">理解</span><span class="badge">中考必考</span></span></a></li><li><a href="../../points/m2-04-04-tangent-lines/index.html"><span class="tl-t">切线的判定与切线长定理</span><span class="tl-s">切线是与圆「恰好接触」的直线：判定看两条——过半径外端且垂直于这条半径（有公共点时用），或圆心到直线的距离等于半径（无公共点时用）；性质只有一句但极硬：切线垂直于过切点的半径。从圆外一点能引两条切线，切线长相等、圆心与该点连线平分夹角（切线长定理，HL 全等三行证完）。三角形内切圆的圆心是三条角平分线的交点（内心），直角三角形内切圆半径 <span class="math" data-tex="r=\tfrac{a+b-c}{2}">r=\tfraca+b-c2</span>。</span><span class="tl-m"><span class="badge">掌握</span><span class="badge">中考必考</span></span></a></li><li><a href="../../points/m2-04-05-arc-sector-cone/index.html"><span class="tl-t">弧长、扇形面积与圆锥</span><span class="tl-s">圆是一张 <span class="math" data-tex="360">360</span> 等分的披萨：圆心角 <span class="math" data-tex="n^{\circ}">n^\circ</span> 拿走 <span class="math" data-tex="\tfrac{n}{360}">\tfracn360</span> 份——弧长 <span class="math" data-tex="l=\tfrac{n\pi R}{180}">l=\tfracnπ R180</span>，扇形面积 <span class="math" data-tex="S=\tfrac{n\pi R^2}{360}=\tfrac12 lR">S=\tfracnπ R^2360=\tfrac12 lR</span>。圆锥是卷起来的扇形：母线 <span class="math" data-tex="l">l</span> 当扇形半径、底面周长 <span class="math" data-tex="2\pi r">2π r</span> 当扇形弧长，侧面积 <span class="math" data-tex="S_{侧}=\pi r l">S_侧=π r l</span>；母线、底面半径、高满足 <span class="math" data-tex="l^2=r^2+h^2">l^2=r^2+h^2</span>。公式全靠比例推导，不靠死记。</span><span class="tl-m"><span class="badge">掌握</span><span class="badge">中考必考</span></span></a></li><li><a href="../../points/m2-04-06-regular-polygon/index.html"><span class="tl-t">正多边形与圆</span><span class="tl-s">正多边形（各边相等、各角相等，m2-03-01）与圆是天生一对：各顶点等距于一个中心，落在外接圆上；各边等距于同一中心，与内切圆相切——两圆同心，公共圆心叫中心。中心角 <span class="math" data-tex="=\tfrac{360^{\circ}}{n}">=\tfrac360^\circn</span>（恰是外角），半径 <span class="math" data-tex="R">R</span>、边心距 <span class="math" data-tex="r">r</span>、半边 <span class="math" data-tex="\tfrac{a}{2}">\tfraca2</span> 构成直角三角形：<span class="math" data-tex="R^2=r^2+(a/2)^2">R^2=r^2+(a/2)^2</span>；面积 <span class="math" data-tex="=\tfrac12\times">=\tfrac12×</span>周长<span class="math" data-tex="\times r">× r</span>。正六边形有特例福利：<span class="math" data-tex="R=a">R=a</span>。</span><span class="tl-m"><span class="badge">掌握</span><span class="badge">中考必考</span></span></a></li></ul></section></div></main>
+  </div>
+
+  <aside class="rightbar" id="rightbar"><nav class="toc" aria-label="本页内容"><h2 class="toc-h">本页内容</h2><ul><li class="toc-l2"><a href="#list">知识点</a></li></ul></nav></aside>
+</div>
+
+<div class="search-modal" id="search-modal" hidden>
+  <div class="search-panel" role="dialog" aria-modal="true" aria-label="搜索">
+    <div class="search-head">
+      <input type="search" id="search-input" placeholder="搜索知识点、关键词…" autocomplete="off">
+      <button class="search-close" id="search-close" aria-label="关闭">✕</button>
+    </div>
+    <ul class="search-results" id="search-results"></ul>
+    <p class="search-tip">输入关键词，回车打开第一条</p>
+  </div>
+</div>
+
+<script src="../../assets/js/search-index.js"></script>
+<script src="../../assets/katex/katex.min.js"></script>
+<script src="../../assets/js/katex-render.js"></script>
+<script src="../../assets/js/theme.js"></script>
+<script src="../../assets/js/drawer.js"></script>
+<script src="../../assets/js/toc.js"></script>
+<script src="../../assets/js/search.js"></script>
+<script src="../../assets/js/progress.js"></script>
+</body>
+</html>

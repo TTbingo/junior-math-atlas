@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>相似与投影 · 初中数学知识图谱</title>
+<meta name="description" content="相似是「形状不变、大小可变」，投影是三视图背后的光线模型。（约 5.6% + 1.8%）">
+<script>(function () {
+  try {
+    var s = localStorage.getItem('mathsite:theme') || 'auto';
+    var t = (s === 'auto')
+      ? (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : s;
+    document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+})();
+</script>
+<link rel="stylesheet" href="../../assets/css/tokens.css">
+<link rel="stylesheet" href="../../assets/css/layout.css">
+<link rel="stylesheet" href="../../assets/css/components.css">
+<link rel="stylesheet" href="../../assets/css/print.css">
+<link rel="stylesheet" href="../../assets/katex/katex.min.css">
+
+</head>
+<body class="page-topic" data-depth="2">
+<a class="skip-link" href="#main">跳到正文</a>
+
+<header class="topbar">
+  <button class="drawer-btn" id="drawer-btn" aria-label="打开目录" aria-expanded="false">☰</button>
+  <a class="site-title" href="../../index.html">初中数学知识图谱</a>
+  <div class="topbar-right">
+    <button class="search-btn" id="search-btn" aria-label="搜索">搜索 <kbd>Ctrl K</kbd></button>
+    <button class="theme-btn" id="theme-btn" aria-label="切换主题" title="切换主题">◐</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-inner"><nav class="side-nav" aria-label="模块目录"><details class="side-group" ><summary><a href="../../m1/index.html">代数</a><span class="side-n">20</span></summary><ul><li class="side-term"><a href="../../t/m1-01/index.html">数与式</a></li><li class="side-term"><a href="../../t/m1-02/index.html">方程与不等式</a></li><li class="side-term"><a href="../../t/m1-03/index.html">函数</a></li></ul></details><details class="side-group" open><summary><a href="../../m2/index.html">几何</a><span class="side-n">33</span></summary><ul><li class="side-term"><a href="../../t/m2-01/index.html">图形的初步认识</a></li><li class="side-term"><a href="../../t/m2-02/index.html">三角形</a></li><li class="side-term"><a href="../../t/m2-03/index.html">四边形</a></li><li class="side-term"><a href="../../t/m2-04/index.html">圆</a></li><li class="side-term"><a href="../../t/m2-05/index.html" aria-current="page">相似与投影</a></li><li><ul class="side-sub"><li class="side-item"><a href="../../points/m2-05-01-proportional-segments/index.html">平行线分线段成比例</a></li><li class="side-item"><a href="../../points/m2-05-02-similar-triangles/index.html">相似三角形的判定与性质</a></li><li class="side-item"><a href="../../points/m2-05-03-similar-models/index.html">相似三角形的基本模型</a></li><li class="side-item"><a href="../../points/m2-05-04-homothety/index.html">位似</a></li><li class="side-item"><a href="../../points/m2-05-05-projection-views/index.html">投影与视图</a></li></ul></li><li class="side-term"><a href="../../t/m2-06/index.html">图形与变换</a></li><li class="side-term"><a href="../../t/m2-07/index.html">锐角三角函数</a></li></ul></details><details class="side-group" ><summary><a href="../../m3/index.html">统计与概率</a><span class="side-n">8</span></summary><ul><li class="side-term"><a href="../../t/m3-01/index.html">统计</a></li><li class="side-term"><a href="../../t/m3-02/index.html">概率</a></li></ul></details></nav></div>
+  </aside>
+  <div class="sidebar-mask" id="sidebar-mask" hidden></div>
+
+  <div class="main-pane">
+    <main id="main"><div class="panel panel-h1"><h1 id="_top">相似与投影</h1><p class="grade-sub">相似是「形状不变、大小可变」，投影是三视图背后的光线模型。（约 5.6% + 1.8%）</p></div><div class="panel panel-body"><section class="block overview"><table class="kv"><tbody><tr><th>所属模块</th><td><a href="../../m2/index.html">几何</a></td></tr><tr><th>课标学段</th><td>第四学段（7~9 年级）</td></tr><tr><th>知识点</th><td>5 篇</td></tr></tbody></table></section><section class="block"><h2 id="list">知识点</h2><ul class="topic-list"><li><a href="../../points/m2-05-01-proportional-segments/index.html"><span class="tl-t">平行线分线段成比例</span><span class="tl-s">一组平行线截两条直线，截得的对应线段成比例：<span class="math" data-tex="\tfrac{AB}{BC}=\tfrac{DE}{EF}">\tfracABBC=\tfracDEEF</span>。特例是「等分」：平行线等距时截出的每段都相等。它的两个基本应用是平行截割计算线段长，以及三角形中 <span class="math" data-tex="DE\parallel BC">DE\parallel BC</span> 时的比例转移 <span class="math" data-tex="\tfrac{AD}{DB}=\tfrac{AE}{EC}">\tfracADDB=\tfracAEEC</span> 与 <span class="math" data-tex="\tfrac{AD}{AB}=\tfrac{DE}{BC}">\tfracADAB=\tfracDEBC</span>。这是「形状不变、按比例缩放」全链条的第一环——比值先行，图形随后。</span><span class="tl-m"><span class="badge">掌握</span><span class="badge">中考必考</span></span></a></li><li><a href="../../points/m2-05-02-similar-triangles/index.html"><span class="tl-t">相似三角形的判定与性质</span><span class="tl-s">相似是「形状相同、大小可以不同」的精确化：三角对应相等、三边对应成比例，对应边的比值叫相似比 <span class="math" data-tex="k">k</span>。判定三条路：两角对应相等（AA，最好用）、三边对应成比例（SSS）、两边成比例且夹角相等（SAS）。相似三角形的性质把「成比例」贯彻到底：对应高、中线、角平分线、周长比都等于 <span class="math" data-tex="k">k</span>，面积比等于 <span class="math" data-tex="k^2">k^2</span>。全等是 <span class="math" data-tex="k=1">k=1</span> 的特例——判定定理砍掉一条边条件，是「放宽版的全等」。</span><span class="tl-m"><span class="badge">掌握</span><span class="badge">中考必考</span></span></a></li><li><a href="../../points/m2-05-03-similar-models/index.html"><span class="tl-t">相似三角形的基本模型</span><span class="tl-s">相似题的图形翻来覆去就几副面孔：A 字型（平行截两边）、8 字型（两平行线被交叉直线截）、母子型（共角斜边配垂直高，即射影定理）、一线三等角型（与全等的一线三等角同款，条件从「相等」换成「成比例」）。识别模型 → 写出对应关系 → 套 AA，是相似实战的三步节奏。树影测高、小孔成像、网格缩放，全靠这几副面孔撑场。</span><span class="tl-m"><span class="badge">掌握</span><span class="badge">中考必考</span></span></a></li><li><a href="../../points/m2-05-04-homothety/index.html"><span class="tl-t">位似</span><span class="tl-s">位似是「带着放大机的相似」：取一个位似中心 <span class="math" data-tex="O">O</span>，把图形上每个点与 <span class="math" data-tex="O">O</span> 连线，沿连线方向按同一倍数 <span class="math" data-tex="k">k</span> 拉远或推近——新图形与原图形相似，且对应点连线全部穿过 <span class="math" data-tex="O">O</span>。<span class="math" data-tex="k&gt;0">k&gt;0</span> 同侧、<span class="math" data-tex="k&lt;0">k&lt;0</span> 异侧。放到坐标系里以原点为位似中心，规律极简洁：<span class="math" data-tex="(x,y)\to(kx,ky)">(x,y)\to(kx,ky)</span>。作图靠「连线定方向、按比定距离」，计算靠坐标乘 <span class="math" data-tex="k">k</span>；面积按 <span class="math" data-tex="k^2">k^2</span> 变化。</span><span class="tl-m"><span class="badge">掌握</span><span class="badge">中考必考</span></span></a></li><li><a href="../../points/m2-05-05-projection-views/index.html"><span class="tl-t">投影与视图</span><span class="tl-s">光线照物体落在平面上就是投影：太阳光近似平行（平行投影，影子形状随面与光线角度变化，正投影保持形状）、路灯灯光从一点散开（中心投影，影子随距离变化）。沿三个互相垂直的方向作正投影，得到三视图——主视图（从正面）、左视图（从左）、俯视图（从上），「长对正、高平齐、宽相等」是三种视图互检的口诀。影长计算、由视图还原立体，是几何走向工程制图的最后一站。</span><span class="tl-m"><span class="badge">了解</span><span class="badge">中考必考</span></span></a></li></ul></section></div></main>
+  </div>
+
+  <aside class="rightbar" id="rightbar"><nav class="toc" aria-label="本页内容"><h2 class="toc-h">本页内容</h2><ul><li class="toc-l2"><a href="#list">知识点</a></li></ul></nav></aside>
+</div>
+
+<div class="search-modal" id="search-modal" hidden>
+  <div class="search-panel" role="dialog" aria-modal="true" aria-label="搜索">
+    <div class="search-head">
+      <input type="search" id="search-input" placeholder="搜索知识点、关键词…" autocomplete="off">
+      <button class="search-close" id="search-close" aria-label="关闭">✕</button>
+    </div>
+    <ul class="search-results" id="search-results"></ul>
+    <p class="search-tip">输入关键词，回车打开第一条</p>
+  </div>
+</div>
+
+<script src="../../assets/js/search-index.js"></script>
+<script src="../../assets/katex/katex.min.js"></script>
+<script src="../../assets/js/katex-render.js"></script>
+<script src="../../assets/js/theme.js"></script>
+<script src="../../assets/js/drawer.js"></script>
+<script src="../../assets/js/toc.js"></script>
+<script src="../../assets/js/search.js"></script>
+<script src="../../assets/js/progress.js"></script>
+</body>
+</html>

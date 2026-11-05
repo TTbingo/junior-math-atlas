@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 270" width="540" height="270" role="img" aria-label="把面积 x 平方加 5x 加 6 的六块拼成一个长 x 加 3、宽 x 加 2 的长方形，左上标 x 平方，上方标 3x，左侧标 2x，右下角标 6">
+  <rect width="540" height="270" fill="#ffffff"/>
+  <text x="196" y="26" font-size="14" font-weight="600" fill="#2d3748" text-anchor="middle">同一块面积，横竖排一遍</text>
+
+  <!-- 长方形：宽 6 格（x+3），高 5 格（x+2），1 格 32px，x = 3 格 -->
+  <rect x="100" y="40" width="192" height="160" fill="none" stroke="#2d3748" stroke-width="2"/>
+  <rect x="100" y="40" width="96" height="96" fill="#ebf4ff" stroke="#2b6cb0" stroke-width="1.5"/>
+  <text x="148" y="94" font-size="16" fill="#2b6cb0" text-anchor="middle">x²</text>
+
+  <rect x="196" y="40" width="96" height="96" fill="#fefcbf" stroke="#b7791f" stroke-width="1.5"/>
+  <line x1="228" y1="40" x2="228" y2="136" stroke="#b7791f" stroke-width="1"/>
+  <line x1="260" y1="40" x2="260" y2="136" stroke="#b7791f" stroke-width="1"/>
+  <text x="244" y="94" font-size="16" fill="#b7791f" text-anchor="middle">3x</text>
+
+  <rect x="100" y="136" width="96" height="64" fill="#fefcbf" stroke="#b7791f" stroke-width="1.5"/>
+  <line x1="100" y1="168" x2="196" y2="168" stroke="#b7791f" stroke-width="1"/>
+  <text x="148" y="176" font-size="16" fill="#b7791f" text-anchor="middle">2x</text>
+
+  <rect x="196" y="136" width="96" height="64" fill="#f0fff4" stroke="#2f855a" stroke-width="1.5"/>
+  <line x1="228" y1="136" x2="228" y2="200" stroke="#2f855a" stroke-width="1"/>
+  <line x1="260" y1="136" x2="260" y2="200" stroke="#2f855a" stroke-width="1"/>
+  <line x1="196" y1="168" x2="292" y2="168" stroke="#2f855a" stroke-width="1"/>
+  <text x="244" y="176" font-size="16" fill="#2f855a" text-anchor="middle">6</text>
+
+  <!-- 尺寸标注 -->
+  <text x="196" y="222" font-size="13" fill="#4a5568" text-anchor="middle">x + 3</text>
+  <line x1="100" y1="208" x2="292" y2="208" stroke="#4a5568" stroke-width="1"/>
+  <line x1="100" y1="204" x2="100" y2="212" stroke="#4a5568" stroke-width="1"/>
+  <line x1="292" y1="204" x2="292" y2="212" stroke="#4a5568" stroke-width="1"/>
+  <text x="54" y="124" font-size="13" fill="#4a5568" text-anchor="middle">x+2</text>
+  <line x1="80" y1="40" x2="80" y2="200" stroke="#4a5568" stroke-width="1"/>
+  <line x1="76" y1="40" x2="84" y2="40" stroke="#4a5568" stroke-width="1"/>
+  <line x1="76" y1="200" x2="84" y2="200" stroke="#4a5568" stroke-width="1"/>
+
+  <!-- 右侧结论 -->
+  <text x="330" y="92" font-size="14" fill="#c53030">x² + 5x + 6</text>
+  <text x="330" y="120" font-size="14" fill="#4a5568">= (x + 3)(x + 2)</text>
+  <text x="330" y="152" font-size="12" fill="#718096">长 = x + 3，宽 = x + 2</text>
+  <text x="330" y="174" font-size="12" fill="#718096">横竖各切一刀，</text>
+  <text x="330" y="194" font-size="12" fill="#718096">四块正好拼齐</text>
+  <text x="270" y="252" font-size="12" fill="#718096" text-anchor="middle">五个 x 长条拆成 3 + 2，六个小方块排成 2 × 3</text>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 400" width="480" height="400" role="img" aria-label="两条直线 y 等于 0.3x 与 y 等于 20 加 0.1x 在（100，30）相交，交点左侧第一条更低、右侧第二条更低">
+  <rect width="480" height="400" fill="#ffffff"/>
+<line x1="102.2" y1="330" x2="455.8" y2="330" stroke="#2d3748" stroke-width="1.4"/>
+<polygon points="455.8,330 447.8,326 447.8,334" fill="#2d3748"/>
+<line x1="110" y1="348.0" x2="110" y2="30.0" stroke="#2d3748" stroke-width="1.4"/>
+<polygon points="110,30.0 106,38.0 114,38.0" fill="#2d3748"/>
+<line x1="240.0" y1="327" x2="240.0" y2="333" stroke="#2d3748" stroke-width="1"/>
+<text x="240.0" y="346" font-size="11" fill="#718096" text-anchor="middle" font-family="Microsoft YaHei, PingFang SC, sans-serif">50</text>
+<line x1="370.0" y1="327" x2="370.0" y2="333" stroke="#2d3748" stroke-width="1"/>
+<text x="370.0" y="346" font-size="11" fill="#718096" text-anchor="middle" font-family="Microsoft YaHei, PingFang SC, sans-serif">100</text>
+<line x1="107" y1="210.0" x2="113" y2="210.0" stroke="#2d3748" stroke-width="1"/>
+<text x="103" y="214.0" font-size="11" fill="#718096" text-anchor="end" font-family="Microsoft YaHei, PingFang SC, sans-serif">20</text>
+<line x1="107" y1="150.0" x2="113" y2="150.0" stroke="#2d3748" stroke-width="1"/>
+<text x="103" y="154.0" font-size="11" fill="#718096" text-anchor="end" font-family="Microsoft YaHei, PingFang SC, sans-serif">30</text>
+<line x1="107" y1="90.0" x2="113" y2="90.0" stroke="#2d3748" stroke-width="1"/>
+<text x="103" y="94.0" font-size="11" fill="#718096" text-anchor="end" font-family="Microsoft YaHei, PingFang SC, sans-serif">40</text>
+<text x="457.8" y="348" font-size="12" fill="#2d3748" font-family="Microsoft YaHei, PingFang SC, sans-serif">x</text>
+<text x="118" y="28.0" font-size="12" fill="#2d3748" font-family="Microsoft YaHei, PingFang SC, sans-serif">y</text>
+<text x="102" y="345" font-size="11" fill="#718096" text-anchor="end" font-family="Microsoft YaHei, PingFang SC, sans-serif">O</text>
+<line x1="110.0" y1="330.0" x2="442.8" y2="99.6" stroke="#2b6cb0" stroke-width="2.0"/>
+<line x1="110.0" y1="210.0" x2="442.8" y2="133.2" stroke="#2f855a" stroke-width="2.0"/>
+<line x1="370.0" y1="330" x2="370.0" y2="150.0" stroke="#718096" stroke-width="1" stroke-dasharray="4 3"/>
+<circle cx="370.0" cy="150.0" r="4" fill="#c53030"/>
+<text x="382.0" y="172.0" font-size="12" fill="#c53030" text-anchor="start" font-family="Microsoft YaHei, PingFang SC, sans-serif">(100，30)</text>
+<line x1="292.0" y1="54.0" x2="312.8" y2="54.0" stroke="#2b6cb0" stroke-width="2"/>
+<text x="318.0" y="58.0" font-size="11" fill="#2b6cb0" text-anchor="start" font-family="Microsoft YaHei, PingFang SC, sans-serif">y = 0.3x（A 方案）</text>
+<line x1="292.0" y1="84.0" x2="312.8" y2="84.0" stroke="#2f855a" stroke-width="2"/>
+<text x="318.0" y="88.0" font-size="11" fill="#2f855a" text-anchor="start" font-family="Microsoft YaHei, PingFang SC, sans-serif">y = 20 + 0.1x（B 方案）</text>
+<text x="240" y="388" font-size="11" fill="#2d3748" text-anchor="middle" font-family="Microsoft YaHei, PingFang SC, sans-serif">交点左侧 A 更省，右侧 B 更省</text>
+</svg>

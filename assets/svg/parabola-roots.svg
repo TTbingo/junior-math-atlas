@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 248" width="560" height="248" role="img" aria-label="三个小坐标系并列：判别式大于零时抛物线与 x 轴有两个交点，等于零时相切于一点，小于零时没有交点">
+  <rect width="560" height="248" fill="#ffffff"/>
+<text x="95" y="24" font-size="12" fill="#2d3748" text-anchor="middle" font-weight="600" font-family="Microsoft YaHei, PingFang SC, sans-serif">Δ &gt; 0：两个交点</text>
+<line x1="63.8" y1="130" x2="126.2" y2="130" stroke="#2d3748" stroke-width="1.4"/>
+<polygon points="126.2,130 118.2,126 118.2,134" fill="#2d3748"/>
+<line x1="95" y1="171.6" x2="95" y2="52.0" stroke="#2d3748" stroke-width="1.4"/>
+<polygon points="95,52.0 91,60.0 99,60.0" fill="#2d3748"/>
+<line x1="108.0" y1="127" x2="108.0" y2="133" stroke="#2d3748" stroke-width="1"/>
+<text x="108.0" y="146" font-size="11" fill="#718096" text-anchor="middle" font-family="Microsoft YaHei, PingFang SC, sans-serif">1</text>
+<text x="128.2" y="148" font-size="12" fill="#2d3748" font-family="Microsoft YaHei, PingFang SC, sans-serif">x</text>
+<text x="103" y="50.0" font-size="12" fill="#2d3748" font-family="Microsoft YaHei, PingFang SC, sans-serif">y</text>
+<text x="87" y="145" font-size="11" fill="#718096" text-anchor="end" font-family="Microsoft YaHei, PingFang SC, sans-serif">O</text>
+<polyline points="84.0,124.5 84.5,126.5 85.0,128.4 85.6,130.2 86.1,132.1 86.6,133.8 87.2,135.6 87.7,137.3 88.2,138.9 88.8,140.5 89.3,142.1 89.8,143.6 90.4,145.1 90.9,146.5 91.4,147.9 92.0,149.2 92.5,150.5 93.0,151.8 93.6,153.0 94.1,154.1 94.6,155.3 95.2,156.3 95.7,157.4 96.2,158.4 96.8,159.3 97.3,160.2 97.8,161.1 98.4,161.9 98.9,162.7 99.4,163.4 100.0,164.1 100.5,164.7 101.1,165.3 101.6,165.8 102.1,166.3 102.7,166.8 103.2,167.2 103.7,167.6 104.3,167.9 104.8,168.2 105.3,168.5 105.9,168.6 106.4,168.8 106.9,168.9 107.5,169.0 108.0,169.0 108.5,169.0 109.1,168.9 109.6,168.8 110.1,168.6 110.7,168.5 111.2,168.2 111.7,167.9 112.3,167.6 112.8,167.2 113.3,166.8 113.9,166.3 114.4,165.8 114.9,165.3 115.5,164.7 116.0,164.1 116.6,163.4 117.1,162.7 117.6,161.9 118.2,161.1 118.7,160.2 119.2,159.3 119.8,158.4 120.3,157.4 120.8,156.3 121.4,155.3 121.9,154.1 122.4,153.0 123.0,151.8 123.5,150.5 124.0,149.2 124.6,147.9 125.1,146.5 125.6,145.1 126.2,143.6 126.7,142.1 127.2,140.5 127.8,138.9 128.3,137.3 128.8,135.6 129.4,133.8 129.9,132.1 130.4,130.2 131.0,128.4 131.5,126.5 132.1,124.5" fill="none" stroke="#2b6cb0" stroke-width="2.0"/>
+<text x="95" y="214" font-size="11" fill="#c53030" text-anchor="middle" font-family="Microsoft YaHei, PingFang SC, sans-serif">两个不等实根</text>
+<text x="95" y="234" font-size="11" fill="#718096" text-anchor="middle" font-family="Microsoft YaHei, PingFang SC, sans-serif">Δ = 16</text>
+<text x="280" y="24" font-size="12" fill="#2d3748" text-anchor="middle" font-weight="600" font-family="Microsoft YaHei, PingFang SC, sans-serif">Δ = 0：一个交点</text>
+<line x1="248.8" y1="130" x2="311.2" y2="130" stroke="#2d3748" stroke-width="1.4"/>
+<polygon points="311.2,130 303.2,126 303.2,134" fill="#2d3748"/>
+<line x1="280" y1="171.6" x2="280" y2="52.0" stroke="#2d3748" stroke-width="1.4"/>
+<polygon points="280,52.0 276,60.0 284,60.0" fill="#2d3748"/>
+<line x1="293.0" y1="127" x2="293.0" y2="133" stroke="#2d3748" stroke-width="1"/>
+<text x="293.0" y="146" font-size="11" fill="#718096" text-anchor="middle" font-family="Microsoft YaHei, PingFang SC, sans-serif">1</text>
+<text x="313.2" y="148" font-size="12" fill="#2d3748" font-family="Microsoft YaHei, PingFang SC, sans-serif">x</text>
+<text x="288" y="50.0" font-size="12" fill="#2d3748" font-family="Microsoft YaHei, PingFang SC, sans-serif">y</text>
+<text x="272" y="145" font-size="11" fill="#718096" text-anchor="end" font-family="Microsoft YaHei, PingFang SC, sans-serif">O</text>
+<polyline points="268.9,85.5 269.5,87.5 270.0,89.4 270.6,91.2 271.1,93.1 271.6,94.8 272.2,96.6 272.7,98.3 273.2,99.9 273.8,101.5 274.3,103.1 274.8,104.6 275.4,106.1 275.9,107.5 276.4,108.9 277.0,110.2 277.5,111.5 278.0,112.8 278.6,114.0 279.1,115.1 279.6,116.3 280.2,117.3 280.7,118.4 281.2,119.4 281.8,120.3 282.3,121.2 282.8,122.1 283.4,122.9 283.9,123.7 284.4,124.4 285.0,125.1 285.5,125.7 286.1,126.3 286.6,126.8 287.1,127.3 287.7,127.8 288.2,128.2 288.7,128.6 289.3,128.9 289.8,129.2 290.3,129.5 290.9,129.6 291.4,129.8 291.9,129.9 292.5,130.0 293.0,130.0 293.5,130.0 294.1,129.9 294.6,129.8 295.1,129.6 295.7,129.5 296.2,129.2 296.7,128.9 297.3,128.6 297.8,128.2 298.3,127.8 298.9,127.3 299.4,126.8 299.9,126.3 300.5,125.7 301.0,125.1 301.6,124.4 302.1,123.7 302.6,122.9 303.2,122.1 303.7,121.2 304.2,120.3 304.8,119.4 305.3,118.4 305.8,117.3 306.4,116.3 306.9,115.1 307.4,114.0 308.0,112.8 308.5,111.5 309.0,110.2 309.6,108.9 310.1,107.5 310.6,106.1 311.2,104.6 311.7,103.1 312.2,101.5 312.8,99.9 313.3,98.3 313.8,96.6 314.4,94.8 314.9,93.1 315.4,91.2 316.0,89.4 316.5,87.5 317.1,85.5" fill="none" stroke="#2b6cb0" stroke-width="2.0"/>
+<text x="280" y="214" font-size="11" fill="#c53030" text-anchor="middle" font-family="Microsoft YaHei, PingFang SC, sans-serif">两个相等实根</text>
+<text x="280" y="234" font-size="11" fill="#718096" text-anchor="middle" font-family="Microsoft YaHei, PingFang SC, sans-serif">Δ = 0</text>
+<text x="465" y="24" font-size="12" fill="#2d3748" text-anchor="middle" font-weight="600" font-family="Microsoft YaHei, PingFang SC, sans-serif">Δ &lt; 0：没有交点</text>
+<line x1="433.8" y1="130" x2="496.2" y2="130" stroke="#2d3748" stroke-width="1.4"/>
+<polygon points="496.2,130 488.2,126 488.2,134" fill="#2d3748"/>
+<line x1="465" y1="171.6" x2="465" y2="52.0" stroke="#2d3748" stroke-width="1.4"/>
+<polygon points="465,52.0 461,60.0 469,60.0" fill="#2d3748"/>
+<line x1="478.0" y1="127" x2="478.0" y2="133" stroke="#2d3748" stroke-width="1"/>
+<text x="478.0" y="146" font-size="11" fill="#718096" text-anchor="middle" font-family="Microsoft YaHei, PingFang SC, sans-serif">1</text>
+<text x="498.2" y="148" font-size="12" fill="#2d3748" font-family="Microsoft YaHei, PingFang SC, sans-serif">x</text>
+<text x="473" y="50.0" font-size="12" fill="#2d3748" font-family="Microsoft YaHei, PingFang SC, sans-serif">y</text>
+<text x="457" y="145" font-size="11" fill="#718096" text-anchor="end" font-family="Microsoft YaHei, PingFang SC, sans-serif">O</text>
+<polyline points="453.9,59.5 454.5,61.5 455.0,63.4 455.6,65.2 456.1,67.1 456.6,68.8 457.2,70.6 457.7,72.3 458.2,73.9 458.8,75.5 459.3,77.1 459.8,78.6 460.4,80.1 460.9,81.5 461.4,82.9 462.0,84.2 462.5,85.5 463.0,86.8 463.6,88.0 464.1,89.1 464.6,90.3 465.2,91.3 465.7,92.4 466.2,93.4 466.8,94.3 467.3,95.2 467.8,96.1 468.4,96.9 468.9,97.7 469.4,98.4 470.0,99.1 470.5,99.7 471.1,100.3 471.6,100.8 472.1,101.3 472.7,101.8 473.2,102.2 473.7,102.6 474.3,102.9 474.8,103.2 475.3,103.5 475.9,103.6 476.4,103.8 476.9,103.9 477.5,104.0 478.0,104.0 478.5,104.0 479.1,103.9 479.6,103.8 480.1,103.6 480.7,103.5 481.2,103.2 481.7,102.9 482.3,102.6 482.8,102.2 483.3,101.8 483.9,101.3 484.4,100.8 484.9,100.3 485.5,99.7 486.0,99.1 486.6,98.4 487.1,97.7 487.6,96.9 488.2,96.1 488.7,95.2 489.2,94.3 489.8,93.4 490.3,92.4 490.8,91.3 491.4,90.3 491.9,89.1 492.4,88.0 493.0,86.8 493.5,85.5 494.0,84.2 494.6,82.9 495.1,81.5 495.6,80.1 496.2,78.6 496.7,77.1 497.2,75.5 497.8,73.9 498.3,72.3 498.8,70.6 499.4,68.8 499.9,67.1 500.4,65.2 501.0,63.4 501.5,61.5 502.1,59.5" fill="none" stroke="#2b6cb0" stroke-width="2.0"/>
+<text x="465" y="214" font-size="11" fill="#c53030" text-anchor="middle" font-family="Microsoft YaHei, PingFang SC, sans-serif">没有实根</text>
+<text x="465" y="234" font-size="11" fill="#718096" text-anchor="middle" font-family="Microsoft YaHei, PingFang SC, sans-serif">Δ = -8</text>
+</svg>

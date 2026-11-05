@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 220" width="520" height="220" role="img" aria-label="一个面积为 12 的正方形被十字线切成四块，每块面积为 3、边长为根号 3，因此整个正方形边长根号 12 等于 2 根号 3">
+  <rect width="520" height="220" fill="#ffffff"/>
+  <text x="120" y="26" font-size="14" font-weight="600" fill="#2d3748" text-anchor="middle">面积 12 的正方形，切成 4 块</text>
+
+  <rect x="60" y="44" width="120" height="120" fill="#ebf4ff" stroke="#2b6cb0" stroke-width="2"/>
+  <line x1="120" y1="44" x2="120" y2="164" stroke="#2b6cb0" stroke-width="1.5"/>
+  <line x1="60" y1="104" x2="180" y2="104" stroke="#2b6cb0" stroke-width="1.5"/>
+  <text x="90" y="82" font-size="13" fill="#2b6cb0" text-anchor="middle">3</text>
+  <text x="150" y="82" font-size="13" fill="#2b6cb0" text-anchor="middle">3</text>
+  <text x="90" y="142" font-size="13" fill="#2b6cb0" text-anchor="middle">3</text>
+  <text x="150" y="142" font-size="13" fill="#2b6cb0" text-anchor="middle">3</text>
+
+  <text x="120" y="184" font-size="13" fill="#4a5568" text-anchor="middle">√12</text>
+  <line x1="60" y1="170" x2="180" y2="170" stroke="#4a5568" stroke-width="1"/>
+  <line x1="60" y1="166" x2="60" y2="174" stroke="#4a5568" stroke-width="1"/>
+  <line x1="180" y1="166" x2="180" y2="174" stroke="#4a5568" stroke-width="1"/>
+  <line x1="42" y1="44" x2="42" y2="164" stroke="#4a5568" stroke-width="1"/>
+  <line x1="38" y1="44" x2="46" y2="44" stroke="#4a5568" stroke-width="1"/>
+  <line x1="38" y1="164" x2="46" y2="164" stroke="#4a5568" stroke-width="1"/>
+  <text x="30" y="110" font-size="13" fill="#4a5568" text-anchor="middle">√12</text>
+
+  <text x="240" y="72" font-size="14" fill="#2d3748">每块面积 3，边长 √3</text>
+  <text x="240" y="104" font-size="14" fill="#c53030">√12 = √(4 × 3)</text>
+  <text x="266" y="130" font-size="14" fill="#c53030">= √4 × √3 = 2√3</text>
+  <text x="240" y="160" font-size="12" fill="#718096">2√3 就是这个大正方形的边长</text>
+  <text x="240" y="180" font-size="12" fill="#718096">（排成 2 行 2 列）</text>
+</svg>
