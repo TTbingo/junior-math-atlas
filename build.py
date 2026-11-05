@@ -12,6 +12,11 @@ import shutil
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent
+
+# 关联知识点的三类：学之前要先会的 / 学完之后接着用的 / 常与本文同题出现的
+REL_KINDS = ("前置", "后续", "常一起考")
+# 反向补链时类别的翻转：A 指向 B 为「后续」⇒ B 页面上 A 是「前置」
+REL_FLIP = {"前置": "后续", "后续": "前置", "常一起考": "常一起考"}
 C = ROOT / "content"
 T = ROOT / "templates"
 A = ROOT / "assets"
@@ -234,7 +239,16 @@ def validate(tax, std, mod, points):
         for rid in p.get("prerequisites", []):
             if rid not in plan:
                 err(f"{ctx}: 前置知识点 {rid} 不在知识点清单内")
-
+        # 证明板块：steps 为对象形态时，每条必须有结论与关键一步
+        _steps = p.get("sections", {}).get("why", {}).get("steps", [])
+        if _steps and isinstance(_steps[0], dict):
+            for i, _s in enumerate(_steps, 1):
+                if not _s.get("conclusion"):
+                    err(f"{ctx}.why.steps[{i}]: 缺 conclusion（证明必须先写清结论是什么）")
+                if not _s.get("proof"):
+                    err(f"{ctx}.why.steps[{i}]: 缺 proof（只有结论没有推理过程不算证明）")
+                if not _s.get("key"):
+                    err(f"{ctx}.why.steps[{i}]: 缺 key（要标出这一步凭什么成立）")
         secs = p.get("sections", {})
         for k in sec_keys:
             if k not in secs:
@@ -293,9 +307,19 @@ def validate(tax, std, mod, points):
             elif kind == "related":
                 if len(v) < mn:
                     err(f"{ctx}.{k}: 条数 {len(v)} < 要求 {mn}")
+                kinds = set()
                 for r in v:
-                    if r.get("id") not in plan:
+                    if not str(r.get("id", "")).startswith("ext:") and r.get("id") not in plan:
                         err(f"{ctx}.{k}: 关联 {r.get('id')} 不在知识点清单内")
+                    rk = r.get("kind")
+                    if rk not in REL_KINDS:
+                        err(f"{ctx}.{k}: 关联 {r.get('id')} 缺 kind 或 kind 非法「{rk}」（应为 {'/'.join(REL_KINDS)}）")
+                    else:
+                        kinds.add(rk)
+                # 三类关联要齐全，缺一类会让读者串不起知识链
+                missing = [x for x in REL_KINDS if x not in kinds]
+                if missing:
+                    err(f"{ctx}.{k}: 关联知识点缺类别 {'/'.join(missing)}（每类至少一条）")
 
         # 禁用词
         blob = json.dumps(p.get("sections", {}), ensure_ascii=False)
@@ -353,7 +377,8 @@ class Index:
         for pid, p in points.items():
             for r in p.get("sections", {}).get("related", []):
                 if r.get("id") in self.incoming:
-                    self.incoming[r["id"]].append((pid, r.get("note", "")))
+                    kind = r.get("kind") or "常一起考"
+                    self.incoming[r["id"]].append((pid, r.get("note", ""), kind))
 
     def topic_points(self, tid):
         return [p for p in self.topics[tid]["points"] if p in self.points]
@@ -424,14 +449,38 @@ def render_standards(p, depth, idx):
             '<table class="kv"><tbody>' + "".join(rows) + "</tbody></table></section>")
 
 
+
+
 def render_why(why, p, depth, idx):
+    """why.steps 支持两种形态：
+    - 旧形态：字符串列表（直接渲染为推导步骤）
+    - 新形态：对象列表 {conclusion, proof, key}（结论 N + 证明过程 + 关键一步）
+    """
     if not why:
         return ""
     parts = ['<div class="why">']
     if why.get("diagram"):
         parts.append(f'<div class="why-fig" data-fig-slot="{esc(why["diagram"])}"></div>')
-    steps = "".join(f"<li>{render_text(s)}</li>" for s in why.get("steps", []))
-    parts.append(f'<div class="why-steps"><p class="why-label">算理推导</p><ol>{steps}</ol></div>')
+    raw = why.get("steps", [])
+    if raw and isinstance(raw[0], dict):
+        # 结论化证明：每条一个独立结论，标明关键一步
+        blocks = []
+        for i, s in enumerate(raw, 1):
+            concl = s.get("conclusion", "").strip()
+            proof = s.get("proof", "").strip()
+            key = s.get("key", "").strip()
+            inner = []
+            if concl:
+                inner.append(f'<p class="pf-concl"><span class="pf-idx">结论 {i}</span>{render_inline(concl)}</p>')
+            if proof:
+                inner.append(f'<p class="pf-proof">{render_inline(proof)}</p>')
+            if key:
+                inner.append(f'<p class="pf-key"><span class="pf-keytag">关键一步</span>{render_inline(key)}</p>')
+            blocks.append('<div class="proof-item">' + "".join(inner) + "</div>")
+        parts.append('<div class="why-steps"><p class="why-label">证明</p>' + "".join(blocks) + "</div>")
+    else:
+        steps = "".join(f"<li>{render_text(s)}</li>" for s in raw)
+        parts.append(f'<div class="why-steps"><p class="why-label">算理推导</p><ol>{steps}</ol></div>')
     parts.append(f'<div class="why-exp"><p class="why-label">动手实验</p>{render_text(why.get("experiment",""))}</div>')
     parts.append("</div>")
     return "".join(parts)
@@ -469,32 +518,59 @@ def render_pitfalls(items):
     return "".join(out)
 
 
+
 def render_related(p, depth, idx):
-    out_parts = []
+    """关联知识点分三类：前置 / 后续 / 常一起考。
+
+    数据层：sections.related 每条 {id, kind, note}，kind ∈ REL_KINDS。
+    - 前置：学本文之前应当先会的（与 prerequisites 呼应）
+    - 后续：学完本文之后接着会用到的
+    - 常一起考：中考里常与本文组合成同一道题的
+
+    反向补链：别的篇目指向本文时，类别按 REL_FLIP 翻转，并按 id 去重。
+    """
     outs = p.get("sections", {}).get("related", [])
-    if outs:
-        lis = []
-        for r in outs:
-            if r["id"] not in idx.points:
-                # 目标篇目尚未写作：跳过，避免分批写作期间构建崩溃
-                continue
-            t = idx.points[r["id"]]["title"]
-            lis.append(f'<li><a href="{idx.rel(r["id"], depth)}">{esc(t)}</a>'
-                       f'<span class="rel-note">{render_inline(r.get("note",""))}</span></li>')
-        out_parts.append('<div class="rel-group"><p class="rel-label">本知识点指向</p><ul>' + "".join(lis) + "</ul></div>")
-    inc = idx.incoming.get(p["id"], [])
-    if inc:
-        # 去重：已出现在「本知识点指向」的目标不再进「指向本知识点」，
-        # 避免 A↔B 双向数据边导致同一目标在两个分组重复展示。
-        out_ids = {r["id"] for r in outs}
-        inc = [(pid, note) for pid, note in inc if pid not in out_ids]
-    if inc:
-        lis = []
-        for pid, note in inc:
-            t = idx.points[pid]["title"]
-            lis.append(f'<li><a href="{idx.rel(pid, depth)}">{esc(t)}</a>'
-                       f'<span class="rel-note">{render_inline(note)}</span></li>')
-        out_parts.append('<div class="rel-group"><p class="rel-label">指向本知识点</p><ul>' + "".join(lis) + "</ul></div>")
+    groups = {k: [] for k in REL_KINDS}
+    seen = set()
+
+    def push(kind, pid, note):
+        if pid.startswith("ext:"):
+            # 清单外的知识方向（如高中衔接）：只作文字提示，不生成链接
+            if pid in seen:
+                return
+            seen.add(pid)
+            groups[kind].append(
+                f'<li><span class="rel-ext">{esc(pid[4:])}</span>'
+                f'<span class="rel-note">{render_inline(note)}</span></li>')
+            return
+        if pid not in idx.points:
+            # 目标篇目尚未写作：跳过，避免分批写作期间构建崩溃
+            return
+        if pid in seen:
+            return
+        seen.add(pid)
+        t = idx.points[pid]["title"]
+        groups[kind].append(
+            f'<li><a href="{idx.rel(pid, depth)}">{esc(t)}</a>'
+            f'<span class="rel-note">{render_inline(note)}</span></li>')
+
+    for r in outs:
+        kind = r.get("kind") or "常一起考"
+        if kind not in groups:
+            kind = "常一起考"
+        push(kind, r["id"], r.get("note", ""))
+
+    # 反向补链：别的篇目写了对本文的引用
+    for pid, note, kind in idx.incoming.get(p["id"], []):
+        push(REL_FLIP.get(kind, "常一起考"), pid, note)
+
+    out_parts = []
+    for kind in REL_KINDS:
+        if not groups[kind]:
+            continue
+        out_parts.append(f'<div class="rel-group rel-{REL_KINDS.index(kind)}">'
+                         f'<p class="rel-label"><span class="rel-tag rel-tag-{REL_KINDS.index(kind)}">{kind}</span></p>'
+                         f'<ul>' + "".join(groups[kind]) + "</ul></div>")
     return "".join(out_parts)
 
 
@@ -632,7 +708,8 @@ def emit_point(idx, pid, depth=2):
     if p.get("segment"):
         overview += (f'<tr><th>课标学段</th><td>'
                      f'{esc(idx.tax["segments"][str(p["segment"])])}</td></tr>')
-    pre = [x for x in p.get("prerequisites", []) if x in idx.points]
+    pre = [r["id"] for r in p.get("sections", {}).get("related", [])
+           if r.get("kind") == "前置" and r["id"] in idx.points]
     if pre:
         lis = "、".join(f'<a href="{idx.rel(x, depth)}">{esc(idx.points[x]["title"])}</a>'
                        for x in pre)

@@ -54,11 +54,31 @@
     "why": {
       "diagram": "fig1",
       "steps": [
-        "先看内角和为什么一定是 $180^\\circ$。过顶点 $A$ 作一条平行于 $BC$ 的直线 $DE$，这一步只用到平行公理。",
-        "因为 $DE\\parallel BC$，内错角相等，所以 $\\angle DAB=\\angle B$，$\\angle EAC=\\angle C$。",
-        "点 $A$ 处三个角拼成一个平角：$\\angle DAB+\\angle BAC+\\angle EAC=180^\\circ$。",
-        "把两个内错角换回 $\\angle B$、$\\angle C$，得到 $\\angle B+\\angle BAC+\\angle C=180^\\circ$。全程只用平行线的性质，没有量角器，所以对任意形状的三角形都成立。",
-        "外角定理是它的直接推论。延长 $BC$ 到 $D$，外角 $\\angle ACD$ 与内角 $\\angle ACB$ 互补：$\\angle ACD=180^\\circ-\\angle ACB$。再由内角和得 $\\angle ACB=180^\\circ-(\\angle A+\\angle B)$，两式相减即得 $\\angle ACD=\\angle A+\\angle B$。"
+        {
+          "conclusion": "过顶点作平行线，把内角和问题转成平角问题。",
+          "proof": "先看内角和为什么一定是 $180^\\circ$。过顶点 $A$ 作一条平行于 $BC$ 的直线 $DE$，这一步只用到平行公理。",
+          "key": "关键一步是平行公理：过直线外一点有且只有一条直线与已知直线平行，所以这条 $DE$ 画得出来、位置唯一。这一步的价值是把 $\\angle B$、$\\angle C$ 搬到顶点 $A$ 附近，让三个角能凑成一个平角。"
+        },
+        {
+          "conclusion": "由 $DE\\parallel BC$ 得两组相等的内错角：$\\angle DAB=\\angle B$，$\\angle EAC=\\angle C$。",
+          "proof": "因为 $DE\\parallel BC$，内错角相等，所以 $\\angle DAB=\\angle B$，$\\angle EAC=\\angle C$。",
+          "key": "关键一步是平行线的性质而不是判定：这里 $DE\\parallel BC$ 是已知的条件，要用性质去取角的数值。$DE$ 与 $BC$ 被 $AB$、$AC$ 分别所截，形成两组内错角，两组等式才同时成立。"
+        },
+        {
+          "conclusion": "点 $A$ 处的三个角恰好拼成一个平角，三者之和是 $180^\\circ$。",
+          "proof": "点 $A$ 处三个角拼成一个平角：$\\angle DAB+\\angle BAC+\\angle EAC=180^\\circ$。",
+          "key": "关键一步是平角的定义与角的和的可加性：$DE$ 是直线，射线 $AB$、$AC$ 把它切开的角分成三段，三段之和就是整个平角。这一步只用「整角等于各部分之和」，不含任何角度测量。"
+        },
+        {
+          "conclusion": "把两个内错角换回 $\\angle B$、$\\angle C$，得 $\\angle B+\\angle BAC+\\angle C=180^\\circ$。",
+          "proof": "把两个内错角换回 $\\angle B$、$\\angle C$，得到 $\\angle B+\\angle BAC+\\angle C=180^\\circ$。全程只用平行线的性质，没有量角器，所以对任意形状的三角形都成立。",
+          "key": "关键一步是等量代换：上一条中 $\\angle DAB$ 与 $\\angle B$ 相等、$\\angle EAC$ 与 $\\angle C$ 相等，把它们代进平角的和式，等式两边同时代换仍然相等。全程只用平行线的性质和平角定义，没有量角器，所以结论与三角形的形状、大小无关。"
+        },
+        {
+          "conclusion": "三角形的一个外角等于与它不相邻的两个内角之和。",
+          "proof": "外角定理是它的直接推论。延长 $BC$ 到 $D$，外角 $\\angle ACD$ 与内角 $\\angle ACB$ 互补：$\\angle ACD=180^\\circ-\\angle ACB$。再由内角和得 $\\angle ACB=180^\\circ-(\\angle A+\\angle B)$，两式相减即得 $\\angle ACD=\\angle A+\\angle B$。",
+          "key": "关键一步是外角与相邻内角互补：延长 $BC$ 到 $D$ 后，$\\angle ACD$ 与 $\\angle ACB$ 共用一条边、另一边互为反向延长线，所以 $\\angle ACD=180^\\circ-\\angle ACB$。再代入内角和 $\\angle ACB=180^\\circ-(\\angle A+\\angle B)$，两式相减就把 $\\angle ACB$ 消掉，剩下的正是外角等于不相邻两内角之和。"
+        }
       ],
       "experiment": "剪一个纸三角形，把三个角撕下来，顶点对顶点拼在一起，三条边正好接成一条直线——三个角拼成一个平角。换一个钝角三角形再试，结果一样，说明 180° 与三角形的形状、大小都无关。"
     },
@@ -117,16 +137,29 @@
     "intuition": "三角形是最「硬」的图形：三条边一定，形状就定死了，所以它撑得住。四边形一推就歪，正因为四条边锁不住形状。内角和像一笔固定预算——三个角怎么分都行，加起来只能是 180°，一个角多占，另外两个就得让出来。",
     "related": [
       {
+        "id": "m2-01-03-parallel-lines",
+        "kind": "前置",
+        "note": "三角形内角和的证明靠过顶点作平行线，平行线性质在前"
+      },
+      {
         "id": "m2-02-02-congruent-triangles",
-        "note": "递进：证明边相等、角相等的主要工具是全等"
+        "kind": "后续",
+        "note": "证明边相等、角相等的主要工具是全等"
       },
       {
         "id": "m2-02-04-isosceles-triangle",
-        "note": "延伸：等腰三角形把「边相等」与「角相等」直接锁在一起"
+        "kind": "后续",
+        "note": "等腰三角形把「边相等」与「角相等」直接锁在一起"
       },
       {
         "id": "m2-02-05-pythagoras",
-        "note": "延伸：直角三角形把三边关系升级成等量关系"
+        "kind": "后续",
+        "note": "直角三角形把三边关系升级成等量关系"
+      },
+      {
+        "id": "m2-03-01-polygon",
+        "kind": "常一起考",
+        "note": "多边形内角和公式是三角形内角和 $180^{\\circ}$ 的推广，两者常在同一道题里对比"
       }
     ]
   },

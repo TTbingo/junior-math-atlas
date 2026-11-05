@@ -58,11 +58,31 @@
     "why": {
       "diagram": "fig1",
       "steps": [
-        "证「等腰 → 同一底上两角相等」用平移一腰：过 $A$ 作 $AE\\parallel BC$ 交 $DC$ 于 $E$（图 1 左）。$AB\\parallel EC$（$E$ 在 $DC$ 上），加上 $AE\\parallel BC$——两组对边分别平行，$ABCE$ 是平行四边形，故 $AE=BC$。又等腰梯形 $AD=BC$，于是 $AD=AE$，$\\triangle ADE$ 是等腰三角形，底角相等：$\\angle ADC=\\angle AED$；而 $AE\\parallel BC$、$DE$ 与 $DC$ 共线，$\\angle AED$ 与 $\\angle BCD$ 是同位角（m2-01-03）——$\\angle ADC=\\angle BCD$，同一底上两角相等。",
-        "证「同一底上两角相等 → 等腰」用双高：设 $\\angle ADC=\\angle BCD$（同在下底 $DC$ 上）。过 $A$、$B$ 作 $AE\\perp DC$、$BF\\perp DC$，垂足 $E$、$F$。两条高互相平行、夹在平行的上下底之间，$AE=BF$（平行线之间的距离处处相等）。直角 $\\triangle ADE$ 与 $\\triangle BCF$ 中：$\\angle AED=\\angle BFC=90^{\\circ}$、$\\angle ADE=\\angle BCF$（已知）、$AE=BF$——AAS，$\\triangle ADE\\cong\\triangle BCF$，得 $AD=BC$。",
-        "证对角线相等（等腰梯形）：$\\triangle ABD$ 与 $\\triangle BAC$ 中，$AD=BC$（等腰）、$\\angle DAB=\\angle CBA$（同一底 $AB$ 上两角相等）、$AB$ 公共——SAS，$\\triangle ABD\\cong\\triangle BAC$，对应边 $BD=AC$。",
-        "中点四边形是平行四边形：见「说明」第 3 段的中位线接力——两对中位线分别平行且等于同一条对角线的一半，$EF\\parallel HG$ 且 $EF=HG$（一组对边平行且相等，m2-03-02 判定②）即得平行四边形。",
-        "梯形中位线（$E$、$F$ 分别是腰 $AD$、$BC$ 的中点）：连接 $DF$ 并延长，交 $AB$ 的延长线于 $G$。$\\triangle DCF$ 与 $\\triangle GBF$ 中：$CF=BF$（F 是 $BC$ 中点）、$\\angle DFC=\\angle GFB$（对顶角）、$\\angle DCF=\\angle GBF$（$DC\\parallel AB$，同位角）——ASA，$\\triangle DCF\\cong\\triangle GBF$，得 $DC=GB$、$DF=GF$。于是在 $\\triangle DAG$ 中，$E$ 是 $AD$ 中点、$F$ 是 $DG$ 中点——$EF$ 是中位线（m2-02-06）：$EF\\parallel AG$（即平行于两底）且 $EF=\\tfrac12 AG=\\tfrac12(AB+BG)=\\tfrac12(AB+DC)$，两底和的一半。"
+        {
+          "conclusion": "等腰梯形在同一底上的两个角相等。",
+          "proof": "证「等腰 → 同一底上两角相等」用平移一腰：过 $A$ 作 $AE\\parallel BC$ 交 $DC$ 于 $E$（图 1 左）。$AB\\parallel EC$（$E$ 在 $DC$ 上），加上 $AE\\parallel BC$——两组对边分别平行，$ABCE$ 是平行四边形，故 $AE=BC$。又等腰梯形 $AD=BC$，于是 $AD=AE$，$\\triangle ADE$ 是等腰三角形，底角相等：$\\angle ADC=\\angle AED$；而 $AE\\parallel BC$、$DE$ 与 $DC$ 共线，$\\angle AED$ 与 $\\angle BCD$ 是同位角（m2-01-03）——$\\angle ADC=\\angle BCD$，同一底上两角相等。",
+          "key": "依据是「平移一腰」把梯形拆成平行四边形加三角形：$AB\\parallel EC$ 与 $AE\\parallel BC$ 给出两组对边分别平行，$ABCE$ 是平行四边形，$AE=BC$；等腰梯形 $AD=BC$ 于是 $AD=AE$，$\\triangle ADE$ 等腰、底角相等；最后 $AE\\parallel BC$ 且 $DE$ 与 $DC$ 共线，$\\angle AED$ 与 $\\angle BCD$ 是同位角，角才落到下底上。"
+        },
+        {
+          "conclusion": "同一底上两角相等的梯形是等腰梯形（$AD=BC$）。",
+          "proof": "证「同一底上两角相等 → 等腰」用双高：设 $\\angle ADC=\\angle BCD$（同在下底 $DC$ 上）。过 $A$、$B$ 作 $AE\\perp DC$、$BF\\perp DC$，垂足 $E$、$F$。两条高互相平行、夹在平行的上下底之间，$AE=BF$（平行线之间的距离处处相等）。直角 $\\triangle ADE$ 与 $\\triangle BCF$ 中：$\\angle AED=\\angle BFC=90^{\\circ}$、$\\angle ADE=\\angle BCF$（已知）、$AE=BF$——AAS，$\\triangle ADE\\cong\\triangle BCF$，得 $AD=BC$。",
+          "key": "依据有两条：一是平行线之间的距离处处相等，给出 $AE=BF$（两条高互相平行又都夹在平行的上下底之间）；二是直角三角形的两个锐角互余，给出 $\\angle AED=\\angle BFC=90^{\\circ}$。加上已知的 $\\angle ADE=\\angle BCF$，AAS 的条件齐了，全等的对应边给出 $AD=BC$。"
+        },
+        {
+          "conclusion": "等腰梯形的两条对角线相等。",
+          "proof": "证对角线相等（等腰梯形）：$\\triangle ABD$ 与 $\\triangle BAC$ 中，$AD=BC$（等腰）、$\\angle DAB=\\angle CBA$（同一底 $AB$ 上两角相等）、$AB$ 公共——SAS，$\\triangle ABD\\cong\\triangle BAC$，对应边 $BD=AC$。",
+          "key": "依据是 SAS：$AD=BC$ 用等腰梯形的定义，$\\angle DAB=\\angle CBA$ 用同底上两角相等，$AB$ 是公共边——两腰及其夹角对应相等，位置正好对上。条件凑齐才能全等，全等的对应边给出 $BD=AC$。"
+        },
+        {
+          "conclusion": "顺次连接四边形各边中点所得的四边形是平行四边形。",
+          "proof": "中点四边形是平行四边形：见「说明」第 3 段的中位线接力——两对中位线分别平行且等于同一条对角线的一半，$EF\\parallel HG$ 且 $EF=HG$（一组对边平行且相等，m2-03-02 判定②）即得平行四边形。",
+          "key": "依据是中位线定理（m2-02-06）加上 m2-03-02 的判定②：两对中位线分别平行于同一条对角线、且都等于该对角线的一半，于是 $EF\\parallel HG$ 且 $EF=HG$，正好是「一组对边平行且相等」，所以中点四边形是平行四边形。"
+        },
+        {
+          "conclusion": "梯形的中位线平行于两底，且等于两底之和的一半。",
+          "proof": "梯形中位线（$E$、$F$ 分别是腰 $AD$、$BC$ 的中点）：连接 $DF$ 并延长，交 $AB$ 的延长线于 $G$。$\\triangle DCF$ 与 $\\triangle GBF$ 中：$CF=BF$（F 是 $BC$ 中点）、$\\angle DFC=\\angle GFB$（对顶角）、$\\angle DCF=\\angle GBF$（$DC\\parallel AB$，同位角）——ASA，$\\triangle DCF\\cong\\triangle GBF$，得 $DC=GB$、$DF=GF$。于是在 $\\triangle DAG$ 中，$E$ 是 $AD$ 中点、$F$ 是 $DG$ 中点——$EF$ 是中位线（m2-02-06）：$EF\\parallel AG$（即平行于两底）且 $EF=\\tfrac12 AG=\\tfrac12(AB+BG)=\\tfrac12(AB+DC)$，两底和的一半。",
+          "key": "依据是「补一个三角形」：延长 $DF$ 交 $AB$ 的延长线于 $G$，梯形被补成 $\\triangle DAG$，$E$、$F$ 恰是它两条边上的中点，于是 $EF$ 是这个三角形的中位线（m2-02-06），给出 $EF\\parallel AG$ 与 $EF=\\tfrac12 AG$。而 $AG=AB+BG$、$BG=DC$ 来自 ASA 全等得到的 $DC=GB$，所以结果是两底和的一半。"
+        }
       ],
       "experiment": "任意画一个四边形（越歪越好），量出四边中点并顺次连线；用直尺比对：连线段分别与两条对角线平行，长度恰是对应对角线的一半。换一个有直角的、一个对角线相等的四边形再试——中点四边形先后变成矩形与菱形（角/边被原对角线「传染」）。"
     },
@@ -122,12 +142,29 @@
     "intuition": "梯形是「半路出家」的平行四边形：只有一组对边肯合作。想驯服它，就借外援——平移一腰（凑出平行四边形+等腰三角形）、平移对角线（凑出等腰三角形）、作双高（凑出直角三角形），三种外援都是把「没学过的图形」拆成「学过的零件」。中点四边形则像给任意四边形做「缩印」：四条中位线各取对角线的一半并与之平行，不管外框多歪，印出来的永远是平行四边形——原对角线的脾气（等长、垂直）原样传给它的边与角。",
     "related": [
       {
-        "id": "m2-03-03-special-parallelogram",
-        "note": "联动：中点四边形是否升级成菱形/矩形/正方形，由原四边形对角线的相等与垂直决定"
+        "id": "m2-02-02-congruent-triangles",
+        "kind": "前置",
+        "note": "梯形中位线定理与对角线性质的证明靠全等"
+      },
+      {
+        "id": "m2-02-06-triangle-midline",
+        "kind": "前置",
+        "note": "梯形中位线是三角形中位线在四边形里的续集"
+      },
+      {
+        "id": "m2-03-02-parallelogram",
+        "kind": "前置",
+        "note": "中点四边形问题的讨论从平行四边形开始"
       },
       {
         "id": "m2-06-01-symmetry",
-        "note": "延伸：等腰梯形是轴对称图形（对称轴过两底中点）"
+        "kind": "后续",
+        "note": "等腰梯形是轴对称图形（对称轴过两底中点）"
+      },
+      {
+        "id": "m2-03-03-special-parallelogram",
+        "kind": "常一起考",
+        "note": "中点四边形是否升级成菱形、矩形、正方形，由原四边形对角线的相等与垂直决定——两个家族常一起考"
       }
     ]
   },

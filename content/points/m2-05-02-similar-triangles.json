@@ -59,10 +59,26 @@
     "why": {
       "diagram": "fig1",
       "steps": [
-        "预备引理（平行引理）：$\\triangle ABC$ 中 $DE\\parallel BC$（$D$ 在 $AB$ 上、$E$ 在 $AC$ 上），则 $\\triangle ADE\\sim\\triangle ABC$。由 m2-05-01 的比例转移 $\\tfrac{AD}{AB}=\\tfrac{AE}{AC}$；再把 $DE$ 平移到过 $B$（或 $C$）用同法得第三组比 $\\tfrac{DE}{BC}=\\tfrac{AD}{AB}$——三边成比例；角由平行线的同位角（m2-01-03）直接相等。",
-        "AA 判定：$\\triangle ABC$ 与 $\\triangle DEF$ 两角对应相等。把小的平移旋转，让 $\\angle A$ 与 $\\angle D$ 重合、$AB$ 落在 $DE$ 上——$\\angle B=\\angle E$ 强制 $BC\\parallel EF$（同位角相等则平行），于是落入第 1 步的平行引理：$\\triangle ABC$ 与大三角形中「被平行线截出的三角形」相似。两角锁定形状，边只剩整体伸缩一个自由度。",
-        "线段比 $=k$（以高为例）：设 $AH\\perp BC$ 于 $H$、$DK\\perp EF$ 于 $K$（对应高）。AA 已经保证 $\\triangle ABH\\sim\\triangle DEK$（直角与 $\\angle B=\\angle E$），故 $\\tfrac{DK}{AH}=\\tfrac{DE}{AB}=k$。中线、角平分线同理——都被各自的「小三角形相似」保送为 $k$。",
-        "面积比 $=k^2$：$S_{\\triangle ABC}=\\tfrac12 BC\\cdot AH$，$S_{\\triangle DEF}=\\tfrac12 EF\\cdot DK$。两式相除：$\\tfrac{S_{DEF}}{S_{ABC}}=\\tfrac{EF}{BC}\\cdot\\tfrac{DK}{AH}=k\\cdot k=k^2$。底乘高、两个一维量各贡献一个 $k$。"
+        {
+          "conclusion": "平行引理：$\\triangle ABC$ 中若 $DE\\parallel BC$（$D$ 在 $AB$ 上、$E$ 在 $AC$ 上），则 $\\triangle ADE\\sim\\triangle ABC$。",
+          "proof": "$\\triangle ABC$ 中 $DE\\parallel BC$（$D$ 在 $AB$ 上、$E$ 在 $AC$ 上），则 $\\triangle ADE\\sim\\triangle ABC$。由 m2-05-01 的比例转移 $\\tfrac{AD}{AB}=\\tfrac{AE}{AC}$；再把 $DE$ 平移到过 $B$（或 $C$）用同法得第三组比 $\\tfrac{DE}{BC}=\\tfrac{AD}{AB}$——三边成比例；角由平行线的同位角（m2-01-03）直接相等。",
+          "key": "依据是 m2-05-01 的比例转移与平行线同位角（m2-01-03）：$\\tfrac{AD}{AB}=\\tfrac{AE}{AC}$ 给出两组对应边成比例，再把 $DE$ 平移到过 $B$ 用同法得 $\\tfrac{DE}{BC}=\\tfrac{AD}{AB}$，三组对应边全部成比例；角由 $DE\\parallel BC$ 的同位角直接相等。两组边成比例加一组角相等，就得到两个三角形相似。"
+        },
+        {
+          "conclusion": "AA 判定：两个角对应相等的三角形相似。",
+          "proof": "$\\triangle ABC$ 与 $\\triangle DEF$ 两角对应相等。把小的平移旋转，让 $\\angle A$ 与 $\\angle D$ 重合、$AB$ 落在 $DE$ 上——$\\angle B=\\angle E$ 强制 $BC\\parallel EF$（同位角相等则平行），于是落入第 1 步的平行引理：$\\triangle ABC$ 与大三角形中「被平行线截出的三角形」相似。两角锁定形状，边只剩整体伸缩一个自由度。",
+          "key": "依据是「同位角相等则两直线平行」：把 $\\angle A$ 与 $\\angle D$ 重合、$AB$ 落在 $DE$ 上之后，$\\angle B=\\angle E$ 迫使 $BC\\parallel EF$，于是落回上面那条平行引理，图形位置摆正后对应关系一眼可见。两角锁定形状，边只剩整体伸缩一个自由度，这正是相似比 $k$ 可以是任意正数的根源。"
+        },
+        {
+          "conclusion": "相似三角形的对应线段（包括高、中线、角平分线）之比都等于相似比 $k$。",
+          "proof": "设 $AH\\perp BC$ 于 $H$、$DK\\perp EF$ 于 $K$（对应高）。AA 已经保证 $\\triangle ABH\\sim\\triangle DEK$（直角与 $\\angle B=\\angle E$），故 $\\tfrac{DK}{AH}=\\tfrac{DE}{AB}=k$。中线、角平分线同理——都被各自的「小三角形相似」保送为 $k$。",
+          "key": "依据是相似三角形对应边成比例：$AH$ 与 $DK$ 分别是两个相似三角形的一对对应高，而 $\\triangle ABH\\sim\\triangle DEK$ 由直角与 $\\angle B=\\angle E$ 用 AA 得到，所以 $\\tfrac{DK}{AH}=\\tfrac{DE}{AB}=k$。中线、角平分线同理——各自也能配出一对相似的小三角形，被「小三角形相似」保送为 $k$。"
+        },
+        {
+          "conclusion": "相似三角形的面积比等于相似比的平方：$\\tfrac{S_{DEF}}{S_{ABC}}=k^2$。",
+          "proof": "$S_{\\triangle ABC}=\\tfrac12 BC\\cdot AH$，$S_{\\triangle DEF}=\\tfrac12 EF\\cdot DK$。两式相除：$\\tfrac{S_{DEF}}{S_{ABC}}=\\tfrac{EF}{BC}\\cdot\\tfrac{DK}{AH}=k\\cdot k=k^2$。底乘高、两个一维量各贡献一个 $k$。",
+          "key": "依据是面积公式「底乘高的一半」：$S_{\\triangle ABC}=\\tfrac12 BC\\cdot AH$，$S_{\\triangle DEF}=\\tfrac12 EF\\cdot DK$，两式相除时底之比 $\\tfrac{EF}{BC}=k$ 与高之比 $\\tfrac{DK}{AH}=k$ 各出一个因子，乘起来就是 $k^2$。两个一维量各贡献一个 $k$，所以面积按 $k^2$ 变。"
+        }
       ],
       "experiment": "打印一张三角形，用复印机分别按 100%、70%、140% 三档复印：量三张纸上的三条边——70% 那张每条边都是原件的 0.7 倍（相似比 0.7）；用方格纸数三角形覆盖的小方格数估算面积，140% 那张约为原件的 2 倍（$1.4^2=1.96$）而不是 1.4 倍。"
     },
@@ -122,16 +138,29 @@
     "intuition": "相似是「复印件文化」：复印机不关心你印的是三角形还是头像，它只执行一件事——把所有长度乘同一倍数 $k$。倍数唯一，形状就被钉死：角度一毫米都不动（角不被伸缩改变），线段齐步走。所以判定可以省到只看两个角——形状被角锁死后，边只剩「复印倍率」一个自由度。而面积感受的是纸面大小：横也乘 $k$、竖也乘 $k$，格子数自然是 $k^2$ 倍——复印店按面积收费，而不是按边长收费（图 1 左把定义、右把性质并排对照）。",
     "related": [
       {
-        "id": "m2-05-03-similar-models",
-        "note": "延伸：AA 判定落到典型结构里——A 字型、8 字型、母子型，实战的「找两角」几乎全是这几副面孔"
+        "id": "m2-05-01-proportional-segments",
+        "kind": "前置",
+        "note": "相似的判定与性质都建立在「平行线分线段成比例」这条比例转移上"
       },
       {
-        "id": "m2-04-06-regular-polygon",
-        "note": "回望：正多边形「形状相同、大小可以不同、对应线段都成比例」的预告在本篇正式落地"
+        "id": "m2-02-02-congruent-triangles",
+        "kind": "前置",
+        "note": "相似是全等的推广：$k=1$ 时相似退化为全等，两个判定体系结构相同"
+      },
+      {
+        "id": "m2-05-03-similar-models",
+        "kind": "后续",
+        "note": "AA 判定落到典型结构里——A 字型、8 字型、母子型，实战的「找两角」几乎全是这几副面孔"
       },
       {
         "id": "m2-07-01-trig-ratios",
-        "note": "延伸：直角三角形里的角一旦定住，边的比也定住——锐角三角比是「形状锁死边比」的数值化"
+        "kind": "后续",
+        "note": "直角三角形里的角一旦定住，边的比也定住——锐角三角比是「形状锁死边比」的数值化"
+      },
+      {
+        "id": "m2-04-06-regular-polygon",
+        "kind": "常一起考",
+        "note": "正多边形「形状相同、大小可以不同、对应线段都成比例」的预告在本篇正式落地"
       }
     ]
   },

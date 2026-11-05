@@ -95,6 +95,34 @@
 .why-exp { border-top: 1px dashed var(--line-weak); padding-top: .75rem; }
 .why-exp p:last-child { margin-bottom: 0; }
 
+/* ---------- 结论化证明 ---------- */
+.proof-item {
+  border-left: 3px solid var(--accent);
+  background: var(--card-soft, var(--card));
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: .6rem .85rem;
+  margin: .55rem 0;
+}
+.proof-item .pf-concl {
+  font-family: var(--font-title); font-weight: 600; color: var(--title);
+  margin: 0 0 .3rem; font-size: var(--fs-base);
+}
+.proof-item .pf-idx {
+  display: inline-block; font-size: var(--fs-xs); font-weight: 600;
+  color: var(--accent); background: var(--accent-soft, transparent);
+  border-radius: 3px; padding: 0 .35rem; margin-right: .45rem;
+  vertical-align: .1em;
+}
+.proof-item .pf-proof { margin: 0 0 .35rem; }
+.proof-item .pf-proof:last-child { margin-bottom: 0; }
+.proof-item .pf-key {
+  margin: .3rem 0 0; font-size: var(--fs-sm); color: var(--text-sub);
+}
+.proof-item .pf-keytag {
+  display: inline-block; font-size: var(--fs-xs); font-weight: 600;
+  color: var(--warn, #b06a00); margin-right: .4rem;
+}
+
 /* ---------- 图 ---------- */
 .fig { margin: 1rem 0; }
 .fig img { max-width: 100%; height: auto; display: block; border: 1px solid var(--line-weak); border-radius: var(--radius); background: #fff; }
@@ -138,6 +166,17 @@
 .rel-group ul { list-style: none; margin: 0; padding: 0; }
 .rel-group li { padding: .25rem 0; border-bottom: 1px solid var(--line-weak); }
 .rel-note { display: block; font-size: var(--fs-sm); color: var(--text-sub); }
+.rel-tag {
+  display: inline-block; font-size: var(--fs-xs); font-weight: 600;
+  padding: .05rem .45rem; border-radius: 3px; margin-right: .5rem;
+  border: 1px solid currentColor;
+}
+.rel-tag-0 { color: var(--accent); }        /* 前置 */
+.rel-tag-1 { color: var(--ok, #2f8f5b); }    /* 后续 */
+.rel-tag-2 { color: var(--warn, #b06a00); }  /* 常一起考 */
+.rel-0 { border-left: 3px solid var(--accent); padding-left: .7rem; }
+.rel-1 { border-left: 3px solid var(--ok, #2f8f5b); padding-left: .7rem; }
+.rel-2 { border-left: 3px solid var(--warn, #b06a00); padding-left: .7rem; }
 
 /* ---------- 条目列表 ---------- */
 ul.items { margin: 0; padding-left: 1.2rem; }

@@ -59,10 +59,26 @@
     "why": {
       "diagram": "fig1",
       "steps": [
-        "A 字型（回顾）：$\\angle A$ 公共；$\\angle ADE=\\angle B$（$DE\\parallel BC$ 同位角，m2-01-03）。AA 得 $\\triangle ADE\\sim\\triangle ABC$，比例式即 m2-05-01 的比例转移。",
-        "8 字型：两条交叉直线相交于 $P$，$AD$ 与 $BC$ 各是一条截线，$AB\\parallel CD$。$\\angle APB=\\angle CPD$（对顶角，m2-01-03）；$\\angle PAB=\\angle PDC$（内错角，截线 $AD$ 截平行线 $AB$、$CD$）。AA 得 $\\triangle ABP\\sim\\triangle DCP$，比例式 $\\tfrac{AP}{DP}=\\tfrac{BP}{CP}=\\tfrac{AB}{DC}$——配对规律：站在同一条截线两端的两个顶点互为对应。",
-        "母子型：Rt$\\triangle ABC$（$\\angle BAC=90^{\\circ}$），$AD\\perp BC$ 于 $D$。$\\angle ADB=\\angle BAC=90^{\\circ}$ 且 $\\angle B$ 公共，得 $\\triangle ABD\\sim\\triangle CBA$；同理 $\\angle ADC=\\angle BAC=90^{\\circ}$ 且 $\\angle C$ 公共，得 $\\triangle CAD\\sim\\triangle CBA$，于是 $\\triangle ABD\\sim\\triangle CBA\\sim\\triangle CAD$（两两相似）。对应边写成比例：$\\triangle ABD\\sim\\triangle CBA$ 给 $\\tfrac{AB}{CB}=\\tfrac{BD}{BA}$，交叉相乘即 $AB^2=BD\\cdot BC$；再由 $\\triangle ABD\\sim\\triangle CAD$ 得 $\\tfrac{BD}{AD}=\\tfrac{AD}{CD}$，即 $AD^2=BD\\cdot DC$；由 $\\triangle CAD\\sim\\triangle CBA$ 得 $AC^2=DC\\cdot BC$。",
-        "一线三等角：$\\angle B=\\angle C=\\angle ADE=\\alpha$，$B$、$D$、$C$ 在同一直线上（$D$ 在中间），$A$、$E$ 在直线同侧。在 $D$ 处用平角：$\\angle ADB=180^{\\circ}-\\angle ADC$，而 $\\angle ADC=\\angle ADE+\\angle EDC=\\alpha+\\angle EDC$，故 $\\angle ADB=180^{\\circ}-\\alpha-\\angle EDC$。再看 $\\triangle DEC$ 的内角和：$\\angle DEC=180^{\\circ}-\\angle C-\\angle EDC=180^{\\circ}-\\alpha-\\angle EDC$。两个右边完全相同，故 $\\angle ADB=\\angle DEC$；配上 $\\angle B=\\angle C=\\alpha$，AA 得 $\\triangle ABD\\sim\\triangle DCE$（对应边 $AB\\leftrightarrow DC$、$BD\\leftrightarrow CE$、$AD\\leftrightarrow DE$）。"
+        {
+          "conclusion": "A 字型：$DE\\parallel BC$ 时 $\\triangle ADE\\sim\\triangle ABC$，比例式即平行线分线段成比例。",
+          "proof": "$\\angle A$ 公共；$\\angle ADE=\\angle B$（$DE\\parallel BC$ 同位角，m2-01-03）。AA 得 $\\triangle ADE\\sim\\triangle ABC$，比例式即 m2-05-01 的比例转移。",
+          "key": "依据是 AA 加平行线同位角（m2-01-03）：$\\angle A$ 是公共角，$\\angle ADE=\\angle B$ 由 $DE\\parallel BC$ 的同位角相等得到，两角对应相等即相似；写出的比例式与 m2-05-01 的比例转移是同一个式子，说明 A 字型不是新结论，而是比例定理的一种外形。"
+        },
+        {
+          "conclusion": "8 字型：$\\triangle ABP\\sim\\triangle DCP$，比例式 $\\tfrac{AP}{DP}=\\tfrac{BP}{CP}=\\tfrac{AB}{DC}$。",
+          "proof": "两条交叉直线相交于 $P$，$AD$ 与 $BC$ 各是一条截线，$AB\\parallel CD$。$\\angle APB=\\angle CPD$（对顶角，m2-01-03）；$\\angle PAB=\\angle PDC$（内错角，截线 $AD$ 截平行线 $AB$、$CD$）。AA 得 $\\triangle ABP\\sim\\triangle DCP$，比例式 $\\tfrac{AP}{DP}=\\tfrac{BP}{CP}=\\tfrac{AB}{DC}$——配对规律：站在同一条截线两端的两个顶点互为对应。",
+          "key": "依据是两组角分别由平行线性质给出：$\\angle APB=\\angle CPD$ 是对顶角（m2-01-03），$\\angle PAB=\\angle PDC$ 是截线 $AD$ 截平行线 $AB$、$CD$ 所得的内错角，AA 判定成立。对应顶点要按「站在同一条截线两端的两个顶点互为对应」来排：$A$、$D$ 同在截线 $AD$ 上、$B$、$C$ 同在截线 $BC$ 上，所以相似写作 $\\triangle ABP\\sim\\triangle DCP$，比例式才不会写反。"
+        },
+        {
+          "conclusion": "母子型：直角三角形斜边上的高把图形分成两个与原三角形相似的小三角形，$\\triangle ABD\\sim\\triangle CBA\\sim\\triangle CAD$，由此 $AB^2=BD\\cdot BC$、$AD^2=BD\\cdot DC$、$AC^2=DC\\cdot BC$。",
+          "proof": "Rt$\\triangle ABC$（$\\angle BAC=90^{\\circ}$），$AD\\perp BC$ 于 $D$。$\\angle ADB=\\angle BAC=90^{\\circ}$ 且 $\\angle B$ 公共，得 $\\triangle ABD\\sim\\triangle CBA$；同理 $\\angle ADC=\\angle BAC=90^{\\circ}$ 且 $\\angle C$ 公共，得 $\\triangle CAD\\sim\\triangle CBA$，于是 $\\triangle ABD\\sim\\triangle CBA\\sim\\triangle CAD$（两两相似）。对应边写成比例：$\\triangle ABD\\sim\\triangle CBA$ 给 $\\tfrac{AB}{CB}=\\tfrac{BD}{BA}$，交叉相乘即 $AB^2=BD\\cdot BC$；再由 $\\triangle ABD\\sim\\triangle CAD$ 得 $\\tfrac{BD}{AD}=\\tfrac{AD}{CD}$，即 $AD^2=BD\\cdot DC$；由 $\\triangle CAD\\sim\\triangle CBA$ 得 $AC^2=DC\\cdot BC$。",
+          "key": "依据是 AA 判定反复使用：$\\angle ADB=\\angle BAC=90^{\\circ}$ 且 $\\angle B$ 公共，所以 $\\triangle ABD\\sim\\triangle CBA$；$\\angle ADC=\\angle BAC=90^{\\circ}$ 且 $\\angle C$ 公共，所以 $\\triangle CAD\\sim\\triangle CBA$，两两相似。比例式要按相似书写顺序取对应边：$\\triangle ABD\\sim\\triangle CBA$ 给出 $AB\\leftrightarrow CB$、$BD\\leftrightarrow BA$，交叉相乘即 $AB^2=BD\\cdot BC$；$\\triangle ABD\\sim\\triangle CAD$ 给出 $BD\\leftrightarrow AD$、$AD\\leftrightarrow CD$，得 $AD^2=BD\\cdot DC$；$\\triangle CAD\\sim\\triangle CBA$ 给出 $CA\\leftrightarrow CB$、$CD\\leftrightarrow CA$，得 $AC^2=DC\\cdot BC$。"
+        },
+        {
+          "conclusion": "一线三等角：$\\angle B=\\angle C=\\angle ADE=\\alpha$ 时 $\\triangle ABD\\sim\\triangle DCE$，对应边 $AB\\leftrightarrow DC$、$BD\\leftrightarrow CE$、$AD\\leftrightarrow DE$。",
+          "proof": "$\\angle B=\\angle C=\\angle ADE=\\alpha$，$B$、$D$、$C$ 在同一直线上（$D$ 在中间），$A$、$E$ 在直线同侧。在 $D$ 处用平角：$\\angle ADB=180^{\\circ}-\\angle ADC$，而 $\\angle ADC=\\angle ADE+\\angle EDC=\\alpha+\\angle EDC$，故 $\\angle ADB=180^{\\circ}-\\alpha-\\angle EDC$。再看 $\\triangle DEC$ 的内角和：$\\angle DEC=180^{\\circ}-\\angle C-\\angle EDC=180^{\\circ}-\\alpha-\\angle EDC$。两个右边完全相同，故 $\\angle ADB=\\angle DEC$；配上 $\\angle B=\\angle C=\\alpha$，AA 得 $\\triangle ABD\\sim\\triangle DCE$（对应边 $AB\\leftrightarrow DC$、$BD\\leftrightarrow CE$、$AD\\leftrightarrow DE$）。",
+          "key": "依据是「同一直线上的邻补角」与三角形内角和：在 $D$ 处 $\\angle ADB=180^{\\circ}-\\angle ADC$，而 $\\angle ADC=\\angle ADE+\\angle EDC=\\alpha+\\angle EDC$，故 $\\angle ADB=180^{\\circ}-\\alpha-\\angle EDC$；在 $\\triangle DEC$ 中 $\\angle DEC=180^{\\circ}-\\angle C-\\angle EDC=180^{\\circ}-\\alpha-\\angle EDC$，两个右边相同，故 $\\angle ADB=\\angle DEC$。再配 $\\angle B=\\angle C=\\alpha$，AA 成立——两个已知等角把「$B$、$D$、$C$ 一条直线」换成了两个可配对的角。"
+        }
       ],
       "experiment": "阳光正好的时候，把 1 米长的竹竿竖直插在平地上，量它的影长；再量旁边一棵树的影长。竿高:竿影 = 树高:树影——用计算器算出树高，再与目测估计对比（目测通常差得离谱，这就是相似模型的价值）。晚上拿带小孔的纸筒对着发光的小三角形（手机屏幕画一个）看墙上成的像：像与物形状相同、大小随墙距变大——8 字型的两条交叉光线就在暗箱里。"
     },
@@ -122,16 +138,29 @@
     "intuition": "相似模型像积木的「标准件」：复杂图形千变万化，拆开看都是 A、8、母子、一线三等角这几副骨架（图 1 并排对照）。认骨架的钥匙是角——公共角是 A 字型的顶、对顶角是 8 字型的腰、互余角是母子型的关节、等角排成串是一线三等角的脊梁。找到角，骨架自动浮出；骨架浮出，对应关系就写在脸上了。全等与相似共用骨架，只差「等」与「比」一个字——学会看骨架，两套题一起通。",
     "related": [
       {
-        "id": "m2-05-04-homothety",
-        "note": "延伸：A 字型搬进坐标系变「放大机器」——相似模型是从这里造出来的"
+        "id": "m2-05-02-similar-triangles",
+        "kind": "前置",
+        "note": "模型是相似的判定在典型图形里的组合运用"
       },
       {
-        "id": "m2-02-05-pythagoras",
-        "note": "回望：射影定理反推勾股——$AB^2+AC^2=BC^2$ 的第二条独立证明路线"
+        "id": "m2-02-03-congruent-models",
+        "kind": "前置",
+        "note": "全等模型与相似模型是同一套思路的两版，模型套路可迁移"
+      },
+      {
+        "id": "m2-05-04-homothety",
+        "kind": "后续",
+        "note": "A 字型搬进坐标系变「放大机器」——相似模型是从这里造出来的"
       },
       {
         "id": "m2-07-02-solving-right-triangle",
-        "note": "延伸：测量问题从「两角相似」走向「一角直角+三角比」——影子与坡度的两条技术路线在此分岔"
+        "kind": "后续",
+        "note": "测量问题从「两角相似」走向「一角直角+三角比」——影子与坡度的两条技术路线在此分岔"
+      },
+      {
+        "id": "m2-02-05-pythagoras",
+        "kind": "常一起考",
+        "note": "射影定理反推勾股——$AB^2+AC^2=BC^2$ 的第二条独立证明路线"
       }
     ]
   },

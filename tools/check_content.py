@@ -19,6 +19,9 @@ import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
+
+# 关联知识点三类：前置 / 后续 / 常一起考
+REL_KINDS = ("前置", "后续", "常一起考")
 C = ROOT / "content"
 
 # 概念词 → 首次引入它的点位。正文在引入点之前出现该词，视为超前引用。
@@ -112,22 +115,38 @@ def main():
     bad = []
     for pid, p in points.items():
         secs = p.get("sections", {})
-        rel_ids = [r["id"] for r in secs.get("related", [])]
-        pre = p.get("prerequisites", [])
+        rel = secs.get("related", [])
+        rel_ids = [r["id"] for r in rel]
+        # 前置 = related 中 kind 为「前置」的条目（前置知识统一在这里维护，不再单设字段）
+        pre = [r["id"] for r in rel if r.get("kind") == "前置"]
 
         for x in pre:
             if x == pid:
                 bad.append(f"{pid}: 前置指向自己")
             elif x in order and order[x] > order[pid]:
                 bad.append(f"{pid}: 前置 {x} 排在本文之后（应先学）")
-            if x in rel_ids:
-                bad.append(f"{pid}: 前置 {x} 同时出现在 related，疑似 related[0] 顶替前置")
 
-        for r in rel_ids:
-            if r == pid:
+        for r in rel:
+            if r["id"] == pid:
                 bad.append(f"{pid}: related 指向自己")
-            if r not in order:
-                bad.append(f"{pid}: related {r} 不在清单")
+            # ext: 前缀 = 清单外的知识方向（如高中衔接），只作文字提示，不生成链接
+            if r["id"].startswith("ext:"):
+                continue
+            if r["id"] not in order:
+                bad.append(f"{pid}: related {r['id']} 不在清单")
+            if r.get("kind") not in REL_KINDS:
+                bad.append(f"{pid}: related {r['id']} 的 kind 非法「{r.get('kind')}」")
+            # 「后续」必须排在本文之后——否则是把前置误标成了后续
+            if r.get("kind") == "后续" and r["id"] in order and order[r["id"]] < order[pid]:
+                bad.append(f"{pid}: 「后续」{r['id']} 实际排在本文之前，应改为「前置」或「常一起考」")
+
+        # 三类关联要齐全
+        kinds = {r.get("kind") for r in rel}
+        for k in REL_KINDS:
+            if k not in kinds:
+                bad.append(f"{pid}: 关联知识点缺「{k}」类")
+        # 「后续」必须有内容：站内后续篇目，或 ext: 表示的知识方向（如高中衔接）。
+        # 清单末篇没有站内后续，用 ext: 承接高中方向是合理的。
 
         scenes = [e.get("scene") for e in secs.get("examples", [])]
         if len(scenes) != len(set(scenes)):
@@ -161,14 +180,16 @@ def main():
                             f"{pid}.{k}: 超前引用「{w}」（该概念在 {intro} 才引入，本篇排在它之前）"
                         )
 
-    # 环检测：prerequisites 图上是否有环
+    # 环检测：前置关系（related 中 kind=前置 的条目）构成的图上是否有环
     state = {}
+
+    def pre_of(pid):
+        return [r["id"] for r in points.get(pid, {}).get("sections", {}).get("related", [])
+                if r.get("kind") == "前置" and r["id"] in points]
 
     def dfs(u, path):
         state[u] = 1
-        for v in points.get(u, {}).get("prerequisites", []):
-            if v not in points:
-                continue
+        for v in pre_of(u):
             if state.get(v) == 1:
                 bad.append(f"前置成环：{' → '.join(path + [u, v])}")
             elif state.get(v) is None:

@@ -14,6 +14,12 @@
   --accent-soft: #f5ddd8;
   --accent-deep: #8f2419;
   --code-bg: #efe7d8;
+  /* 关联知识点三类标签用色：前置=主色 后续=绿 常一起考=琥珀 */
+  --ok: #2f7d55;
+  --ok-soft: #dceee3;
+  --warn: #a2680a;
+  --warn-soft: #f5e8cf;
+  --card-soft: #fbf6ec;
 }
 
 [data-theme="dark"] {
@@ -30,6 +36,11 @@
   --accent-soft: #4a1a15;
   --accent-deep: #f7c4bd;
   --code-bg: #2b2f38;
+  --ok: #5cba86;
+  --ok-soft: #1e3a2c;
+  --warn: #d9a441;
+  --warn-soft: #3a2f17;
+  --card-soft: #262931;
 }
 
 :root {

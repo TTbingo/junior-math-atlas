@@ -29,8 +29,9 @@
   ],
   "scope": "core",
   "prerequisites": [
-    "m2-02-05-pythagoras",
     "m2-05-02-similar-triangles",
+    "m2-02-05-pythagoras",
+    "m2-01-02-angles",
     "m2-05-03-similar-models"
   ],
   "media": [
@@ -62,10 +63,26 @@
     "why": {
       "diagram": "fig1",
       "steps": [
-        "角为什么能决定边之比：取两个形状相同、大小不同的直角三角形 $\\triangle ABC$ 与 $\\triangle A'B'C'$，$\\angle C=\\angle C'=90^{\\circ}$，$\\angle A=\\angle A'$。由 AA（m2-05-02），$\\triangle ABC\\sim\\triangle A'B'C'$，于是对应边成比例：$\\dfrac{BC}{B'C'}=\\dfrac{AC}{A'C'}=\\dfrac{AB}{A'B'}$。每一组「对边比邻边」「邻边比斜边」「对边比斜边」在两个三角形里都相等——它们只由 $\\angle A$ 决定，与三角形大小无关。这正是锐角三角函数存在的理由。",
-        "$30^{\\circ}$ 与 $60^{\\circ}$ 的值怎么来：作一个含 $30^{\\circ}$ 角的直角三角形，$\\angle A=30^{\\circ}$、$\\angle C=90^{\\circ}$。把斜边 $AB$ 上的中点 $M$ 连到 $C$，由「直角三角形斜边上的中线等于斜边的一半」（m2-04-01）得 $CM=AM=BM=\\dfrac12 AB$，而 $CM=BM$ 使 $\\triangle BCM$ 成为等边三角形，于是 $\\angle MBC=60^{\\circ}$，即 $\\angle B=60^{\\circ}$。这时 $\\angle A=30^{\\circ}$，$BC=\\dfrac12 AB$，所以 $\\sin30^{\\circ}=\\dfrac{BC}{AB}=\\dfrac12$；再由勾股算出 $AC=\\dfrac{\\sqrt3}{2}AB$，得 $\\cos30^{\\circ}=\\dfrac{\\sqrt3}{2}$，$\\tan30^{\\circ}=\\dfrac{BC}{AC}=\\dfrac{1}{\\sqrt3}=\\dfrac{\\sqrt3}{3}$。$60^{\\circ}$ 的三个值与 $30^{\\circ}$ 互换对边邻边即可得到。",
-        "$45^{\\circ}$ 的值怎么来：取一个等腰直角三角形，$\\angle A=45^{\\circ}$，两直角边相等，设都为 $a$，则斜边 $c=\\sqrt{a^{2}+a^{2}}=\\sqrt2 a$（勾股，m2-02-05）。于是 $\\sin45^{\\circ}=\\dfrac{a}{\\sqrt2 a}=\\dfrac{\\sqrt2}{2}$，$\\cos45^{\\circ}$ 同理也是 $\\dfrac{\\sqrt2}{2}$，$\\tan45^{\\circ}=\\dfrac{a}{a}=1$。",
-        "互余关系怎么来：设 $\\angle A+\\angle B=90^{\\circ}$。在 $\\triangle ABC$ 中，$BC$ 是 $\\angle A$ 的对边、$AC$ 是 $\\angle B$ 的对边；把同一个比值分别写成 $\\sin A=\\dfrac{BC}{AB}$ 与 $\\cos B=\\dfrac{BC}{AB}$，两者相等，所以 $\\sin A=\\cos B=\\cos(90^{\\circ}-A)$，反过来也成立。这条规律让「已知一个特殊角」可以推出另一个特殊角的值：$30^{\\circ}$ 与 $60^{\\circ}$ 互余，正是它们正弦余弦互换的原因。"
+        {
+          "conclusion": "锐角三角函数的值只由这个角决定，与三角形的大小无关。",
+          "proof": "取两个形状相同、大小不同的直角三角形 $\\triangle ABC$ 与 $\\triangle A'B'C'$，其中 $\\angle C=\\angle C'=90^{\\circ}$、$\\angle A=\\angle A'$。由 AA 判定得 $\\triangle ABC\\sim\\triangle A'B'C'$，于是对应边成比例：$\\dfrac{BC}{B'C'}=\\dfrac{AC}{A'C'}=\\dfrac{AB}{A'B'}$。于是「对边比邻边」「邻边比斜边」「对边比斜边」这三个比值，在两个三角形里都相等——它们由 $\\angle A$ 唯一确定，与三角形的大小无关。这正是锐角三角函数能按「角」来取值的理由。",
+          "key": "AA 相似。它保证两个三角形对应边成比例，是「比值相等」这句话唯一的依据；没有相似，三角形大小一变比值就跟着变。"
+        },
+        {
+          "conclusion": "$\\sin30^{\\circ}=\\dfrac12$，$\\cos30^{\\circ}=\\dfrac{\\sqrt3}{2}$，$\\tan30^{\\circ}=\\dfrac{\\sqrt3}{3}$。",
+          "proof": "作一个含 $30^{\\circ}$ 角的直角三角形 $\\triangle ABC$，$\\angle A=30^{\\circ}$、$\\angle C=90^{\\circ}$。取斜边 $AB$ 的中点 $M$，连 $CM$。由「直角三角形斜边上的中线等于斜边的一半」得 $CM=AM=BM=\\dfrac12 AB$；又 $BM=CM$，所以 $\\triangle BCM$ 是等边三角形，$\\angle MBC=60^{\\circ}$，即 $\\angle B=60^{\\circ}$。此时 $BC=CM=\\dfrac12 AB$，故 $\\sin30^{\\circ}=\\dfrac{BC}{AB}=\\dfrac12$；由勾股定理 $AC^2=AB^2-BC^2=\\dfrac34 AB^2$，得 $AC=\\dfrac{\\sqrt3}{2}AB$，于是 $\\cos30^{\\circ}=\\dfrac{AC}{AB}=\\dfrac{\\sqrt3}{2}$、$\\tan30^{\\circ}=\\dfrac{BC}{AC}=\\dfrac{1}{\\sqrt3}=\\dfrac{\\sqrt3}{3}$。",
+          "key": "斜边上的中线等于斜边的一半。这一句把 $30^{\\circ}$ 的锐角三角形变成了等边三角形，是 $30^{\\circ}$ 的值能算出来的枢纽；$60^{\\circ}$ 的三个值由结论 3 与它互换对边邻边得到。"
+        },
+        {
+          "conclusion": "$45^{\\circ}$ 的三个三角函数值是 $\\sin45^{\\circ}=\\cos45^{\\circ}=\\dfrac{\\sqrt2}{2}$，$\\tan45^{\\circ}=1$。",
+          "proof": "取一个等腰直角三角形 $\\triangle ABC$，$\\angle A=45^{\\circ}$、$\\angle C=90^{\\circ}$，两直角边 $AC=BC=a$。由勾股定理 $AB=\\sqrt{AC^2+BC^2}=\\sqrt2 a$。于是 $\\sin45^{\\circ}=\\dfrac{BC}{AB}=\\dfrac{a}{\\sqrt2 a}=\\dfrac{\\sqrt2}{2}$，$\\cos45^{\\circ}=\\dfrac{AC}{AB}=\\dfrac{\\sqrt2}{2}$（两者相等，因为对边与邻边一样长），$\\tan45^{\\circ}=\\dfrac{BC}{AC}=1$。",
+          "key": "等腰直角三角形的两直角边相等，所以对边与邻边可以互换——这是 $45^{\\circ}$ 处正弦与余弦相等的唯一理由；换成一般锐角就不相等了。"
+        },
+        {
+          "conclusion": "两个锐角互余时，正弦与余弦互换，即 $\\sin A=\\cos B$（当 $\\angle A+\\angle B=90^{\\circ}$）。",
+          "proof": "设 $\\angle A+\\angle B=90^{\\circ}$。在 $\\triangle ABC$ 中（$\\angle C=90^{\\circ}$），$BC$ 是 $\\angle A$ 的对边，同时它也是 $\\angle B$ 的邻边。于是同一个比值可以写成两种形式：按 $\\angle A$ 看，$\\sin A=\\dfrac{BC}{AB}$；按 $\\angle B$ 看，$\\cos B=\\dfrac{BC}{AB}$。两者相等，故 $\\sin A=\\cos B$；把 $B$ 换成 $90^{\\circ}-A$ 即得 $\\sin A=\\cos(90^{\\circ}-A)$。",
+          "key": "$BC$ 这条边同时扮演两个角色——它是 $\\angle A$ 的对边、$\\angle B$ 的邻边。同一条边写成两个不同的比，才逼出这个等式。"
+        }
       ],
       "experiment": "拿一张方格纸，画一个直角边都是 4 格的等腰直角三角形，量出斜边约 5.66 格，算出 $\\dfrac{4}{5.66}\\approx 0.707$，与 $\\sin45^{\\circ}=\\dfrac{\\sqrt2}{2}\\approx 0.707$ 对得上。再画一个高 1 格、底 3 格的直角三角形，量得斜边约 3.16 格，对边比斜边约为 $\\dfrac{1}{3.16}\\approx 0.32$。接着保持高与底的比例不变，把图形整体放大一倍（高改成 2 格、底改成 6 格），量得斜边约 6.32 格，再算「对边比斜边」仍是 $\\dfrac{2}{6.32}\\approx 0.32$——图形放大缩小，比值纹丝不动，这就是「比值只由角决定」的直观证据。反过来，若把高改成 1 格、底改成 2 格（角变了），比值就变成 $\\dfrac{1}{\\sqrt5}\\approx 0.447$，与原来不同。"
     },
@@ -125,16 +142,39 @@
     "intuition": "锐角三角函数其实是把「斜坡有多陡」换了个说法。站在 $\\angle A$ 上看那条斜边 $AB$，如果斜边是躺平的（角很小），那么对应的直角边也很短，正切值就小；如果斜边竖起来（角接近 $90^{\\circ}$），对边几乎追平邻边，正切就趋于无穷。三种函数不过是同一副三角形的三个不同量法：正弦问「竖直方向走了多少」，余弦问「水平方向走了多少」，正切问「竖直比水平多了几倍」。记住这一幅图，就不必死记「对边邻边斜边」的口诀了（图 1：同一副三角形，换个角看，三个比值就重新排列）。",
     "related": [
       {
+        "id": "m2-05-02-similar-triangles",
+        "kind": "前置",
+        "note": "锐角三角函数的值就是相似三角形里的对应边之比——AA 判定保证「形状相同则对应边成比例」，比值恒定这件事全靠它"
+      },
+      {
+        "id": "m2-02-05-pythagoras",
+        "kind": "前置",
+        "note": "三个三角函数值都是「两条边之比」，而边长本身要靠勾股定理算；勾股是本节算数的必备工具"
+      },
+      {
         "id": "m2-01-02-angles",
-        "note": "前置概念：互余与互补是本节「$30^{\\circ}$ 与 $60^{\\circ}$ 互换」的来源——两个锐角互余时，正弦与余弦互换"
+        "kind": "前置",
+        "note": "互余与互补的概念：两个锐角互余时正弦与余弦互换，这是 $30^{\\circ}$ 与 $60^{\\circ}$ 数值对调的依据"
+      },
+      {
+        "id": "m2-07-02-solving-right-triangle",
+        "kind": "后续",
+        "note": "知道每个角的值之后，下一步是「已知什么求什么」——本节提供工具，解直角三角形篇负责选工具并求解"
+      },
+      {
+        "id": "m2-07-03-trig-applications",
+        "kind": "后续",
+        "note": "本节的比值拿到真实场景里就是仰角、俯角、坡角——从「会算」到「会测量」的一步"
+      },
+      {
+        "id": "m2-05-03-similar-models",
+        "kind": "常一起考",
+        "note": "A 字型、母子型里求线段比值时，用的就是本节的三角函数值；同一道题里「相似定比例」和「三角函数定边长」常常同时出现"
       },
       {
         "id": "m1-01-05-quadratic-radicals",
-        "note": "工具：$\\dfrac{\\sqrt3}{2}$、$\\dfrac{\\sqrt2}{2}$ 这些值都要会化简，根式化简是本节的算术前提"
-      },
-      {
-        "id": "m2-04-01-circle-properties",
-        "note": "同源：直角三角形斜边上的中线等于斜边的一半，是推出 $30^{\\circ}$ 所对直角边那一半的关键工具"
+        "kind": "常一起考",
+        "note": "$\\dfrac{\\sqrt3}{2}$、$\\dfrac{\\sqrt2}{2}$ 必须化简成最简根式；答案写成 $\\dfrac{1}{\\sqrt3}$ 就是没化简完"
       }
     ]
   },
