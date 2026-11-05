@@ -166,6 +166,15 @@ for pid, d in docs.items():
     if len(set(scenes)) != len(scenes):
         add("WARN", pid, f"同篇例题场景重复: {scenes}")
 
+# ---------- 4b. 陷阱块字段完整性 ----------
+# 注：假陷阱（wrong 说的其实是对的）无法靠措辞或片段比对可靠检出——
+# 实测「wrong 与 right 共享数学片段」规则 23 条命中全为误报（共享的多是题设片段而非结论），
+# 因此不设自动判定，改为人工复核（见 CLAUDE.md 规则 31）。
+for pid, d in docs.items():
+    for i, pf in enumerate(d["sections"].get("pitfalls", [])):
+        if not pf.get("right") or not pf.get("why") or not pf.get("wrong"):
+            add("ERR", pid, f"pitfalls[{i}] 缺 wrong/why/right")
+
 # ---------- 5. TeX 纪律 ----------
 def walk(o, path=""):
     if isinstance(o, str):
