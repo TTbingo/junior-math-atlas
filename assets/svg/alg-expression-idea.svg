@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 240" width="540" height="240" role="img" aria-label="左边一个方框写着 3x 加 1，右边三条箭头分别指向 x 取 1 得 4、取 2 得 7、取 3 得 10，说明同一个代数式随字母取值给出不同的值">
+  <rect width="540" height="240" fill="#ffffff"/>
+  <text x="20" y="24" font-size="13" fill="#2d3748">同一个代数式，字母取什么值，它就变成什么数</text>
+
+  <rect x="30" y="95" width="128" height="60" rx="8" fill="#f7fafc" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="94" y="132" font-size="20" fill="#2b6cb0" text-anchor="middle">3x + 1</text>
+  <text x="94" y="176" font-size="12" fill="#a0aec0" text-anchor="middle">代数式</text>
+
+  <g stroke="#2b6cb0" stroke-width="2" fill="none">
+    <path d="M162 112 L246 66"/>
+    <path d="M162 125 L246 125"/>
+    <path d="M162 138 L246 184"/>
+  </g>
+  <g fill="#2b6cb0">
+    <polygon points="252,63 240,64 244,74"/>
+    <polygon points="252,125 240,120 240,130"/>
+    <polygon points="252,187 240,176 244,186"/>
+  </g>
+
+  <g font-size="12.5" fill="#2d3748">
+    <rect x="262" y="44" width="250" height="38" rx="6" fill="#ffffff" stroke="#a0aec0"/>
+    <text x="276" y="68">x = 1 时，值为 4</text>
+    <rect x="262" y="106" width="250" height="38" rx="6" fill="#ffffff" stroke="#a0aec0"/>
+    <text x="276" y="130">x = 2 时，值为 7</text>
+    <rect x="262" y="168" width="250" height="38" rx="6" fill="#ffffff" stroke="#a0aec0"/>
+    <text x="276" y="192">x = 3 时，值为 10</text>
+  </g>
+
+  <text x="20" y="230" font-size="12.5" fill="#c53030">式子本身不指定唯一结果；一旦字母定下来，值才定下来——这是它与等式最根本的区别</text>
+</svg>

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 250" width="540" height="250" role="img" aria-label="表格列出四组长方形摆法：长 1 宽 24、长 2 宽 12、长 3 宽 8、长 4 宽 6，每一组的乘积都是 24；箭头示意长增大时宽减小，乘积保持不变">
+  <rect width="540" height="250" fill="#ffffff"/>
+  <text x="20" y="24" font-size="13" fill="#2d3748">面积固定为 24：长变大，宽就变小，而乘积始终是 24</text>
+
+  <line x1="40" y1="58" x2="372" y2="58" stroke="#e2e8f0" stroke-width="1.5"/>
+  <g font-size="12" fill="#4a5568">
+    <text x="70" y="50" text-anchor="middle">长 a</text>
+    <text x="170" y="50" text-anchor="middle">宽 b</text>
+    <text x="290" y="50" text-anchor="middle">乘积 ab</text>
+  </g>
+
+  <g font-size="15" fill="#2d3748" text-anchor="middle">
+    <text x="70" y="88">1</text>
+    <text x="170" y="88">24</text>
+    <text x="290" y="88" fill="#c53030">24</text>
+
+    <text x="70" y="124">2</text>
+    <text x="170" y="124">12</text>
+    <text x="290" y="124" fill="#c53030">24</text>
+
+    <text x="70" y="160">3</text>
+    <text x="170" y="160">8</text>
+    <text x="290" y="160" fill="#c53030">24</text>
+
+    <text x="70" y="196">4</text>
+    <text x="170" y="196">6</text>
+    <text x="290" y="196" fill="#c53030">24</text>
+  </g>
+
+  <g stroke="#e2e8f0" stroke-width="1">
+    <line x1="40" y1="98" x2="372" y2="98"/>
+    <line x1="40" y1="134" x2="372" y2="134"/>
+    <line x1="40" y1="170" x2="372" y2="170"/>
+  </g>
+  <line x1="40" y1="212" x2="372" y2="212" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <line x1="112" y1="72" x2="112" y2="202" stroke="#c53030" stroke-width="1.5"/>
+  <polygon points="112,208 106,196 118,196" fill="#c53030"/>
+  <text x="122" y="222" font-size="12" fill="#c53030">长越来越大</text>
+
+  <line x1="212" y1="202" x2="212" y2="72" stroke="#2b6cb0" stroke-width="1.5"/>
+  <polygon points="212,66 206,78 218,78" fill="#2b6cb0"/>
+  <text x="222" y="222" font-size="12" fill="#2b6cb0">宽越来越小</text>
+
+  <rect x="392" y="72" width="126" height="140" rx="8" fill="#f7fafc" stroke="#2b6cb0"/>
+  <g font-size="12" fill="#2d3748">
+    <text x="404" y="98">ab = 24</text>
+    <text x="404" y="122">乘积一定</text>
+    <text x="404" y="146" fill="#2b6cb0">→ 反比例</text>
+    <text x="404" y="176" fill="#4a5568">长变 2 倍，</text>
+    <text x="404" y="196" fill="#4a5568">宽变 1/2</text>
+  </g>
+</svg>

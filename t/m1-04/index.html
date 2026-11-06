@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../assets/js/sharecode-guard.js"></script>
+<title>代数式 · 初中数学知识图谱</title>
+<meta name="description" content="从数到式的第一次跨越：用字母代表任取一个数，用式子刻画数量关系，再把数值代回去算出结果。（七上第 3 章）">
+<script>(function () {
+  try {
+    var s = localStorage.getItem('mathsite:theme') || 'auto';
+    var t = (s === 'auto')
+      ? (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : s;
+    document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+})();
+</script>
+<link rel="stylesheet" href="../../assets/css/tokens.css">
+<link rel="stylesheet" href="../../assets/css/layout.css">
+<link rel="stylesheet" href="../../assets/css/components.css">
+<link rel="stylesheet" href="../../assets/css/print.css">
+<link rel="stylesheet" href="../../assets/katex/katex.min.css">
+
+</head>
+<body class="page-topic" data-depth="2">
+<a class="skip-link" href="#main">跳到正文</a>
+
+<header class="topbar">
+  <button class="drawer-btn" id="drawer-btn" aria-label="打开目录" aria-expanded="false">☰</button>
+  <a class="site-title" href="../../index.html">初中数学知识图谱</a>
+  <div class="topbar-right">
+    <button class="search-btn" id="search-btn" aria-label="搜索">搜索 <kbd>Ctrl K</kbd></button>
+    <button class="theme-btn" id="theme-btn" aria-label="切换主题" title="切换主题">◐</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-inner"><nav class="side-nav" aria-label="模块目录"><details class="side-group" open><summary><a href="../../m1/index.html">代数</a><span class="side-n">39</span></summary><ul><li class="side-term"><a href="../../t/m1-00/index.html">有理数</a></li><li class="side-term"><a href="../../t/m1-04/index.html" aria-current="page">代数式</a></li><li><ul class="side-sub"><li class="side-item"><a href="../../points/m1-04-01-algebraic-expression/index.html">代数式与字母表示数</a></li><li class="side-item"><a href="../../points/m1-04-02-algebraic-notation/index.html">代数式的书写规范</a></li><li class="side-item"><a href="../../points/m1-04-03-column-expression/index.html">列代数式表示数量关系</a></li><li class="side-item"><a href="../../points/m1-04-04-proportion-relationship/index.html">正比例与反比例关系</a></li><li class="side-item"><a href="../../points/m1-04-05-algebraic-value/index.html">代数式的值与整体代入</a></li></ul></li><li class="side-term"><a href="../../t/m1-05/index.html">整式的加减</a></li><li class="side-term"><a href="../../t/m1-01/index.html">数与式</a></li><li class="side-term"><a href="../../t/m1-02/index.html">方程与不等式</a></li><li class="side-term"><a href="../../t/m1-03/index.html">函数</a></li></ul></details><details class="side-group" ><summary><a href="../../m2/index.html">几何</a><span class="side-n">35</span></summary><ul><li class="side-term"><a href="../../t/m2-01/index.html">图形的初步认识</a></li><li class="side-term"><a href="../../t/m2-02/index.html">三角形</a></li><li class="side-term"><a href="../../t/m2-03/index.html">四边形</a></li><li class="side-term"><a href="../../t/m2-04/index.html">圆</a></li><li class="side-term"><a href="../../t/m2-05/index.html">相似与投影</a></li><li class="side-term"><a href="../../t/m2-06/index.html">图形与变换</a></li><li class="side-term"><a href="../../t/m2-07/index.html">锐角三角函数</a></li></ul></details><details class="side-group" ><summary><a href="../../m3/index.html">统计与概率</a><span class="side-n">9</span></summary><ul><li class="side-term"><a href="../../t/m3-01/index.html">统计</a></li><li class="side-term"><a href="../../t/m3-02/index.html">概率</a></li></ul></details></nav></div>
+  </aside>
+  <div class="sidebar-mask" id="sidebar-mask" hidden></div>
+
+  <div class="main-pane">
+    <main id="main"><div class="panel panel-h1"><h1 id="_top">代数式</h1><p class="grade-sub">从数到式的第一次跨越：用字母代表任取一个数，用式子刻画数量关系，再把数值代回去算出结果。（七上第 3 章）</p></div><div class="panel panel-body"><section class="block overview"><table class="kv"><tbody><tr><th>所属模块</th><td><a href="../../m1/index.html">代数</a></td></tr><tr><th>课标学段</th><td>第四学段（7~9 年级）</td></tr></tbody></table></section><section class="block"><h2 id="list">知识点</h2><ul class="topic-list"><li><a href="../../points/m1-04-01-algebraic-expression/index.html"><span class="tl-t">代数式与字母表示数</span><span class="tl-s">用字母代替数，一个式子就同时说出了无数个具体情形；判断代数式的标准不是「有没有字母」，而是「代入数值能不能算出一个值」。</span><span class="tl-m"><span class="badge">理解</span><span class="badge">中考必考</span></span></a></li><li><a href="../../points/m1-04-02-algebraic-notation/index.html"><span class="tl-t">代数式的书写规范</span><span class="tl-s">六条规范各自堵一个真实的误读：<span class="math" data-tex="1\frac{1}{2}a">11/2a</span> 能读出两个值，<span class="math" data-tex="a3">a3</span> 会被当成编号，<span class="math" data-tex="a+b">a+b</span> 千克会被读成「<span class="math" data-tex="b">b</span> 千克」。</span><span class="tl-m"><span class="badge">掌握</span><span class="badge">中考必考</span></span></a></li><li><a href="../../points/m1-04-03-column-expression/index.html"><span class="tl-t">列代数式表示数量关系</span><span class="tl-s">列式不是把中文逐字翻成符号，而是先认出「谁在变、谁不变、谁由谁算出来」，再按中文的修饰顺序一层层搭上去。</span><span class="tl-m"><span class="badge">掌握</span><span class="badge">中考必考</span></span></a></li><li><a href="../../points/m1-04-04-proportion-relationship/index.html"><span class="tl-t">正比例与反比例关系</span><span class="tl-s">判断两个量成什么关系只看一句话：比值一定还是乘积一定。乘积一定时，一个量扩大几倍，另一个量就缩小到几分之一。</span><span class="tl-m"><span class="badge">理解</span><span class="badge">中考必考</span></span></a></li><li><a href="../../points/m1-04-05-algebraic-value/index.html"><span class="tl-t">代数式的值与整体代入</span><span class="tl-s">求值是「把字母换成数、按原顺序算」；难点只有两处：负数与分数代入要加括号，已知条件给的是整体时不要硬拆。</span><span class="tl-m"><span class="badge">掌握</span><span class="badge">中考必考</span></span></a></li></ul></section></div></main>
+  </div>
+
+  <aside class="rightbar" id="rightbar"><nav class="toc" aria-label="本页内容"><h2 class="toc-h">本页内容</h2><ul><li class="toc-l2"><a href="#list">知识点</a></li></ul></nav></aside>
+</div>
+
+<div class="search-modal" id="search-modal" hidden>
+  <div class="search-panel" role="dialog" aria-modal="true" aria-label="搜索">
+    <div class="search-head">
+      <input type="search" id="search-input" placeholder="搜索知识点、关键词…" autocomplete="off">
+      <button class="search-close" id="search-close" aria-label="关闭">✕</button>
+    </div>
+    <ul class="search-results" id="search-results"></ul>
+    <p class="search-tip">输入关键词，回车打开第一条</p>
+  </div>
+</div>
+
+<script src="../../assets/js/search-index.js"></script>
+<script src="../../assets/katex/katex.min.js"></script>
+<script src="../../assets/js/katex-render.js"></script>
+<script src="../../assets/js/theme.js"></script>
+<script src="../../assets/js/drawer.js"></script>
+<script src="../../assets/js/toc.js"></script>
+<script src="../../assets/js/search.js"></script>
+<script src="../../assets/js/progress.js"></script>
+</body>
+</html>

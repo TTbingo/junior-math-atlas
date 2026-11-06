@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 250" width="540" height="250" role="img" aria-label="把x平方减2x加1切成三张卡片，分别写x平方、负2x、正1，每张下方标注系数1、系数负2、常数项；下方指出最高次项x平方是2次、共3项，读作二次三项式，并提示第二个数字是项数不是次数">
+  <rect width="540" height="250" fill="#ffffff"/>
+  <text x="20" y="22" font-size="13" fill="#2d3748">多项式按「和」定义：每一项连符号一起抄，次数只看最高的那一项</text>
+
+  <text x="30" y="60" font-size="11" fill="#718096">原式</text>
+  <text x="110" y="62" font-size="24" fill="#2b6cb0">x² − 2x + 1</text>
+  <text x="360" y="60" font-size="11" fill="#718096">等于三个单项式相加</text>
+  <text x="360" y="80" font-size="13" fill="#2d3748">x² + (−2x) + 1</text>
+
+  <g>
+    <rect x="30" y="98" width="150" height="52" rx="6" fill="#f7fafc" stroke="#2b6cb0" stroke-width="1.2"/>
+    <text x="105" y="122" font-size="20" fill="#2b6cb0" text-anchor="middle">x²</text>
+    <text x="105" y="141" font-size="11" fill="#718096" text-anchor="middle">第一项　系数 1</text>
+
+    <rect x="195" y="98" width="150" height="52" rx="6" fill="#f7fafc" stroke="#2b6cb0" stroke-width="1.2"/>
+    <text x="270" y="122" font-size="20" fill="#2b6cb0" text-anchor="middle">−2x</text>
+    <text x="270" y="141" font-size="11" fill="#c53030" text-anchor="middle">第二项　系数 −2，不是 2</text>
+
+    <rect x="360" y="98" width="150" height="52" rx="6" fill="#f7fafc" stroke="#2b6cb0" stroke-width="1.2"/>
+    <text x="435" y="122" font-size="20" fill="#2b6cb0" text-anchor="middle">+1</text>
+    <text x="435" y="141" font-size="11" fill="#718096" text-anchor="middle">第三项　常数项</text>
+  </g>
+
+  <line x1="20" y1="168" x2="520" y2="168" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <text x="24" y="192" font-size="12" fill="#2d3748">最高次项是 x²（2 次）　·　一共 3 项</text>
+  <text x="300" y="194" font-size="16" fill="#2b6cb0">读作：二次三项式</text>
+
+  <text x="24" y="220" font-size="11.5" fill="#c53030">「二次」说次数、「三项」说项数，两个数字各管一件事，不换算、也不相加</text>
+  <text x="24" y="240" font-size="11" fill="#718096">切块时按加减号切，每块连符号抄下来——这一步做对，项数与系数就不会读错</text>
+</svg>

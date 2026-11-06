@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 250" width="540" height="250" role="img" aria-label="六行对照表，左列是不规范写法 a 乘 5、1 乘 x、1 又二分之一 m、n 除以 3、a 加 b 千克、3 乘 4 省乘号写成 34，右列是对应规范写法 5a、x、3/2 m、n/3、括号 a 加 b 千克、3 乘 4 保留乘号">
+  <rect width="540" height="250" fill="#ffffff"/>
+  <text x="20" y="24" font-size="13" fill="#2d3748">每一条规范都在堵一种误读：左边能读出两种意思，右边只有一种读法</text>
+
+  <text x="24" y="52" font-size="12" fill="#c53030">不规范写法</text>
+  <text x="300" y="52" font-size="12" fill="#2b6cb0">规范写法</text>
+  <line x1="20" y1="58" x2="520" y2="58" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <g font-size="13">
+    <text x="24" y="82" fill="#c53030">a × 5</text>
+    <text x="300" y="82" fill="#2b6cb0">5a</text>
+    <text x="24" y="112" fill="#c53030">1 · x</text>
+    <text x="300" y="112" fill="#2b6cb0">x</text>
+    <text x="24" y="142" fill="#c53030">1½ m</text>
+    <text x="300" y="142" fill="#2b6cb0">3/2 m</text>
+    <text x="24" y="172" fill="#c53030">n ÷ 3</text>
+    <text x="300" y="172" fill="#2b6cb0">n/3</text>
+    <text x="24" y="202" fill="#c53030">a + b 千克</text>
+    <text x="300" y="202" fill="#2b6cb0">(a + b) 千克</text>
+    <text x="24" y="232" fill="#c53030">3 × 4 写成 34</text>
+    <text x="300" y="232" fill="#2b6cb0">3 × 4（保留乘号）</text>
+  </g>
+
+  <g stroke="#e2e8f0" stroke-width="1">
+    <line x1="285" y1="64" x2="285" y2="240"/>
+    <line x1="20" y1="94" x2="520" y2="94"/>
+    <line x1="20" y1="124" x2="520" y2="124"/>
+    <line x1="20" y1="154" x2="520" y2="154"/>
+    <line x1="20" y1="184" x2="520" y2="184"/>
+    <line x1="20" y1="214" x2="520" y2="214"/>
+  </g>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 250" width="560" height="250">
+  <rect width="560" height="250" fill="#ffffff"/>
+  <text x="20" y="24" font-size="13" fill="#2d3748">角平分线：性质与判定互为逆定理，证明全靠全等</text>
+
+  <!-- 左：性质 -->
+  <text x="20" y="52" font-size="12" fill="#2b6cb0">性质：在平分线上 ⇒ 到两边距离相等</text>
+  <!-- 角 AOB -->
+  <line x1="60" y1="170" x2="200" y2="170" stroke="#2d3748" stroke-width="1.5"/>
+  <line x1="60" y1="170" x2="176" y2="70" stroke="#2d3748" stroke-width="1.5"/>
+  <line x1="60" y1="170" x2="196" y2="120" stroke="#2b6cb0" stroke-width="1.5" stroke-dasharray="6 3"/>
+  <path d="M 84 170 A 24 24 0 0 0 82 161" fill="none" stroke="#2d3748"/>
+  <text x="206" y="174" font-size="11" fill="#2d3748">OA 边</text>
+  <text x="178" y="66" font-size="11" fill="#2d3748">OB 边</text>
+  <text x="200" y="118" font-size="11" fill="#2b6cb0">平分线 OP</text>
+  <circle cx="150" cy="145" r="3" fill="#2b6cb0"/>
+  <text x="152" y="140" font-size="11" fill="#2b6cb0">P（在平分线上）</text>
+  <line x1="150" y1="145" x2="150" y2="170" stroke="#c53030" stroke-width="1.8"/>
+  <line x1="150" y1="145" x2="139" y2="112" stroke="#c53030" stroke-width="1.8"/>
+  <rect x="144" y="164" width="10" height="10" fill="none" stroke="#c53030"/>
+  <text x="156" y="182" font-size="10.5" fill="#c53030">PC⊥OA</text>
+  <text x="86" y="108" font-size="10.5" fill="#c53030">PD⊥OB</text>
+  <text x="20" y="200" font-size="11.5" fill="#4a5568">证法：△OCP ≅ △ODP（AAS）⇒ PC = PD</text>
+
+  <!-- 分隔 -->
+  <line x1="286" y1="44" x2="286" y2="200" stroke="#cbd5e0"/>
+
+  <!-- 右：判定 -->
+  <text x="306" y="52" font-size="12" fill="#38a169">判定：到两边距离相等 ⇒ 在平分线上</text>
+  <line x1="330" y1="170" x2="470" y2="170" stroke="#2d3748" stroke-width="1.5"/>
+  <line x1="330" y1="170" x2="446" y2="70" stroke="#2d3748" stroke-width="1.5"/>
+  <line x1="330" y1="170" x2="466" y2="120" stroke="#38a169" stroke-width="1.5" stroke-dasharray="6 3"/>
+  <circle cx="420" cy="143" r="3" fill="#38a169"/>
+  <text x="424" y="140" font-size="11" fill="#38a169">P（角内任一点）</text>
+  <line x1="420" y1="143" x2="420" y2="170" stroke="#c53030" stroke-width="1.8"/>
+  <line x1="420" y1="143" x2="409" y2="110" stroke="#c53030" stroke-width="1.8"/>
+  <text x="426" y="160" font-size="10.5" fill="#c53030">PC′⊥OA</text>
+  <text x="356" y="112" font-size="10.5" fill="#c53030">PD′⊥OB</text>
+  <text x="306" y="196" font-size="11.5" fill="#4a5568">证法：Rt△ 用 HL（公共斜边 OP + PC′=PD′）</text>
+
+  <line x1="20" y1="212" x2="540" y2="212" stroke="#cbd5e0"/>
+  <text x="20" y="234" font-size="11.5" fill="#4a5568">「距离」专指垂线段；尺规作平分线的原理也是全等——两次等半径画弧制造 OD=OE、DP=EP，SSS 收尾</text>
+</svg>

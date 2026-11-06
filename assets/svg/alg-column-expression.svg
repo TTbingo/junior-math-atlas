@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 250" width="540" height="250" role="img" aria-label="三层阶梯示意：底层砖块标 a，中层标 3a 表示 a 的 3 倍，顶层标 3a 减 5；右侧红框给出错误路径 a 减 5 再乘 3，并标明取 a 等于 4 时正确答案是 7、错误答案是负 3">
+  <rect width="540" height="250" fill="#ffffff"/>
+  <text x="20" y="24" font-size="13" fill="#2d3748">中文的修饰顺序，就是搭砖的顺序：</text>
+  <text x="20" y="44" font-size="13" fill="#2d3748">先说「a 的 3 倍」就先搭 3a，再说「少 5」就在上面减 5</text>
+
+  <g stroke="#2b6cb0" stroke-width="2" fill="#f7fafc">
+    <rect x="40" y="182" width="200" height="40" rx="6"/>
+    <rect x="40" y="132" width="200" height="40" rx="6"/>
+    <rect x="40" y="82" width="200" height="40" rx="6"/>
+  </g>
+  <g font-size="14" fill="#2d3748">
+    <text x="60" y="208">① 起始：a</text>
+    <text x="60" y="158">② 的 3 倍 → 3a</text>
+    <text x="60" y="108">③ 少 5 → 3a − 5</text>
+  </g>
+  <g stroke="#a0aec0" stroke-width="1.5" fill="none">
+    <path d="M240 200 L246 178"/>
+    <path d="M240 150 L246 128"/>
+  </g>
+  <g fill="#a0aec0">
+    <polygon points="246,172 241,182 251,182"/>
+    <polygon points="246,122 241,132 251,132"/>
+  </g>
+
+  <rect x="278" y="72" width="240" height="132" rx="8" fill="#fffaf0" stroke="#c53030" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <g font-size="12.5" fill="#c53030">
+    <text x="294" y="98">若先减后乘（与题意相反）：</text>
+    <text x="294" y="124" font-size="14">a − 5 → 3(a − 5)</text>
+    <text x="294" y="152">取 a = 4：</text>
+    <text x="294" y="176">正确 3×4−5 = 7，错误 3×(4−5) = −3</text>
+  </g>
+
+  <text x="20" y="240" font-size="11.5" fill="#2d3748">括号只为一件事存在：规定先算哪一步。列式时先问「最后一步是什么」，再决定要不要括号</text>
+</svg>

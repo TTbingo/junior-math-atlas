@@ -459,3 +459,40 @@ ul.pending { color: var(--text-faint); }
 .tb-note { margin: 0; font-size: var(--fs-sm); color: var(--text-sub); }
 /* 小字号下 KaTeX 的上标（^{\circ} 等）会被挤断行，公式一律不换行 */
 .tb-note .math, .tb-note .katex { white-space: nowrap; font-size: 1.02em; }
+
+/* ---------- 领域导读：主题速览表 ---------- */
+.guide-intro p strong { color: var(--accent-deep, var(--accent)); }
+.guide-tbl {
+  width: 100%; border-collapse: collapse;
+  font-size: var(--fs-body); margin: .2rem 0 .5rem;
+}
+.guide-tbl th, .guide-tbl td {
+  border: 1px solid var(--line-weak);
+  padding: .55rem .7rem; text-align: left; vertical-align: top;
+}
+.guide-tbl thead th {
+  background: var(--card-soft); color: var(--title);
+  font-weight: 600; white-space: nowrap;
+}
+.guide-tbl td.g-topic { white-space: nowrap; font-weight: 600; }
+.guide-tbl td.g-topic a { color: var(--accent); text-decoration: none; }
+.guide-tbl td.g-topic a:hover { text-decoration: underline; }
+.guide-tbl td.g-content { color: var(--text-sub); font-size: var(--fs-sm); min-width: 11em; }
+.guide-tbl td.g-use { font-size: var(--fs-sm); min-width: 13em; }
+.guide-tbl td.g-use .ptref { white-space: normal; }
+@media (max-width: 720px) {
+  .guide-tbl { display: block; }
+  .guide-tbl thead { display: none; }
+  .guide-tbl tbody { display: block; }
+  .guide-tbl tr { display: block; padding: .55rem 0; border-bottom: 1px solid var(--line-weak); }
+  .guide-tbl th, .guide-tbl td { display: block; border: 0; padding: .12rem 0; }
+  .guide-tbl td.g-topic { white-space: normal; color: var(--title); }
+  .guide-tbl td.g-content::before {
+    content: "内容"; display: block;
+    font-size: var(--fs-sm); color: var(--text-faint); font-weight: 600;
+  }
+  .guide-tbl td.g-use::before {
+    content: "在后面哪里用"; display: block;
+    font-size: var(--fs-sm); color: var(--text-faint); font-weight: 600;
+  }
+}
