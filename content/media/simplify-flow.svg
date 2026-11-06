@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 240" width="540" height="240" role="img" aria-label="流程图：去括号、合并同类项、代入数值、算出结果四个方框依次相连，前两个方框上方标化简，后两个标求值；下方提示求差时被减式必须整体加括号，并给出正确与错误的对照">
+  <rect width="540" height="240" fill="#ffffff"/>
+  <text x="20" y="22" font-size="13" fill="#2d3748">整式加减只有两步收尾，化简求值再加两步</text>
+
+  <text x="138" y="50" font-size="11" fill="#2b6cb0" text-anchor="middle">化简</text>
+  <line x1="20" y1="58" x2="256" y2="58" stroke="#2b6cb0" stroke-width="1"/>
+  <text x="402" y="50" font-size="11" fill="#2b6cb0" text-anchor="middle">求值</text>
+  <line x1="284" y1="58" x2="520" y2="58" stroke="#2b6cb0" stroke-width="1"/>
+
+  <g>
+    <rect x="20" y="66" width="104" height="44" rx="6" fill="#f7fafc" stroke="#2b6cb0" stroke-width="1.2"/>
+    <text x="72" y="94" font-size="13" fill="#2b6cb0" text-anchor="middle">去括号</text>
+
+    <rect x="152" y="66" width="104" height="44" rx="6" fill="#f7fafc" stroke="#2b6cb0" stroke-width="1.2"/>
+    <text x="204" y="94" font-size="13" fill="#2b6cb0" text-anchor="middle">合并同类项</text>
+
+    <rect x="284" y="66" width="104" height="44" rx="6" fill="#f7fafc" stroke="#2b6cb0" stroke-width="1.2"/>
+    <text x="336" y="94" font-size="13" fill="#2b6cb0" text-anchor="middle">代入数值</text>
+
+    <rect x="416" y="66" width="104" height="44" rx="6" fill="#f7fafc" stroke="#2b6cb0" stroke-width="1.2"/>
+    <text x="468" y="94" font-size="13" fill="#2b6cb0" text-anchor="middle">算出结果</text>
+  </g>
+
+  <g stroke="#2b6cb0" stroke-width="1.2" fill="none">
+    <path d="M124 88 L146 88 M140 83 L146 88 L140 93"/>
+    <path d="M256 88 L278 88 M272 83 L278 88 L272 93"/>
+    <path d="M388 88 L410 88 M404 83 L410 88 L404 93"/>
+  </g>
+
+  <text x="24" y="136" font-size="11.5" fill="#2d3748">在这两步之前还有一步最容易被跳过：每个整式先用括号括起来，再用加减号连接</text>
+
+  <text x="24" y="162" font-size="12" fill="#c53030">求差时被减式必须整体加括号：(5a) − (2a − 3) = 5a − 2a + 3 = 3a + 3</text>
+  <text x="24" y="182" font-size="11.5" fill="#718096">漏掉括号会写成 5a − 2a − 3 = 3a − 3，减号只落到第一项，答案差 6</text>
+
+  <line x1="20" y1="196" x2="520" y2="196" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="24" y="216" font-size="11.5" fill="#2d3748">「化」与「算」分两段做：先在草稿上化到最简，再代一次数字。边化边代会把同类项搅乱</text>
+  <text x="24" y="234" font-size="11" fill="#718096">代入负数或分数要加括号：x = −2 代入 x² 写 (−2)²，不写 −2²</text>
+</svg>

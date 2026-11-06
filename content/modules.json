@@ -8,7 +8,7 @@
       "title": "代数",
       "short": "代数",
       "strand": "数与代数",
-      "desc": "用符号表示关系，用运算求解关系：实数 → 式子 → 方程 → 函数。（中考约 43.2% 分值）",
+      "desc": "用符号表示关系，用运算求解关系：有理数 → 代数式 → 数与式 → 方程 → 函数。（中考约 43.2% 分值）",
       "map": "map-algebra.svg"
     },
     {
@@ -31,6 +31,50 @@
     }
   ],
   "topics": [
+    {
+      "id": "m1-00",
+      "module": "m1",
+      "no": 0,
+      "title": "有理数",
+      "desc": "初中数学的起点：先给数补上方向（正负数），再上数轴把数变成位置，然后用一套符号规则把四则运算与乘方统一起来。（约 8%）",
+      "points": [
+        "m1-00-01-positive-negative-numbers",
+        "m1-00-02-rational-numbers-concept",
+        "m1-00-03-number-line-opposite-absolute",
+        "m1-00-04-rational-comparison",
+        "m1-00-05-rational-addition-subtraction",
+        "m1-00-06-rational-multiplication-division",
+        "m1-00-07-rational-power-scientific"
+      ]
+    },
+    {
+      "id": "m1-04",
+      "module": "m1",
+      "no": 1,
+      "title": "代数式",
+      "desc": "从数到式的第一次跨越：用字母代表任取一个数，用式子刻画数量关系，再把数值代回去算出结果。（七上第 3 章）",
+      "points": [
+        "m1-04-01-algebraic-expression",
+        "m1-04-02-algebraic-notation",
+        "m1-04-03-column-expression",
+        "m1-04-04-proportion-relationship",
+        "m1-04-05-algebraic-value"
+      ]
+    },
+    {
+      "id": "m1-05",
+      "module": "m1",
+      "no": 2,
+      "title": "整式的加减",
+      "desc": "代数运算的起点：先给式子的各部分起名字（单项式、系数、次数），再用两招把它收拾干净——去括号、合并同类项。（七上第 4 章）",
+      "points": [
+        "m1-05-01-monomial",
+        "m1-05-02-polynomial-integral",
+        "m1-05-03-like-terms",
+        "m1-05-04-remove-parentheses",
+        "m1-05-05-integral-add-subtract"
+      ]
+    },
     {
       "id": "m1-01",
       "module": "m1",
@@ -70,6 +114,8 @@
       "desc": "函数是研究变化的语言：一次函数匀速、反比例函数成反比、二次函数先减后增。（约 18.4%）",
       "points": [
         "m1-03-01-coordinates-and-function",
+        "m1-03-08-function-concept",
+        "m1-03-09-function-representation",
         "m1-03-02-linear-function",
         "m1-03-03-linear-function-applications",
         "m1-03-04-inverse-proportion",
@@ -85,6 +131,7 @@
       "title": "图形的初步认识",
       "desc": "点、线、角是几何的字母表，平行线的性质是把角搬来搬去的传送带。（约 4.7%）",
       "points": [
+        "m2-01-06-geometric-figures",
         "m2-01-01-lines-rays-segments",
         "m2-01-02-angles",
         "m2-01-03-parallel-lines",
@@ -101,6 +148,7 @@
       "points": [
         "m2-02-01-triangle-basics",
         "m2-02-02-congruent-triangles",
+        "m2-02-07-angle-bisector",
         "m2-02-03-congruent-models",
         "m2-02-04-isosceles-triangle",
         "m2-02-05-pythagoras",
@@ -184,6 +232,7 @@
         "m3-01-01-data-collection",
         "m3-01-02-statistical-charts",
         "m3-01-03-central-tendency",
+        "m3-01-06-quartiles",
         "m3-01-04-variance",
         "m3-01-05-sample-estimation"
       ]
@@ -262,6 +311,28 @@
     "m3-01-05-sample-estimation": "用样本估计总体",
     "m3-02-01-event-probability": "事件的分类与概率",
     "m3-02-02-probability-methods": "求概率的方法",
-    "m3-02-03-frequency-estimate": "用频率估计概率"
+    "m3-02-03-frequency-estimate": "用频率估计概率",
+    "m1-00-01-positive-negative-numbers": "正数与负数",
+    "m1-00-02-rational-numbers-concept": "有理数的概念与分类",
+    "m1-00-03-number-line-opposite-absolute": "数轴、相反数与绝对值",
+    "m1-00-04-rational-comparison": "有理数的大小比较",
+    "m1-00-05-rational-addition-subtraction": "有理数的加法与减法",
+    "m1-00-06-rational-multiplication-division": "有理数的乘法与除法",
+    "m1-00-07-rational-power-scientific": "有理数的乘方、混合运算与科学记数法",
+    "m1-04-01-algebraic-expression": "代数式与字母表示数",
+    "m1-04-02-algebraic-notation": "代数式的书写规范",
+    "m1-04-03-column-expression": "列代数式表示数量关系",
+    "m1-04-04-proportion-relationship": "正比例与反比例关系",
+    "m1-04-05-algebraic-value": "代数式的值与整体代入",
+    "m1-05-01-monomial": "单项式",
+    "m1-05-02-polynomial-integral": "多项式与整式",
+    "m1-05-03-like-terms": "同类项与合并同类项",
+    "m1-05-04-remove-parentheses": "去括号法则",
+    "m1-05-05-integral-add-subtract": "整式的加减与化简求值",
+    "m1-03-08-function-concept": "函数的概念",
+    "m1-03-09-function-representation": "函数的表示",
+    "m2-01-06-geometric-figures": "几何图形与展开图",
+    "m2-02-07-angle-bisector": "角的平分线的性质",
+    "m3-01-06-quartiles": "四分位数与箱线图"
   }
 }

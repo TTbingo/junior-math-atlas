@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 250" width="540" height="250" role="img" aria-label="左侧一台标着代数式 x 平方加 1 的机器，投料口是 x；右侧给出 x 等于 2 时算出 5、x 等于负 3 时算出 10。下方红框对照说明括号 a 的平方得 9，而负的三的平方得负 9">
+  <rect width="540" height="250" fill="#ffffff"/>
+  <text x="20" y="24" font-size="13" fill="#2d3748">字母是投料口，值是从出口掉出来的成品</text>
+
+  <line x1="46" y1="112" x2="112" y2="112" stroke="#4a5568" stroke-width="2"/>
+  <polygon points="118,112 106,106 106,118" fill="#4a5568"/>
+  <text x="52" y="102" font-size="14" fill="#2d3748">x</text>
+
+  <rect x="120" y="72" width="146" height="80" rx="10" fill="#f7fafc" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="193" y="106" font-size="12" fill="#4a5568" text-anchor="middle">代数式</text>
+  <text x="193" y="132" font-size="17" fill="#2b6cb0" text-anchor="middle">x² + 1</text>
+
+  <line x1="268" y1="112" x2="316" y2="112" stroke="#4a5568" stroke-width="2"/>
+  <polygon points="322,112 310,106 310,118" fill="#4a5568"/>
+
+  <g font-size="12.5" fill="#2d3748">
+    <text x="332" y="92">x = 2  →  2² + 1 = 5</text>
+    <text x="332" y="132">x = −3 → (−3)² + 1 = 10</text>
+  </g>
+
+  <rect x="40" y="172" width="460" height="56" rx="8" fill="#fffaf0" stroke="#c53030" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="56" y="196" font-size="12.5" fill="#c53030">括号决定负号属于哪一层：(−3)² = 9，而 −3² = −9</text>
+  <text x="56" y="217" font-size="12.5" fill="#4a5568">漏掉括号，算出来的就不是原来那台机器了</text>
+</svg>

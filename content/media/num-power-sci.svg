@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 250" width="540" height="250" role="img" aria-label="左侧标出乘方的结构：底数负三、指数四、幂八十一，负号在括号内所以结果为正；右侧把二千八百万的小数点从最右端向左移动七位，写成一点二八乘以十的七次方">
+  <rect width="540" height="250" fill="#ffffff"/>
+  <text x="20" y="24" font-size="13" fill="#2d3748">乘方看负号在不在括号里，科学记数法看小数点搬了几位</text>
+
+  <!-- 乘方结构 -->
+  <text x="40" y="66" font-size="11.5" fill="#718096">乘方：相同因数写短</text>
+  <text x="86" y="112" font-size="26" fill="#2d3748" font-family="Georgia, serif">(</text>
+  <text x="100" y="112" font-size="26" fill="#c53030" font-family="Georgia, serif">−3</text>
+  <text x="136" y="112" font-size="26" fill="#2d3748" font-family="Georgia, serif">)</text>
+  <text x="152" y="96" font-size="16" fill="#2b6cb0" font-family="Georgia, serif">4</text>
+  <text x="172" y="112" font-size="26" fill="#2d3748" font-family="Georgia, serif">= 81</text>
+
+  <line x1="100" y1="120" x2="100" y2="140" stroke="#c53030" stroke-width="1.2"/>
+  <text x="76" y="156" font-size="11.5" fill="#c53030">底数 −3</text>
+  <line x1="160" y1="88" x2="160" y2="72" stroke="#2b6cb0" stroke-width="1.2"/>
+  <text x="150" y="66" font-size="11.5" fill="#2b6cb0">指数 4</text>
+  <line x1="196" y1="120" x2="196" y2="140" stroke="#4a5568" stroke-width="1.2"/>
+  <text x="180" y="156" font-size="11.5" fill="#4a5568">幂 81</text>
+
+  <text x="40" y="184" font-size="12" fill="#2d3748">(−3)⁴ = 81　　−3⁴ = −81</text>
+  <text x="40" y="204" font-size="11.5" fill="#718096">负号在括号内才跟着乘方；在括号外只对结果取相反数</text>
+
+  <!-- 科学记数法 -->
+  <line x1="300" y1="52" x2="300" y2="212" stroke="#e2e8f0" stroke-width="1"/>
+
+  <text x="326" y="66" font-size="11.5" fill="#718096">科学记数法：小数点搬家</text>
+  <text x="326" y="102" font-size="15" fill="#2d3748" font-family="Georgia, serif">28000000</text>
+  <text x="326" y="132" font-size="15" fill="#2b6cb0" font-family="Georgia, serif">2.8000000</text>
+
+  <path d="M 336 112 Q 356 122 336 142" fill="none" stroke="#c53030" stroke-width="1.4" stroke-dasharray="4 3"/>
+  <text x="368" y="130" font-size="11.5" fill="#c53030">小数点左移 7 位</text>
+
+  <rect x="326" y="152" width="190" height="36" rx="6" fill="#ebf4ff" stroke="#2b6cb0" stroke-width="1.5"/>
+  <text x="421" y="176" font-size="15" fill="#2b6cb0" text-anchor="middle" font-family="Georgia, serif">2.8 × 10⁷</text>
+
+  <text x="326" y="208" font-size="11.5" fill="#718096">7 = 位数 8 − 1；且 1 ≤ 2.8 &lt; 10</text>
+
+  <!-- 混合运算顺序 -->
+  <text x="20" y="238" font-size="11.5" fill="#4a5568">混合运算顺序：先乘方 → 再乘除 → 最后加减；同级从左到右</text>
+</svg>

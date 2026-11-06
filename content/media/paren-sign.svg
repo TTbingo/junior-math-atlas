@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 240" width="540" height="240" role="img" aria-label="三行对照表：a加括号b减c 去括号得 a加b减c，各项不变；a减括号b减c 得 a减b加c，各项全变；负2乘括号a减3 得 负2a加6，系数乘遍每项且负负得正">
+  <rect width="540" height="240" fill="#ffffff"/>
+  <text x="20" y="22" font-size="13" fill="#2d3748">括号前的符号就是系数：「+」是乘 +1，「−」是乘 −1</text>
+
+  <text x="24" y="50" font-size="11" fill="#718096">原式</text>
+  <text x="196" y="50" font-size="11" fill="#718096">去括号后</text>
+  <text x="352" y="50" font-size="11" fill="#718096">判定</text>
+  <line x1="20" y1="58" x2="520" y2="58" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <text x="24" y="86" font-size="16" fill="#2b6cb0">a + (b − c)</text>
+  <text x="196" y="86" font-size="16" fill="#2b6cb0">a + b − c</text>
+  <text x="352" y="86" font-size="12" fill="#2d3748">各项不变</text>
+
+  <text x="24" y="122" font-size="16" fill="#2b6cb0">a − (b − c)</text>
+  <text x="196" y="122" font-size="16" fill="#2b6cb0">a − b + c</text>
+  <text x="352" y="122" font-size="12" fill="#c53030">各项全变，不是只变第一项</text>
+
+  <text x="24" y="158" font-size="16" fill="#2b6cb0">−2(a − 3)</text>
+  <text x="196" y="158" font-size="16" fill="#2b6cb0">−2a + 6</text>
+  <text x="352" y="158" font-size="12" fill="#c53030">乘遍每项，负负得正</text>
+
+  <g stroke="#e2e8f0" stroke-width="1">
+    <line x1="20" y1="96" x2="520" y2="96"/>
+    <line x1="20" y1="132" x2="520" y2="132"/>
+  </g>
+
+  <text x="24" y="188" font-size="11.5" fill="#2d3748">为什么全变：b = 5、c = 3 时 −(5 − 3) = −2，而 −b + c 也是 −2；只变第一项得 −8</text>
+  <text x="24" y="210" font-size="11.5" fill="#2d3748">为什么乘遍：3(x + 2) 是三个 (x + 2) 相加　x = 1 时得 9，只乘第一项得 5</text>
+  <text x="24" y="230" font-size="11" fill="#718096">自查办法：去括号前后项数应当相同，少了一项就是漏乘或漏项</text>
+</svg>

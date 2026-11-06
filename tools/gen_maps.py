@@ -130,24 +130,42 @@ SRC = "脉络依据《初中数学思维导图》整理；括注为近 5 年中�
 
 
 def gen_algebra():
+    """代数 6 主题：两行 × 3 框（上：有理数→代数式→整式的加减；下：数与式→方程与不等式→函数）。"""
     color = "#2b6cb0"
     ts = topics_of("m1")
-    W, gap, margin, y = 760, 26, 18, 22
+    W, gap, margin = 760, 26, 18
     bw = (W - margin * 2 - gap * 2) / 3
-    bodies, hs = [], []
-    for i, t in enumerate(ts):
-        b, h = box_body(margin + i * (bw + gap), y, bw, t, color)
-        bodies.append(b)
-        hs.append(h)
-    H = max(hs)
-    cy = y + H / 2
-    arrows = "".join(arrow_h(margin + bw + i * (bw + gap) - 2, cy,
-                             margin + (i + 1) * (bw + gap) + 4, color) for i in range(2))
-    rects = "".join(rect(margin + i * (bw + gap), y, bw, H, color) for i in range(3))
-    foot_y = y + H + 34
-    body = rects + arrows + "".join(bodies) + footer(
+    row1, row2 = ts[:3], ts[3:]
+
+    def build_row(row, y):
+        bodies, hs = [], []
+        for i, t in enumerate(row):
+            b, h = box_body(margin + i * (bw + gap), y, bw, t, color,
+                            title_size=14, desc_size=10, item_size=11.5)
+            bodies.append(b)
+            hs.append(h)
+        h = max(hs)
+        cy = y + h / 2
+        rects = "".join(rect(margin + i * (bw + gap), y, bw, h, color) for i in range(len(row)))
+        arrows = "".join(arrow_h(margin + bw + i * (bw + gap) - 2, cy,
+                                 margin + (i + 1) * (bw + gap) + 4, color)
+                         for i in range(len(row) - 1))
+        return rects + arrows + "".join(bodies), h, y
+
+    y1 = 22
+    part1, h1, _ = build_row(row1, y1)
+    y2 = y1 + h1 + 58
+    part2, h2, _ = build_row(row2, y2)
+    # 行间连接：第一行末框底部 → 第二行首框顶部
+    x_from = margin + 2 * (bw + gap) + bw / 2
+    x_to = margin + bw / 2
+    mid = y1 + h1 + 26
+    wrap = (f'<path d="M {x_from} {y1 + h1} L {x_from} {mid} L {x_to} {mid} L {x_to} {y2 - 9}" '
+            f'fill="none" stroke="{color}" stroke-width="2" marker-end="url(#ah-{color[1:]})"/>')
+    foot_y = y2 + h2 + 34
+    body = part1 + part2 + wrap + footer(
         margin, foot_y,
-        "主线：数的运算 → 式的运算 → 方程与不等式 → 函数。前一框是后一框的工具箱，顺序不能倒。", SRC)
+        "主线：数 → 式 → 式的运算 → 方程与不等式 → 函数。上一行准备工具，下一行拿工具解题；顺序不能倒。", SRC)
     Ht = foot_y + 30
     (C / "media/map-algebra.svg").write_text(
         make_svg(W, Ht, arrow_def(color), body), encoding="utf-8")

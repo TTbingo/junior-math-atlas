@@ -17,3 +17,6 @@ Thumbs.db
 # 验收截图
 shots/
 dist/_shot/
+
+# 浏览器调试残留
+.playwright-cli/

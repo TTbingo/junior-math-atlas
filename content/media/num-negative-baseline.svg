@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" width="520" height="240" role="img" aria-label="左图以零摄氏度为基准标出零上五度与零下七度，右图以海平面为基准标出高出海平面一千二百米与低于海平面三十五米">
+  <rect width="520" height="240" fill="#ffffff"/>
+  <text x="20" y="26" font-size="13" fill="#2d3748">同一套记法：先定基准，再看方向，最后写偏离多少</text>
+
+  <!-- 左：温度 -->
+  <text x="60" y="52" font-size="12" fill="#718096">以 0 ℃ 为基准</text>
+  <line x1="110" y1="60" x2="110" y2="212" stroke="#4a5568" stroke-width="2"/>
+  <line x1="40" y1="150" x2="180" y2="150" stroke="#4a5568" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="34" y="154" font-size="13" fill="#2d3748" text-anchor="end">0</text>
+
+  <line x1="110" y1="150" x2="110" y2="105" stroke="#2b6cb0" stroke-width="3"/>
+  <polygon points="110,98 104,110 116,110" fill="#2b6cb0"/>
+  <text x="122" y="104" font-size="13" fill="#2b6cb0">+5 零上 5 ℃</text>
+
+  <line x1="110" y1="150" x2="110" y2="189" stroke="#c53030" stroke-width="3"/>
+  <polygon points="110,196 104,184 116,184" fill="#c53030"/>
+  <text x="122" y="194" font-size="13" fill="#c53030">−7 零下 7 ℃</text>
+
+  <!-- 右：海拔 -->
+  <text x="300" y="52" font-size="12" fill="#718096">以海平面为基准</text>
+  <line x1="292" y1="150" x2="504" y2="150" stroke="#4a5568" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="508" y="154" font-size="12" fill="#2d3748" text-anchor="end">0</text>
+
+  <polygon points="360,150 410,86 460,150" fill="#ebf4ff" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="410" y="78" font-size="13" fill="#2b6cb0" text-anchor="middle">+1200 米</text>
+
+  <polygon points="350,150 390,196 430,150" fill="#fff5f5" stroke="#c53030" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="390" y="214" font-size="13" fill="#c53030" text-anchor="middle">−35 米</text>
+
+  <text x="20" y="232" font-size="12" fill="#718096">符号只表示方向，数字只表示偏离多少；换了基准，同一个量要重新记</text>
+</svg>

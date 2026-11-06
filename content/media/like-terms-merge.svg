@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 250" width="540" height="250" role="img" aria-label="上方三张卡片3x平方y、负5x平方y、2x平方y 归为同组可合并，合并后结果为0；右侧红框卡片4xy平方 标为不同组，下方解释两者指数互换，所以不能合并">
+  <rect width="540" height="250" fill="#ffffff"/>
+  <text x="20" y="22" font-size="13" fill="#2d3748">同类项只比字母部分：字母相同、相同字母的指数也相同</text>
+
+  <text x="24" y="48" font-size="11" fill="#2b6cb0">同组：可合并</text>
+  <text x="404" y="48" font-size="11" fill="#c53030">不同组：不可合并</text>
+
+  <g>
+    <rect x="24" y="58" width="112" height="40" rx="6" fill="#f7fafc" stroke="#2b6cb0" stroke-width="1.2"/>
+    <text x="80" y="84" font-size="15" fill="#2b6cb0" text-anchor="middle">3x²y</text>
+
+    <rect x="148" y="58" width="112" height="40" rx="6" fill="#f7fafc" stroke="#2b6cb0" stroke-width="1.2"/>
+    <text x="204" y="84" font-size="15" fill="#2b6cb0" text-anchor="middle">−5x²y</text>
+
+    <rect x="272" y="58" width="112" height="40" rx="6" fill="#f7fafc" stroke="#2b6cb0" stroke-width="1.2"/>
+    <text x="328" y="84" font-size="15" fill="#2b6cb0" text-anchor="middle">2x²y</text>
+
+    <rect x="404" y="58" width="112" height="40" rx="6" fill="#fff5f5" stroke="#c53030" stroke-width="1.4"/>
+    <text x="460" y="84" font-size="15" fill="#c53030" text-anchor="middle">4xy²</text>
+  </g>
+
+  <path d="M24 106 L24 114 L384 114 L384 106" fill="none" stroke="#2b6cb0" stroke-width="1.2"/>
+  <text x="204" y="132" font-size="12" fill="#2b6cb0" text-anchor="middle">这一组字母部分都是 x²y</text>
+
+  <text x="24" y="154" font-size="12.5" fill="#2d3748">合并只加系数：3 − 5 + 2 = 0　→　整项消失，写 0，不写 0x²y</text>
+
+  <line x1="20" y1="168" x2="520" y2="168" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <text x="24" y="190" font-size="11.5" fill="#2d3748">4xy² 为什么进不了这一组：</text>
+  <text x="24" y="210" font-size="11.5" fill="#2b6cb0">3x²y　x 乘了 2 次，y 乘了 1 次</text>
+  <text x="24" y="228" font-size="11.5" fill="#c53030">4xy²　x 乘了 1 次，y 乘了 2 次　← 指数换了位</text>
+  <text x="300" y="228" font-size="11" fill="#718096">交换律只管顺序，</text>
+  <text x="300" y="242" font-size="11" fill="#718096">换不了指数归谁</text>
+</svg>

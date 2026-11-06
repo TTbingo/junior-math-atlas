@@ -61,7 +61,7 @@
       "steps": [
         {
           "conclusion": "平行引理：$\\triangle ABC$ 中若 $DE\\parallel BC$（$D$ 在 $AB$ 上、$E$ 在 $AC$ 上），则 $\\triangle ADE\\sim\\triangle ABC$。",
-          "proof": "$\\triangle ABC$ 中 $DE\\parallel BC$（$D$ 在 $AB$ 上、$E$ 在 $AC$ 上），则 $\\triangle ADE\\sim\\triangle ABC$。由 [[m2-05-01]] 的比例转移 $\\tfrac{AD}{AB}=\\tfrac{AE}{AC}$；再把 $DE$ 平移到过 $B$（或 $C$）用同法得第三组比 $\\tfrac{DE}{BC}=\\tfrac{AD}{AB}$——三边成比例；角由平行线的同位角（[[m2-01-03]]）直接相等。",
+          "proof": "$\\triangle ABC$ 中 $DE\\parallel BC$（$D$ 在 $AB$ 上、$E$ 在 $AC$ 上），则 $\\triangle ADE\\sim\\triangle ABC$。由 [[m2-05-01]] 的比例转移 $\\tfrac{AD}{AB}=\\tfrac{AE}{AC}$；$\\tfrac{DE}{BC}=\\tfrac{AD}{AB}$ 用辅助线补证：过 $E$ 作 $EF\\parallel AB$ 交 $BC$ 于 $F$，则 $BDEF$ 是平行四边形（$DE\\parallel BF$、$EF\\parallel DB$），故 $BF=DE$；又由 [[m2-05-01]] 得 $\\tfrac{FC}{BC}=\\tfrac{CE}{CA}$，于是 $\\tfrac{DE}{BC}=\\tfrac{BF}{BC}=1-\\tfrac{FC}{BC}=1-\\tfrac{CE}{CA}=\\tfrac{AE}{AC}=\\tfrac{AD}{AB}$——三边成比例；角由平行线的同位角（[[m2-01-03]]）直接相等。",
           "key": "依据是 [[m2-05-01]] 的比例转移与平行线同位角（[[m2-01-03]]）：$\\tfrac{AD}{AB}=\\tfrac{AE}{AC}$ 给出两组对应边成比例，再把 $DE$ 平移到过 $B$ 用同法得 $\\tfrac{DE}{BC}=\\tfrac{AD}{AB}$，三组对应边全部成比例；角由 $DE\\parallel BC$ 的同位角直接相等。两组边成比例加一组角相等，就得到两个三角形相似。"
         },
         {

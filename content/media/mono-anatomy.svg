@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 260" width="540" height="260" role="img" aria-label="上方把负三x平方y拆成三个方框：系数负三、字母部分x平方y、次数二加一等于三；中间提示先拆成连乘再数字母因数；下方对照表列出负三x平方y、二派r、派r平方、五四个单项式的系数与次数">
+  <rect width="540" height="260" fill="#ffffff"/>
+  <text x="20" y="22" font-size="13" fill="#2d3748">读单项式只问三件事：系数是几、字母有哪些、指数加起来是几</text>
+
+  <text x="30" y="86" font-size="32" fill="#2b6cb0">−3x²y</text>
+
+  <g>
+    <rect x="150" y="56" width="112" height="38" rx="6" fill="#f7fafc" stroke="#2b6cb0" stroke-width="1.2"/>
+    <text x="206" y="72" font-size="11" fill="#718096" text-anchor="middle">系数</text>
+    <text x="206" y="88" font-size="15" fill="#2b6cb0" text-anchor="middle">−3</text>
+
+    <rect x="274" y="56" width="112" height="38" rx="6" fill="#f7fafc" stroke="#2b6cb0" stroke-width="1.2"/>
+    <text x="330" y="72" font-size="11" fill="#718096" text-anchor="middle">字母部分</text>
+    <text x="330" y="88" font-size="15" fill="#2b6cb0" text-anchor="middle">x²y</text>
+
+    <rect x="398" y="56" width="112" height="38" rx="6" fill="#f7fafc" stroke="#2b6cb0" stroke-width="1.2"/>
+    <text x="454" y="72" font-size="11" fill="#718096" text-anchor="middle">次数</text>
+    <text x="454" y="88" font-size="15" fill="#2b6cb0" text-anchor="middle">2 + 1 = 3</text>
+  </g>
+
+  <text x="24" y="118" font-size="12" fill="#2d3748">拆开验一遍：−3 · x · x · y　→　字母因数一共 3 个，所以是三次</text>
+
+  <line x1="20" y1="134" x2="520" y2="134" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <text x="24" y="156" font-size="11" fill="#718096">单项式</text>
+  <text x="210" y="156" font-size="11" fill="#718096">系数（含符号）</text>
+  <text x="400" y="156" font-size="11" fill="#718096">次数</text>
+
+  <g font-size="13">
+    <text x="24" y="180" fill="#2b6cb0">−3x²y</text>
+    <text x="210" y="180" fill="#2d3748">−3</text>
+    <text x="400" y="180" fill="#2d3748">2 + 1 = 3</text>
+
+    <text x="24" y="202" fill="#2b6cb0">2πr</text>
+    <text x="210" y="202" fill="#c53030">2π　π 是数，不是字母</text>
+    <text x="400" y="202" fill="#2d3748">1</text>
+
+    <text x="24" y="224" fill="#2b6cb0">πr²</text>
+    <text x="210" y="224" fill="#c53030">π　不是 3</text>
+    <text x="400" y="224" fill="#c53030">2　不是 3</text>
+
+    <text x="24" y="246" fill="#2b6cb0">5</text>
+    <text x="210" y="246" fill="#2d3748">5</text>
+    <text x="400" y="246" fill="#2d3748">0　常数没有字母</text>
+  </g>
+
+  <g stroke="#e2e8f0" stroke-width="1">
+    <line x1="20" y1="188" x2="520" y2="188"/>
+    <line x1="20" y1="210" x2="520" y2="210"/>
+    <line x1="20" y1="232" x2="520" y2="232"/>
+  </g>
+</svg>

@@ -55,7 +55,10 @@ def load_all():
     mod = read_json(C / "modules.json")
     points = {p.stem: read_json(p) for p in sorted((C / "points").glob("*.json"))}
     tb = read_json(C / "textbook.json")
-    return tax, site, std, mod, points, tb
+    # 领域导读内容（可选：缺文件时模块页退回原版，不报错）
+    gf = C / "guides.json"
+    guides = read_json(gf)["modules"] if gf.exists() else {}
+    return tax, site, std, mod, points, tb, guides
 
 # --------------------------------------------------------------- markdown
 MATH_FALLBACK = [
@@ -391,9 +394,10 @@ def validate(tax, std, mod, points):
 class Index:
     """按「模块 → 节 → 知识点」组织。清单里已写和待写都在，只是待写的不出现在页面链接里。"""
 
-    def __init__(self, tax, std, mod, points, tb):
+    def __init__(self, tax, std, mod, points, tb, guides=None):
         self.tax, self.std, self.mod, self.points = tax, std, mod, points
         self.tb = tb
+        self.guides = guides or {}
         self.point_titles = mod.get("point_titles", {})
         self.modules = {m["id"]: m for m in mod["modules"]}
         self.module_order = [m["id"] for m in mod["modules"]]
@@ -762,6 +766,47 @@ def build_toc(entries):
 
 
 # --------------------------------------------------------------- pages
+def render_guide(idx, mid, depth):
+    """领域导读：主线引言 + 「主题 / 内容 / 在后面哪里用」速览表 + 考试提示 + 阅读建议。
+
+    内容来自 content/guides.json；「内容」列由各主题的知识点标题自动汇总，
+    保证新增知识点后导读表不脱节。
+    """
+    g = idx.guides.get(mid)
+    if not g:
+        return "", []
+    parts, entries = [], []
+    if g.get("intro"):
+        parts.append('<section class="block guide-intro" id="guide"><h2>这一领域的主线</h2>'
+                     + "".join(render_text(x) for x in g["intro"]) + "</section>")
+        entries.append((2, "这一领域的主线", "guide"))
+    rows = []
+    for tid in idx.module_topics(mid):
+        t = idx.topics[tid]
+        content = "、".join(idx.point_titles.get(p, p) for p in t["points"])
+        use = render_inline(g.get("use", {}).get(tid, ""))
+        rows.append(
+            f'<tr><td class="g-topic"><a href="{idx.rel_topic(tid, depth)}">{esc(t["title"])}</a></td>'
+            f'<td class="g-content">{esc(content)}</td>'
+            f'<td class="g-use">{use}</td></tr>')
+    parts.append('<section class="block" id="topics-map"><h2>主题速览</h2>'
+                 '<table class="guide-tbl"><thead><tr>'
+                 '<th scope="col">主题</th><th scope="col">内容</th><th scope="col">在后面哪里用</th>'
+                 "</tr></thead><tbody>" + "".join(rows) + "</tbody></table>"
+                 '<p class="note">「内容」列是该主题下各知识点的标题清单；「在后面哪里用」'
+                 "说明它被后续哪些主题接走——知识不是一章一章孤立堆放的。</p></section>")
+    entries.append((2, "主题速览", "topics-map"))
+    if g.get("exam"):
+        lis = "".join(f"<li>{render_text(x)}</li>" for x in g["exam"])
+        parts.append(f'<section class="block" id="exam"><h2>考试里怎么考</h2><ul class="items">{lis}</ul></section>')
+        entries.append((2, "考试里怎么考", "exam"))
+    if g.get("howto"):
+        parts.append('<section class="block" id="howto"><h2>怎么读这一领域</h2>'
+                     + "".join(render_text(x) for x in g["howto"]) + "</section>")
+        entries.append((2, "怎么读这一领域", "howto"))
+    return "".join(parts), entries
+
+
 def emit_point(idx, pid, depth=2):
     set_render_ctx(idx, depth)
     p = idx.points[pid]
@@ -869,7 +914,6 @@ def emit_topic(idx, tid, depth=2):
     if segs:
         overview += (f'<tr><th>课标学段</th><td>'
                      f'{"、".join(esc(idx.tax["segments"][str(x)]) for x in segs)}</td></tr>')
-    overview += f'<tr><th>知识点</th><td>{len(written)} 篇</td></tr>'
     if t.get("standard_ids"):
         txt = "；".join(esc(idx.std[x]["text"]) for x in t["standard_ids"] if x in idx.std)
         overview += (f'<tr><th>课标要求</th><td class="std-text">'
@@ -916,7 +960,6 @@ def emit_module(idx, mid, depth=1):
     """模块页：这个模块由哪些主题组成。"""
     m = idx.modules[mid]
     tids = idx.module_topics(mid)
-    total = idx.module_count(mid)
     head = ('<div class="panel panel-h1">'
             f'<p class="mod-kicker">第 {m["no"]} 领域 · {esc(m["short"])}</p>'
             f'<h1 id="_top">{esc(m["title"])}</h1>'
@@ -933,16 +976,15 @@ def emit_module(idx, mid, depth=1):
     body.append('<section class="block overview"><table class="kv"><tbody>'
                 f'<tr><th>课标主题</th><td>{esc(m.get("strand",""))}</td></tr>'
                 f'<tr><th>主题数</th><td>{len(tids)} 个</td></tr>'
-                f'<tr><th>知识点</th><td>{sum(len(idx.topics[t]["points"]) for t in tids)} 个'
-                f'（已写 {total} 篇）</td></tr>'
+                f'<tr><th>知识点</th><td>{sum(len(idx.topics[t]["points"]) for t in tids)} 个</td></tr>'
                 '</tbody></table></section>')
-    entries = []
+    guide_html, guide_entries = render_guide(idx, mid, depth)
+    body.append(guide_html)
+    entries = list(guide_entries)
     for tid in tids:
         t = idx.topics[tid]
-        written = idx.topic_points(tid)
         body.append(f'<section class="block" id="{tid}">'
-                    f'<h2><a href="{idx.rel_topic(tid, depth)}">{esc(t["title"])}</a>'
-                    f'<span class="tg-n">{len(written)}/{len(t["points"])}</span></h2>'
+                    f'<h2><a href="{idx.rel_topic(tid, depth)}">{esc(t["title"])}</a></h2>'
                     f'<p class="mod-desc">{esc(t["desc"])}</p>')
         body.append('<ul class="items point-items">')
         for pid in t["points"]:
@@ -967,12 +1009,11 @@ def emit_module(idx, mid, depth=1):
 def emit_home(idx, depth=0):
     set_render_ctx(idx, depth)
     tax = idx.tax
-    n_written = len(idx.point_order)
     n_topics = len(idx.topic_order)
     stats = (f'<div class="stats">'
              f'<span><b>{len(idx.module_order)}</b> 大领域</span>'
              f'<span><b>{n_topics}</b> 个主题</span>'
-             f'<span><b>{len(idx.plan)}</b> 个知识点（已写 {n_written} 篇）</span>'
+             f'<span><b>{len(idx.plan)}</b> 个知识点</span>'
              f'<span class="stat-done">已学 <b class="done-count">0</b> 篇</span></div>')
 
     cards = []
@@ -998,8 +1039,7 @@ def emit_home(idx, depth=0):
                 f'<span class="li-sum">{render_inline(idx.points[pid].get("summary",""))}</span>'
                 f'</a></li>' for pid in pids)
             inner.append(f'<div class="topic-group">'
-                         f'<h3><a href="{idx.rel_topic(tid, depth)}">{esc(t["title"])}</a>'
-                         f'<span class="tg-n">{len(pids)}/{len(t["points"])}</span></h3>'
+                         f'<h3><a href="{idx.rel_topic(tid, depth)}">{esc(t["title"])}</a></h3>'
                          f'<ul class="items point-items">{items}</ul></div>')
         blocks.append(f'<section class="block mod-block" id="{mid}">'
                       f'<h2><a href="{idx.rel_module(mid, depth)}">{esc(m["title"])}</a></h2>'
@@ -1104,7 +1144,7 @@ def copy_assets():
 
 
 def build():
-    tax, site, std, mod, points, tb = load_all()
+    tax, site, std, mod, points, tb, guides = load_all()
     validate(tax, std, mod, points)
     if errors:
         print(f"校验失败：{len(errors)} 个错误")
@@ -1113,7 +1153,7 @@ def build():
         if len(errors) > 60:
             print(f"  … 另有 {len(errors)-60} 条")
         return 1
-    idx = Index(tax, std, mod, points, tb)
+    idx = Index(tax, std, mod, points, tb, guides)
     idx.site_title_sub = site.get("subtitle", "")
 
     safe_rebuild()
@@ -1175,7 +1215,7 @@ def verify_output():
 
 
 def check():
-    tax, site, std, mod, points, tb = load_all()
+    tax, site, std, mod, points, tb, guides = load_all()
     validate(tax, std, mod, points)
     if errors:
         print(f"✗ {len(errors)} 个错误")

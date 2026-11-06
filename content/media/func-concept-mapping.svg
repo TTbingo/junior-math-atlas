@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 250" width="560" height="250">
+  <rect width="560" height="250" fill="#ffffff"/>
+  <text x="20" y="24" font-size="13" fill="#2d3748">唯一对应是函数的心脏：一对一合法，一对多违规</text>
+
+  <!-- 左：一对一 -->
+  <text x="20" y="52" font-size="12" fill="#2b6cb0">① 每个 x 只对一个 y —— 是函数</text>
+  <rect x="30" y="66" width="60" height="24" fill="#ebf4ff" stroke="#2b6cb0"/>
+  <rect x="30" y="98" width="60" height="24" fill="#ebf4ff" stroke="#2b6cb0"/>
+  <rect x="30" y="130" width="60" height="24" fill="#ebf4ff" stroke="#2b6cb0"/>
+  <text x="60" y="82" font-size="12" fill="#2d3748" text-anchor="middle">x=1</text>
+  <text x="60" y="114" font-size="12" fill="#2d3748" text-anchor="middle">x=2</text>
+  <text x="60" y="146" font-size="12" fill="#2d3748" text-anchor="middle">x=3</text>
+  <rect x="180" y="66" width="60" height="24" fill="#f0fff4" stroke="#38a169"/>
+  <rect x="180" y="98" width="60" height="24" fill="#f0fff4" stroke="#38a169"/>
+  <rect x="180" y="130" width="60" height="24" fill="#f0fff4" stroke="#38a169"/>
+  <text x="210" y="82" font-size="12" fill="#2d3748" text-anchor="middle">y=60</text>
+  <text x="210" y="114" font-size="12" fill="#2d3748" text-anchor="middle">y=120</text>
+  <text x="210" y="146" font-size="12" fill="#2d3748" text-anchor="middle">y=180</text>
+  <line x1="92" y1="78" x2="176" y2="78" stroke="#2b6cb0" stroke-width="1.5" marker-end="url(#arr1)"/>
+  <line x1="92" y1="110" x2="176" y2="110" stroke="#2b6cb0" stroke-width="1.5" marker-end="url(#arr1)"/>
+  <line x1="92" y1="142" x2="176" y2="142" stroke="#2b6cb0" stroke-width="1.5" marker-end="url(#arr1)"/>
+
+  <!-- 右：一对多 -->
+  <text x="300" y="52" font-size="12" fill="#c53030">② 一个 x 对两个 y —— 不是函数</text>
+  <rect x="310" y="90" width="60" height="24" fill="#ebf4ff" stroke="#2b6cb0"/>
+  <text x="340" y="106" font-size="12" fill="#2d3748" text-anchor="middle">x=4</text>
+  <rect x="440" y="66" width="60" height="24" fill="#fff5f5" stroke="#c53030"/>
+  <rect x="440" y="114" width="60" height="24" fill="#fff5f5" stroke="#c53030"/>
+  <text x="470" y="82" font-size="12" fill="#2d3748" text-anchor="middle">y=2</text>
+  <text x="470" y="130" font-size="12" fill="#2d3748" text-anchor="middle">y=−2</text>
+  <line x1="372" y1="100" x2="436" y2="82" stroke="#c53030" stroke-width="1.5" marker-end="url(#arr1)"/>
+  <line x1="372" y1="106" x2="436" y2="122" stroke="#c53030" stroke-width="1.5" marker-end="url(#arr1)"/>
+  <text x="300" y="170" font-size="11" fill="#c53030">y²=x 中 x=4 时 y=±2，问「y 是多少」无法作答</text>
+
+  <line x1="20" y1="192" x2="540" y2="192" stroke="#cbd5e0"/>
+  <text x="20" y="214" font-size="11.5" fill="#4a5568">竖线检验：竖直线与函数图象至多一个交点；多个交点必有一对多</text>
+  <text x="20" y="236" font-size="11" fill="#718096">注意方向：多个 x 对同一个 y 合法（如 y=x² 中 2 和 −2 都对 4），一个 x 对多个 y 才违规</text>
+  <defs>
+    <marker id="arr1" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#2b6cb0"/>
+    </marker>
+  </defs>
+</svg>
