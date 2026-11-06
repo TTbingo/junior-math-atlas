@@ -75,4 +75,7 @@ python tools/gen_geo_figs.py           # 重画几何配图
 
 ## 线上地址
 
-- GitHub Pages：<https://ttbingo.github.io/junior-math-atlas/>
+- 主站（WorkBuddy）：https://junior-math-atlas.app.workbuddy.host/（分享码 LPSYJMHKMD）
+- 备用（GitHub Pages）：<https://ttbingo.github.io/junior-math-atlas/>
+
+两处内容同步发布：主站用 workbuddy_sites_deploy，GitHub Pages 用 `python tools/deploy_ghpages.py`。
